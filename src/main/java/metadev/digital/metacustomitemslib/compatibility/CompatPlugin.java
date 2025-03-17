@@ -1,12 +1,12 @@
 package metadev.digital.metacustomitemslib.compatibility;
 
 public enum CompatPlugin {
-	// TODO: ACTIONANNOUNCER Deprecated? ActionAnnouncer("ActionAnnouncer", 0), //
-	ActionBarApi("ActionBarAPI", 1), //
+	// ActionAnnouncer was ID 0. Reserve ID
+	// ActionBarApi was ID 1. Reserve ID
 	Actionbar("Actionbar", 2), //
 	BarApi("BarAPI", 3), //
 	BattleArena("BattleArena", 4), //
-	BossBarApi("BossBarAPI", 5), //
+	// BossBarApi was ID 5. Reserve ID
 	BossShop("BossShopPro", 6), //
 	Citizens("Citizens", 7), //
 	ConquestiaMobs("ConquestiaMobs", 8), //
@@ -38,7 +38,7 @@ public enum CompatPlugin {
 	SmartGiants("SmartGiants", 34), //
 	StackMob("StackMob", 35), //
 	TARDISWeepingAngels("TARDISWeepingAngels", 36), //
-	TitleAPI("TitleAPI", 37), //
+	// TitleAPI was ID 37. Reserve ID
 	TitleManager("TitleManager", 38), //
 	Towny("Towny", 39), //
 	VanishNoPacket("VanishNoPacket", 40), //

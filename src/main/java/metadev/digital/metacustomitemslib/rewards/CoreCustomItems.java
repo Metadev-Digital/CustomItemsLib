@@ -3,8 +3,6 @@ package metadev.digital.metacustomitemslib.rewards;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.Property;
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.Strings;
 import metadev.digital.metacustomitemslib.mobs.MobType;
@@ -19,7 +17,6 @@ import org.bukkit.profile.PlayerTextures;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Field;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -63,50 +60,6 @@ public class CoreCustomItems {
 
 		return skull;
     }
-
-	/**
-	 * Return an ItemStack with a custom texture. If Mojang changes the way they
-	 * calculate Signatures this method will stop working.
-	 *
-	 *
-	 * @param reward
-	 * @param mTextureValue
-	 * @param mTextureSignature
-	 * @return ItemStack with custom texture.
-	 * @deprecated - 1.21.1+ requires PlayerProfile and TextureURLs instead of GameProfile and Texture Value/Signatures
-	 */
-	public static ItemStack getCustomtexture(Reward reward, String mTextureValue, String mTextureSignature) {
-		ItemStack skull = CoreCustomItems.getDefaultPlayerHead(1);
-		if (mTextureSignature.isEmpty() || mTextureValue.isEmpty())
-			return skull;
-
-		// add custom texture to skull
-		SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
-		GameProfile profile = new GameProfile(reward.getSkinUUID(), reward.getDisplayName().replaceAll("\\s+", "_"));
-		if (mTextureSignature.isEmpty())
-			profile.getProperties().put("textures", new Property("textures", mTextureValue));
-		else
-			profile.getProperties().put("textures", new Property("textures", mTextureValue, mTextureSignature));
-		Field profileField = null;
-
-		try {
-			profileField = skullMeta.getClass().getDeclaredField("profile");
-		} catch (NoSuchFieldException | SecurityException e) {
-			e.printStackTrace();
-			return skull;
-		}
-		profileField.setAccessible(true);
-		try {
-			profileField.set(skullMeta, profile);
-		} catch (IllegalArgumentException | IllegalAccessException e) {
-			e.printStackTrace();
-		}
-		skull.setItemMeta(skullMeta);
-
-		// add displayname and lores to skull
-		skull = Reward.setDisplayNameAndHiddenLores(skull, reward);
-		return skull;
-	}
 
 	/**
 	 * Return an ItemStack with the Players head texture.

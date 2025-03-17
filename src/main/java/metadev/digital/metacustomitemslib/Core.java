@@ -7,18 +7,13 @@ import metadev.digital.metacustomitemslib.commands.DebugCommand;
 import metadev.digital.metacustomitemslib.commands.ReloadCommand;
 import metadev.digital.metacustomitemslib.commands.UpdateCommand;
 import metadev.digital.metacustomitemslib.commands.VersionCommand;
-// TODO: ACTIONANNOUNCER Deprecated? import metadev.digital.metacustomitemslib.compatibility.ActionAnnouncerCompat;
-import metadev.digital.metacustomitemslib.compatibility.ActionBarAPICompat;
 import metadev.digital.metacustomitemslib.compatibility.ActionbarCompat;
 import metadev.digital.metacustomitemslib.compatibility.BagOfGoldCompat;
-import metadev.digital.metacustomitemslib.compatibility.BarAPICompat;
-import metadev.digital.metacustomitemslib.compatibility.BossBarAPICompat;
 import metadev.digital.metacustomitemslib.compatibility.CMICompat;
 import metadev.digital.metacustomitemslib.compatibility.CompatPlugin;
 import metadev.digital.metacustomitemslib.compatibility.CompatibilityManager;
 import metadev.digital.metacustomitemslib.compatibility.MobHuntingCompat;
 import metadev.digital.metacustomitemslib.compatibility.ProtocolLibCompat;
-import metadev.digital.metacustomitemslib.compatibility.TitleAPICompat;
 import metadev.digital.metacustomitemslib.compatibility.TitleManagerCompat;
 import metadev.digital.metacustomitemslib.config.ConfigManager;
 import metadev.digital.metacustomitemslib.messages.Messages;
@@ -166,12 +161,7 @@ public class Core extends JavaPlugin {
 		mCompatibilityManager.registerPlugin(ProtocolLibCompat.class, CompatPlugin.ProtocolLib);
 
 		mCompatibilityManager.registerPlugin(TitleManagerCompat.class, CompatPlugin.TitleManager);
-		mCompatibilityManager.registerPlugin(TitleAPICompat.class, CompatPlugin.TitleAPI);
-		// TODO: ACTIONANNOUNCER Deprecated? mCompatibilityManager.registerPlugin(ActionAnnouncerCompat.class, CompatPlugin.ActionAnnouncer);
-		mCompatibilityManager.registerPlugin(ActionBarAPICompat.class, CompatPlugin.ActionBarApi);
 		mCompatibilityManager.registerPlugin(ActionbarCompat.class, CompatPlugin.Actionbar);
-		mCompatibilityManager.registerPlugin(BossBarAPICompat.class, CompatPlugin.BossBarApi);
-		mCompatibilityManager.registerPlugin(BarAPICompat.class, CompatPlugin.BarApi);
 		mCompatibilityManager.registerPlugin(CMICompat.class, CompatPlugin.CMI);
 
 		mCompatibilityManager.registerPlugin(BagOfGoldCompat.class, CompatPlugin.BagOfGold);

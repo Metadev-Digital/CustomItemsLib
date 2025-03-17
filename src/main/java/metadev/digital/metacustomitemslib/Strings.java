@@ -1,6 +1,6 @@
 package metadev.digital.metacustomitemslib;
 
-import net.md_5.bungee.api.ChatColor;
+import org.bukkit.ChatColor;
 
 import java.lang.reflect.Method;
 import java.util.Base64;

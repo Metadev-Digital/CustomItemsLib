@@ -1,8 +1,5 @@
 package metadev.digital.metacustomitemslib.messages;
 
-//TODO: PlaceHolderAPICompat is throwing errors when being called here. Make CustomItemsLib version?
-import metadev.digital.metabagofgold.compatibility.PlaceholderAPICompat;
-
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.Strings;
 import metadev.digital.metacustomitemslib.compatibility.*;
@@ -394,12 +391,11 @@ public class Messages {
 			return;
 		}
 
-		final String final_message = (BagOfGoldCompat.isSupported()) ? PlaceholderAPICompat.setPlaceholders(player, message) : "";
+		final String final_message = "";
 
 		Core.getMessages().debug(final_message);
 
-		/*|| ActionAnnouncerCompat.isSupported()*/
-		if (  TitleManagerCompat.isSupported() || ActionbarCompat.isSupported()	|| ActionBarAPICompat.isSupported() || CMICompat.isSupported()) {
+		if (  TitleManagerCompat.isSupported() || ActionbarCompat.isSupported()	|| CMICompat.isSupported()) {
 			long last = 0L;
 			long time_between_messages = 80L;
 			long delay = 1L, now = System.currentTimeMillis();
@@ -443,12 +439,8 @@ public class Messages {
 		if (isEmpty(message))
 			return;
 
-		message = Strings.convertColors(PlaceholderAPICompat.setPlaceholders(player, message));
-			
 		if (ActionbarCompat.isSupported()) {
 			ActionbarCompat.setMessage(player, message);
-		} else if (ActionBarAPICompat.isSupported()) {
-			ActionBarAPICompat.setMessage(player, message);
 		} else if (CMICompat.isSupported()) {
 			CMICompat.sendActionBarMessage(player, message);
 		} else {
@@ -485,13 +477,7 @@ public class Messages {
 		if (isEmpty(message))
 			return;
 
-		message = Strings.convertColors(PlaceholderAPICompat.setPlaceholders(player, message));
-
-		if (BossBarAPICompat.isSupported()) {
-			BossBarAPICompat.addBar(player, String.format(message, args));
-		} else if (BarAPICompat.isSupported()) {
-			BarAPICompat.setMessageTime(player, String.format(message, args), 5);
-		} else if (CMICompat.isSupported()) {
+		if (CMICompat.isSupported()) {
 			CMICompat.sendBossBarMessage(player, String.format(message, args));
 		} else {
 			player.sendMessage(ChatColor.AQUA + getString("core.learn.prefix") + " " + String.format(message, args));

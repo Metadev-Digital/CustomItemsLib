@@ -1,7 +1,7 @@
 package metadev.digital.metacustomitemslib.messages;
 
 public enum MessageType {
-	Chat("Chat"), ActionBar("ActionBar"), BossBar("BossBar"), Title("Title"), Subtitle("Subtitle"), None("None");
+	Chat("Chat"), ActionBar("ActionBar"), Title("Title"), Subtitle("Subtitle"), None("None");
 
 	private final String name;
 
