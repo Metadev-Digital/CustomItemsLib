@@ -30,46 +30,10 @@
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
 
-        <!-- Jitpack (Vault, TitleAPI, ActionBarAPI, BossBarAPI) -->
-        <repository>
-            <id>vault-repo</id>
-            <url>https://jitpack.io</url>
-        </repository>
-
-        <!-- ProtocolLib -->
-        <repository>
-            <id>dmulloy2-repo</id>
-            <url>https://repo.dmulloy2.net/repository/public/</url>
-        </repository>
-
-        <!-- Mojang -->
-        <repository>
-            <id>minecraft-repo</id>
-            <url>https://libraries.minecraft.net/</url>
-        </repository>
-
         <!-- Reserve -->
         <repository>
             <id>reserve-repo</id>
             <url>https://repo.codemc.io/repository/maven-public/</url>
-        </repository>
-
-        <!-- TitleManager -->
-        <repository>
-            <id>puha-repo</id>
-            <url>https://repo.puha.io/repo/</url>
-        </repository>
-
-        <!-- Placeholder API -->
-        <repository>
-            <id>placeholderapi</id>
-            <url>https://repo.extendedclip.com/releases/</url>
-        </repository>
-
-        <!-- Inventive Repo / BossBarAPI -->
-        <repository>
-            <id>inventive-repo</id>
-            <url>https://repo.inventivetalent.org/repository/public/</url>
         </repository>
 
         <!-- citizens repository -->
@@ -79,22 +43,16 @@
             <url>https://maven.citizensnpcs.co/repo</url>
         </repository>
 
-        <!-- Google Guava -->
+        <!-- ProtocolLib -->
         <repository>
-            <id>com.google.common</id>
-            <url>https://mvnrepository.com/artifact/com.google.guava/guava</url>
+            <id>dmulloy2-repo</id>
+            <url>https://repo.dmulloy2.net/repository/public/</url>
         </repository>
 
-        <!-- Google Gson -->
+        <!-- Jitpack (Vault) -->
         <repository>
-            <id>com.google.gson</id>
-            <url>https://mvnrepository.com/artifact/com.google.code.gson/gson</url>
-        </repository>
-
-        <!-- Mysql -->
-        <repository>
-            <id>mysql-connector-j</id>
-            <url>https://mvnrepository.com/artifact/com.mysql/mysql-connector-j</url>
+            <id>jitpack-repo</id>
+            <url>https://jitpack.io</url>
         </repository>
     </repositories>
 
@@ -179,13 +137,11 @@
             <groupId>org.bstats</groupId>
             <artifactId>bstats-bukkit</artifactId>
             <version>3.1.0</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.bstats</groupId>
             <artifactId>bstats-base</artifactId>
             <version>3.1.0</version>
-            <scope>compile</scope>
         </dependency>
 
         <!-- BagofGold -->
@@ -199,6 +155,8 @@
                     <artifactId>*</artifactId>
                 </exclusion>
             </exclusions>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\MetaBagOfGold-4.5.10-SNAPSHOT.jar</systemPath>
         </dependency>
 
         <!-- ProtocolLib -->
@@ -228,18 +186,24 @@
             <groupId>com.Zrips</groupId>
             <artifactId>CMI</artifactId>
             <version>9.7.4.1</version>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\CMIAPI-9.7.4.1.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>net.Zrips</groupId>
             <artifactId>CMILib</artifactId>
             <version>1.5.3.5</version>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\CMILib1.5.3.5.jar</systemPath>
         </dependency>
 
         <!-- Title Manager -->
         <dependency>
             <groupId>io.puharesource.mc</groupId>
             <artifactId>TitleManager</artifactId>
-            <version>2.2.0</version>
+            <version>2.3.6</version>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\TitleManager-2.3.6.jar</systemPath>
         </dependency>
 
         <!-- Citizens -->
@@ -270,7 +234,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
 
         <!-- Commons (used in UpdateChecker) -->
         <dependency>
