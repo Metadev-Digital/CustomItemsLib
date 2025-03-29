@@ -23,7 +23,6 @@ import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.PacketContainer;
 import org.bukkit.entity.Player;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Objects;
 
 public abstract class AbstractPacket {
@@ -63,9 +62,9 @@ public abstract class AbstractPacket {
 	 * @throws RuntimeException If the packet cannot be sent.
 	 */
 	public void sendPacket(Player receiver) {
-		ProtocolLibrary.getProtocolManager().sendServerPacket(receiver,
-				getHandle());
-	}
+        ProtocolLibrary.getProtocolManager().sendServerPacket(receiver,
+                getHandle());
+    }
 
 	/**
 	 * Send the current packet to all online players.
@@ -74,27 +73,10 @@ public abstract class AbstractPacket {
 		ProtocolLibrary.getProtocolManager().broadcastServerPacket(getHandle());
 	}
 
-	/**
-	 * Simulate receiving the current packet from the given sender.
-	 * 
-	 * @param sender - the sender.
-	 * @throws RuntimeException If the packet cannot be received.
-	 * @deprecated Misspelled. recieve to receive
-	 * @see #receivePacket(Player)
-	 */
-	@Deprecated
-	public void recievePacket(Player sender) {
-		try {
-			ProtocolLibrary.getProtocolManager().receiveClientPacket(sender,
-					getHandle());
-		} catch (Exception e) {
-			throw new RuntimeException("Cannot recieve packet.", e);
-		}
-	}
 
 	/**
 	 * Simulate receiving the current packet from the given sender.
-	 * 
+	 *
 	 * @param sender - the sender.
 	 * @throws RuntimeException if the packet cannot be received.
 	 */
