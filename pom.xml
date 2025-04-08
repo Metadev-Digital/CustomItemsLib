@@ -148,7 +148,7 @@
         <dependency>
             <groupId>metadev.digital</groupId>
             <artifactId>MetaBagOfGold</artifactId>
-            <version>4.5.10-SNAPSHOT</version>
+            <version>4.5.11-SNAPSHOT</version>
             <exclusions>
                 <exclusion>
                     <groupId>*</groupId>
@@ -156,7 +156,7 @@
                 </exclusion>
             </exclusions>
             <scope>system</scope>
-            <systemPath>${basedir}\lib\MetaBagOfGold-4.5.10-SNAPSHOT.jar</systemPath>
+            <systemPath>${basedir}\lib\MetaBagOfGold-4.5.11-SNAPSHOT.jar</systemPath>
         </dependency>
 
         <!-- ProtocolLib -->
