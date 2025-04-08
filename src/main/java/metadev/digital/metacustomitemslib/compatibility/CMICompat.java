@@ -53,6 +53,8 @@ public class CMICompat {
 		return supported;
 	}
 
+	public static boolean isFullyLoaded() { return CMI.getInstance().isFullyLoaded(); }
+
 	public static boolean isEnabledInConfig() {
 		return Core.getConfigManager().enableIntegrationCMI;
 	}
