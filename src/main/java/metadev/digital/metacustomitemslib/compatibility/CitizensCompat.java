@@ -2,7 +2,6 @@ package metadev.digital.metacustomitemslib.compatibility;
 
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.CitizensPlugin;
-import net.citizensnpcs.api.event.CitizensDisableEvent;
 import net.citizensnpcs.api.event.CitizensEnableEvent;
 import net.citizensnpcs.api.npc.NPC;
 import net.citizensnpcs.api.trait.TraitInfo;
@@ -131,11 +130,4 @@ public class CitizensCompat implements Listener {
 		plugin.getMessages().debug("Citizens2 was enabled");
 		supported = true;
 	}
-
-	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-	private void onCitizensDisableEvent(CitizensDisableEvent event) {
-		plugin.getMessages().debug("Citizens2 was disabled");
-		supported = false;
-	}
-
 }
