@@ -8,12 +8,13 @@ public class MobHuntingCompat {
 
 	private Plugin mPlugin;
 	private static boolean supported = false;
+	private final String latestSupported = "9.2.0";
 
 	public MobHuntingCompat() {
 		mPlugin = Bukkit.getPluginManager().getPlugin(CompatPlugin.MobHunting.getName());
 
 		if (mPlugin != null) {
-			if (mPlugin.getDescription().getVersion().compareTo("9.1.3") >= 0) {
+			if (mPlugin.getDescription().getVersion().compareTo(latestSupported) >= 0) {
 				Bukkit.getServer().getConsoleSender().sendMessage(Core.PREFIX
 						+ "Enabling compatibility with MobHunting (" + mPlugin.getDescription().getVersion() + ")");
 				supported = true;
@@ -21,14 +22,25 @@ public class MobHuntingCompat {
 				Bukkit.getServer().getConsoleSender()
 						.sendMessage(Core.PREFIX_ERROR + "Your current version of MobHunting ("
 								+ mPlugin.getDescription().getVersion()
-								+ ") is outdated. Please upgrade to 9.1.3 or newer.");
+								+ ") is outdated. Please upgrade to " + latestSupported + " or newer.");
 				Bukkit.getPluginManager().disablePlugin(mPlugin);
 			}
-		} else {
-			Bukkit.getServer().getConsoleSender()
-					.sendMessage(Core.PREFIX + " MobHunting is not installed on this server");
 		}
+		else {
+			Plugin oldMobHunt = Bukkit.getPluginManager().getPlugin(CompatPlugin.OldMobHunting.getName());
 
+			if(oldMobHunt != null) {
+				Bukkit.getServer().getConsoleSender()
+						.sendMessage(Core.PREFIX_ERROR + "You are running a non-Meta version of MobHunting or your current version of MobHunting ("
+								+ mPlugin.getDescription().getVersion()
+								+ ") is outdated. Please upgrade to " + latestSupported + " or newer.");
+				Bukkit.getPluginManager().disablePlugin(oldMobHunt);
+			}
+			else{
+				Bukkit.getServer().getConsoleSender()
+						.sendMessage(Core.PREFIX + " MobHunting is not installed on this server");
+			}
+		}
 	}
 
 	public boolean isSupported() {

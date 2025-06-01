@@ -18,10 +18,6 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
-/**
- * @author Rocologo
- *
- */
 public class WorldGroupManager {
 
 	private Plugin plugin;
@@ -33,7 +29,7 @@ public class WorldGroupManager {
 
 	public WorldGroupManager(Plugin plugin) {
 		this.plugin = plugin;
-		file = new File(plugin.getDataFolder(), "../CustomItemsLib/worldgroups.yml");
+		file = new File(plugin.getDataFolder(), "worldgroups.yml");
 		load();
 		if (worldGroups.isEmpty()) {
 			// TODO: check if worldgroups is the same as PerWorldInventory and MyPet if supported.

@@ -49,7 +49,7 @@ public enum CompatPlugin {
 	HolographicDisplays("HolographicDisplays", 45), //
 	PreciousStones("PreciousStones", 46), //
 	BagOfGold("BagOfGold", 47), //
-	MobHunting("MobHunting", 48), //
+	MobHunting("MetaMobHunting", 48), //
 	PerWorldInventory("PerWorldInventory", 49), //
 	LorinthsRpgMobs("LorinthsRpgMobs", 50), //
 	CMI("CMI", 51), // CMI Holograms
@@ -59,7 +59,9 @@ public enum CompatPlugin {
 	CMILib("CMILib", 55), // CMILib
 	LevelledMobs("LevelledMobs",56), //LevelledMobs
 	Shopkeepers("Shopkeepers",57),
-	WeaponMechanics("WeaponMechanics",58); //WeaponMechanics
+	WeaponMechanics("WeaponMechanics",58), //WeaponMechanics
+	OldMobHunting("MobHunting",59);
+
 	private final String name;
 	private final Integer id;
 

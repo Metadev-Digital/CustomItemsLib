@@ -1,13 +1,15 @@
-name: CustomItemsLib
+name: MetaCustomItemsLib
 main: metadev.digital.metacustomitemslib.Core
 version: 2.2.0
-description: CustomItemsLib is shared library used by BagOfGold and MobHunting.
+description: MetaCustomItemsLib is shared library used by BagOfGold and MobHunting.
 dev-url: https://github.com/Metadev-Digital/CustomItemsLib
 author: JebusChrystler
 depend: []
 loadbefore:
   - BagOfGold
   - MobHunting
+  - MetaBagOfGold
+  - MetaMobHunting
 softdepend:
   - Reserve
   - Vault
@@ -19,17 +21,17 @@ softdepend:
   - CMILib
   - ActionBar
   - TitleManager
-api-version: 1.21.1
+api-version: 1.21.5
 commands:
   customitemslib:
-    description: Allows you to use commands in CustomItemsLib
+    description: Allows you to use commands in MetaCustomItemsLib
     permission: customitemslib.cmd
     aliases:
       - cil
     usage: /<command> command
 permissions:
   customitemslib.cmd:
-    description: Allows a player to use the customitemslib command
+    description: Allows a player to use the MetaCustomItemsLib command
     default: true
   customitemslib.update:
     description: Allows a player to check SpigotMc for updates to the plugin

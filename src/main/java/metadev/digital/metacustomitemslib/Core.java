@@ -1,7 +1,5 @@
 package metadev.digital.metacustomitemslib;
 
-import com.google.common.io.Files;
-
 import metadev.digital.metacustomitemslib.commands.CommandDispatcher;
 import metadev.digital.metacustomitemslib.commands.DebugCommand;
 import metadev.digital.metacustomitemslib.commands.ReloadCommand;
@@ -16,6 +14,8 @@ import metadev.digital.metacustomitemslib.compatibility.MobHuntingCompat;
 import metadev.digital.metacustomitemslib.compatibility.ProtocolLibCompat;
 import metadev.digital.metacustomitemslib.compatibility.TitleManagerCompat;
 import metadev.digital.metacustomitemslib.config.ConfigManager;
+import metadev.digital.metacustomitemslib.config.Migrator;
+import metadev.digital.metacustomitemslib.config.MigratorException;
 import metadev.digital.metacustomitemslib.messages.Messages;
 import metadev.digital.metacustomitemslib.rewards.CoreRewardManager;
 import metadev.digital.metacustomitemslib.rewards.RewardBlockManager;
@@ -32,7 +32,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.ConcurrentModificationException;
 import java.util.List;
@@ -81,27 +80,19 @@ public class Core extends JavaPlugin {
 		disabling = false;
 		plugin = this;
 
-		if (!mFile.exists()) {
-			mFile.mkdir();
-			// Copy config and database from old place
-			File mFileOldConfig = new File(getDataFolder() , "../BagOfGold/bagofgoldcore.yml");
-			File mFileOldDb = new File(getDataFolder(), "../BagOfGold/bagofgoldcore.db");
-			File mFileNewDb = new File(getDataFolder(), "bagofgoldcore.db");
-			if (mFileOldConfig.exists()) {
-				try {
-					Files.move(mFileOldConfig, mFile);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-			if (mFileOldDb.exists()) {
-				try {
-					Files.move(mFileOldDb, mFileNewDb);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+		if (Bukkit.getPluginManager().getPlugin("CustomItemsLib") != null) {
+			throw new RuntimeException("[CustomItemsLib] Detected two versions of CustomItemsLib running. Please remove the CustomItemsLib jar if you wish to use MetaCustomItemsLib.");
+		}
 
+		if (!mFile.exists()) {
+			// Copy config and database from old place
+			File mFileOldConfigDir = new File(getDataFolder().getParent(), "CustomItemsLib");
+			try {
+				Migrator.moveLegacyConfiguration(mFileOldConfigDir, getDataFolder());
+			}
+			catch (MigratorException e) {
+				mFile.mkdir();
+			}
 		}
 
 		int config_version = ConfigManager.getConfigVersion(mFile);
