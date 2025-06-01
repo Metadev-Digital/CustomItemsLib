@@ -32,6 +32,7 @@ public class ConfigManager extends AutoConfig {
 				"########################################################################" + "\nReward Type Settings"
 						+ "\n########################################################################");
 
+		// TODO: Update this to include url and uuids
 		setCategoryComment("reward.itemtype.skull",
 				"########################################################################" + "\nSKULL Settings"
 						+ "\n########################################################################" + "\nExamples:"
