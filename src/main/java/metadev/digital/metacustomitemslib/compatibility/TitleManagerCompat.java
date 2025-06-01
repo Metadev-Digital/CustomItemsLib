@@ -11,6 +11,7 @@ public class TitleManagerCompat {
 	private static Plugin mPlugin;
 	private static TitleManagerAPI api;
 	private static boolean supported = false;
+	private final String latestSupported = "2.2";
 
 	// https://www.spigotmc.org/resources/titlemanager.1049/
 
@@ -23,11 +24,12 @@ public class TitleManagerCompat {
 			Bukkit.getConsoleSender().sendMessage(Core.PREFIX
 					+ "Enabling compatibility with TitleManager ("
 					+ mPlugin.getDescription().getVersion() + ")");
-			if (mPlugin.getDescription().getVersion().compareTo("2.2") >= 0)
+			if (mPlugin.getDescription().getVersion().compareTo(latestSupported) >= 0)
 				api = getTitleManagerAPI();
 			else {
 				Bukkit.getConsoleSender().sendMessage(Core.PREFIX_WARNING
-						+ "You are using an old version of TitleManager. Consider updating.");
+						+ "Your current version of TitleManager. ("	+ mPlugin.getDescription().getVersion()
+						+ ") is not supported by CustomItemsLib. Please upgrade to " + latestSupported + " or newer.");
 			}
 			supported = true;
 		}

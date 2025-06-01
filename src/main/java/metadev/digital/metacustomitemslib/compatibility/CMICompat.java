@@ -14,6 +14,8 @@ public class CMICompat {
 
 	private static Plugin mPlugin, mPlugin2;
 	private static boolean supported = false;
+	private final String latestSupportedCMIAPI = "9.7.4.1";
+	private final String latestSupportedCMILib = "1.5.4.4";
 
 	// https://www.spigotmc.org/resources/cmi-ranks-kits-portals-essentials-mysql-sqlite-bungeecord.3742/
 	// https://www.spigotmc.org/resources/cmilib.87610/
@@ -21,23 +23,27 @@ public class CMICompat {
 	public CMICompat() {
 		if (!isEnabledInConfig()) {
 			Bukkit.getConsoleSender().sendMessage(Core.PREFIX + "Compatibility with CMI is disabled in config.yml");
-		} else {
+		}
+		else {
 			mPlugin = Bukkit.getPluginManager().getPlugin(CompatPlugin.CMI.getName());
 
-			if (mPlugin != null && mPlugin.getDescription().getVersion().compareTo("9.0") >= 0) {
+			if (mPlugin != null && mPlugin.getDescription().getVersion().compareTo(latestSupportedCMIAPI) >= 0) {
 				Bukkit.getConsoleSender().sendMessage(Core.PREFIX + "Enabling compatibility with CMI ("
 						+ mPlugin.getDescription().getVersion() + ").");
 
 				mPlugin2 = Bukkit.getPluginManager().getPlugin(CompatPlugin.CMILib.getName());
-				if (mPlugin2 != null && mPlugin2.getDescription().getVersion().compareTo("1.0") >= 0) {
+				if (mPlugin2 != null && mPlugin2.getDescription().getVersion().compareTo(latestSupportedCMILib) >= 0) {
 					Bukkit.getConsoleSender().sendMessage(Core.PREFIX + "Enabling compatibility with CMILib ("
 							+ mPlugin2.getDescription().getVersion() + ").");
 					supported = true;
-				} else
+				}
+				else {
 					Bukkit.getConsoleSender().sendMessage(Core.PREFIX_ERROR + " Your current version of CMILib is not supported by CustomItemsLib.");
-			} else
-				Bukkit.getConsoleSender().sendMessage(Core.PREFIX_ERROR + "Your current version of CMI is not supported by CustomItemsLib. CustomItemsLib does only support version 9.0 or newer.");
-
+				}
+			}
+			else{
+				Bukkit.getConsoleSender().sendMessage(Core.PREFIX_ERROR + "Your current version of CMIAPI is not supported by CustomItemsLib. CustomItemsLib only supports version " + latestSupportedCMIAPI + "or newer.");
+			}
 		}
 	}
 

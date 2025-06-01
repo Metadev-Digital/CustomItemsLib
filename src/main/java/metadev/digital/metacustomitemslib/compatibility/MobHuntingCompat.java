@@ -22,7 +22,7 @@ public class MobHuntingCompat {
 				Bukkit.getServer().getConsoleSender()
 						.sendMessage(Core.PREFIX_ERROR + "Your current version of MobHunting ("
 								+ mPlugin.getDescription().getVersion()
-								+ ") is outdated. Please upgrade to " + latestSupported + " or newer.");
+								+ ") is not supported by CustomItemsLib. Please upgrade to " + latestSupported + " or newer.");
 				Bukkit.getPluginManager().disablePlugin(mPlugin);
 			}
 		}
@@ -33,7 +33,7 @@ public class MobHuntingCompat {
 				Bukkit.getServer().getConsoleSender()
 						.sendMessage(Core.PREFIX_ERROR + "You are running a non-Meta version of MobHunting or your current version of MobHunting ("
 								+ mPlugin.getDescription().getVersion()
-								+ ") is outdated. Please upgrade to " + latestSupported + " or newer.");
+								+ ") is not supported by CustomItemsLib. Please upgrade to " + latestSupported + " or newer.");
 				Bukkit.getPluginManager().disablePlugin(oldMobHunt);
 			}
 			else{
