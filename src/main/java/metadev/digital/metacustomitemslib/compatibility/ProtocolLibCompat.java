@@ -19,7 +19,7 @@ public class ProtocolLibCompat {
 					.sendMessage(Core.PREFIX + "Compatibility with ProtocolLib is disabled in config.yml");
 		} else {
 			mPlugin = Bukkit.getPluginManager().getPlugin(CompatPlugin.ProtocolLib.getName());
-			if (mPlugin.getDescription().getVersion().compareTo(latestSupported) >= 0) {
+			if (!(mPlugin.getDescription().getVersion().compareTo(latestSupported) >= 0)) {
 				Bukkit.getServer().getConsoleSender()
 						.sendMessage(Core.PREFIX + ChatColor.RED + "Your current version of ProtocolLib ("
 								+ mPlugin.getDescription().getVersion()
