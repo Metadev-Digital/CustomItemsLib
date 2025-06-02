@@ -183,7 +183,7 @@
             <version>0.1.5.4</version>
         </dependency>
 
-        <!-- CMI --> <!-- TODO: The compat for this requires the API and Lib, but APi doesn't run if Lib is or something -->
+        <!-- CMI TODO: Replace API with premium version of CMI and retest-->
         <dependency>
             <groupId>com.Zrips</groupId>
             <artifactId>CMI-API</artifactId>
