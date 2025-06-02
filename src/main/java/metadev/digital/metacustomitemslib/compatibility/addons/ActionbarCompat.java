@@ -1,6 +1,7 @@
-package metadev.digital.metacustomitemslib.compatibility;
+package metadev.digital.metacustomitemslib.compatibility.addons;
 
 import metadev.digital.metacustomitemslib.Core;
+import metadev.digital.metacustomitemslib.compatibility.SupportedPluginEntities;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -18,7 +19,7 @@ public class ActionbarCompat {
 			Bukkit.getConsoleSender()
 					.sendMessage(Core.PREFIX + " Compatibility with Actionbar is disabled in config.yml ");
 		} else {
-			mPlugin = Bukkit.getPluginManager().getPlugin(CompatPlugin.Actionbar.getName());
+			mPlugin = Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.Actionbar.getName());
 
 			Bukkit.getConsoleSender().sendMessage(Core.PREFIX + " Enabling compatibility with Actionbar ("
 					+ getActionbar().getDescription().getVersion() + ")");

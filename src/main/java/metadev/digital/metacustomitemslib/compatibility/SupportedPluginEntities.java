@@ -1,6 +1,6 @@
 package metadev.digital.metacustomitemslib.compatibility;
 
-public enum CompatPlugin {
+public enum SupportedPluginEntities {
 	// ActionAnnouncer was ID 0. Reserve ID
 	// ActionBarApi was ID 1. Reserve ID
 	Actionbar("Actionbar", 2), //
@@ -65,7 +65,7 @@ public enum CompatPlugin {
 	private final String name;
 	private final Integer id;
 
-	private CompatPlugin(String name, Integer id) {
+	private SupportedPluginEntities(String name, Integer id) {
 		this.name = name;
 		this.id = id;
 	}
@@ -82,12 +82,12 @@ public enum CompatPlugin {
 		return name;
 	}
 
-	public CompatPlugin valueOf(int id) {
-		return CompatPlugin.values()[id];
+	public SupportedPluginEntities valueOf(int id) {
+		return SupportedPluginEntities.values()[id];
 	}
 
-	public static CompatPlugin getCompatPlugin(String pluginname) {
-		for (CompatPlugin name : values())
+	public static SupportedPluginEntities getSupportedPlugin(String pluginname) {
+		for (SupportedPluginEntities name : values())
 			if (name.getName().equalsIgnoreCase(pluginname))
 				return name;
 		return null;

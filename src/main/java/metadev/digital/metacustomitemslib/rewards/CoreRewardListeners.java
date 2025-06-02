@@ -5,7 +5,7 @@ import metadev.digital.metabagofgold.PlayerBalance;
 import metadev.digital.metabagofgold.compatibility.ShopkeepersCompat;
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.Tools;
-import metadev.digital.metacustomitemslib.compatibility.BagOfGoldCompat;
+import metadev.digital.metacustomitemslib.compatibility.addons.BagOfGoldCompat;
 import metadev.digital.metacustomitemslib.server.Servers;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

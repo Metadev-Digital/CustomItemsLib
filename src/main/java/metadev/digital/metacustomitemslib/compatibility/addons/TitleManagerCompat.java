@@ -1,7 +1,8 @@
-package metadev.digital.metacustomitemslib.compatibility;
+package metadev.digital.metacustomitemslib.compatibility.addons;
 
 import io.puharesource.mc.titlemanager.api.v2.TitleManagerAPI;
 import metadev.digital.metacustomitemslib.Core;
+import metadev.digital.metacustomitemslib.compatibility.SupportedPluginEntities;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -20,7 +21,7 @@ public class TitleManagerCompat {
 			Bukkit.getConsoleSender().sendMessage(Core.PREFIX_WARNING
 					+ "Compatibility with TitleManager is disabled in config.yml");
 		} else {
-			mPlugin = Bukkit.getPluginManager().getPlugin(CompatPlugin.TitleManager.getName());
+			mPlugin = Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.TitleManager.getName());
 			Bukkit.getConsoleSender().sendMessage(Core.PREFIX
 					+ "Enabling compatibility with TitleManager ("
 					+ mPlugin.getDescription().getVersion() + ")");

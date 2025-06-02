@@ -1,4 +1,4 @@
-package metadev.digital.metacustomitemslib.compatibility;
+package metadev.digital.metacustomitemslib.compatibility.addons;
 
 import com.comphenix.packetwrapper.WrapperPlayServerCollect;
 import com.comphenix.protocol.PacketType;

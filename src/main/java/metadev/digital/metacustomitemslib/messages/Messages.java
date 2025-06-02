@@ -2,7 +2,10 @@ package metadev.digital.metacustomitemslib.messages;
 
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.Strings;
-import metadev.digital.metacustomitemslib.compatibility.*;
+import metadev.digital.metacustomitemslib.compatibility.addons.ActionbarCompat;
+import metadev.digital.metacustomitemslib.compatibility.addons.CMICompat;
+import metadev.digital.metacustomitemslib.compatibility.addons.CitizensCompat;
+import metadev.digital.metacustomitemslib.compatibility.addons.TitleManagerCompat;
 import metadev.digital.metacustomitemslib.server.Servers;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

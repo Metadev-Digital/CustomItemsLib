@@ -1,6 +1,7 @@
-package metadev.digital.metacustomitemslib.compatibility;
+package metadev.digital.metacustomitemslib.compatibility.addons;
 
 import metadev.digital.metacustomitemslib.Core;
+import metadev.digital.metacustomitemslib.compatibility.SupportedPluginEntities;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
@@ -18,7 +19,7 @@ public class ProtocolLibCompat {
 			Bukkit.getConsoleSender()
 					.sendMessage(Core.PREFIX + "Compatibility with ProtocolLib is disabled in config.yml");
 		} else {
-			mPlugin = Bukkit.getPluginManager().getPlugin(CompatPlugin.ProtocolLib.getName());
+			mPlugin = Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.ProtocolLib.getName());
 			if (!(mPlugin.getDescription().getVersion().compareTo(latestSupported) >= 0)) {
 				Bukkit.getServer().getConsoleSender()
 						.sendMessage(Core.PREFIX + ChatColor.RED + "Your current version of ProtocolLib ("

@@ -1,6 +1,7 @@
-package metadev.digital.metacustomitemslib.compatibility;
+package metadev.digital.metacustomitemslib.compatibility.addons;
 
 import metadev.digital.metacustomitemslib.Core;
+import metadev.digital.metacustomitemslib.compatibility.SupportedPluginEntities;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
@@ -11,7 +12,7 @@ public class BagOfGoldCompat {
 	private final String latestSupported = "4.5.7";
 
 	public BagOfGoldCompat() {
-		mPlugin = Bukkit.getPluginManager().getPlugin(CompatPlugin.BagOfGold.getName());
+		mPlugin = Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.BagOfGold.getName());
 
 		if (mPlugin != null) {
 			if (mPlugin.getDescription().getVersion().compareTo(latestSupported) >= 0) {

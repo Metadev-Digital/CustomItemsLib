@@ -1,5 +1,6 @@
-package metadev.digital.metacustomitemslib.compatibility;
+package metadev.digital.metacustomitemslib.compatibility.addons;
 
+import metadev.digital.metacustomitemslib.compatibility.SupportedPluginEntities;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.CitizensPlugin;
 import net.citizensnpcs.api.event.CitizensEnableEvent;
@@ -28,7 +29,7 @@ public class CitizensCompat implements Listener {
 			Bukkit.getConsoleSender().sendMessage(Core.PREFIX
 					+ "Compatibility with Citizens2 is disabled in config.yml");
 		} else {
-			citizensAPI = (CitizensPlugin) Bukkit.getPluginManager().getPlugin(CompatPlugin.Citizens.getName());
+			citizensAPI = (CitizensPlugin) Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.Citizens.getName());
 			if (citizensAPI == null)
 				return;
 

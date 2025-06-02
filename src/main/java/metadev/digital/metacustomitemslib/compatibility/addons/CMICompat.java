@@ -1,7 +1,8 @@
-package metadev.digital.metacustomitemslib.compatibility;
+package metadev.digital.metacustomitemslib.compatibility.addons;
 
 import com.Zrips.CMI.CMI;
 import com.Zrips.CMI.Modules.Holograms.HologramManager;
+import metadev.digital.metacustomitemslib.compatibility.SupportedPluginEntities;
 import net.Zrips.CMILib.ActionBar.CMIActionBar;
 import net.Zrips.CMILib.BossBar.BossBarInfo;
 import net.Zrips.CMILib.CMILib;
@@ -25,13 +26,13 @@ public class CMICompat {
 			Bukkit.getConsoleSender().sendMessage(Core.PREFIX + "Compatibility with CMI is disabled in config.yml");
 		}
 		else {
-			mPlugin = Bukkit.getPluginManager().getPlugin(CompatPlugin.CMI.getName());
+			mPlugin = Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.CMI.getName());
 
 			if (mPlugin != null && mPlugin.getDescription().getVersion().compareTo(latestSupportedCMIAPI) >= 0) {
 				Bukkit.getConsoleSender().sendMessage(Core.PREFIX + "Enabling compatibility with CMI ("
 						+ mPlugin.getDescription().getVersion() + ").");
 
-				mPlugin2 = Bukkit.getPluginManager().getPlugin(CompatPlugin.CMILib.getName());
+				mPlugin2 = Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.CMILib.getName());
 				if (mPlugin2 != null && mPlugin2.getDescription().getVersion().compareTo(latestSupportedCMILib) >= 0) {
 					Bukkit.getConsoleSender().sendMessage(Core.PREFIX + "Enabling compatibility with CMILib ("
 							+ mPlugin2.getDescription().getVersion() + ").");

@@ -2,8 +2,8 @@ package metadev.digital.metacustomitemslib.rewards;
 
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.Tools;
-import metadev.digital.metacustomitemslib.compatibility.ProtocolLibCompat;
-import metadev.digital.metacustomitemslib.compatibility.ProtocolLibHelper;
+import metadev.digital.metacustomitemslib.compatibility.addons.ProtocolLibCompat;
+import metadev.digital.metacustomitemslib.compatibility.addons.ProtocolLibHelper;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Item;

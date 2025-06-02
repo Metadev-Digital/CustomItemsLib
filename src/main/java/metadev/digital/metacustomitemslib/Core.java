@@ -5,14 +5,9 @@ import metadev.digital.metacustomitemslib.commands.DebugCommand;
 import metadev.digital.metacustomitemslib.commands.ReloadCommand;
 import metadev.digital.metacustomitemslib.commands.UpdateCommand;
 import metadev.digital.metacustomitemslib.commands.VersionCommand;
-import metadev.digital.metacustomitemslib.compatibility.ActionbarCompat;
-import metadev.digital.metacustomitemslib.compatibility.BagOfGoldCompat;
-import metadev.digital.metacustomitemslib.compatibility.CMICompat;
-import metadev.digital.metacustomitemslib.compatibility.CompatPlugin;
+import metadev.digital.metacustomitemslib.compatibility.SupportedPluginEntities;
 import metadev.digital.metacustomitemslib.compatibility.CompatibilityManager;
-import metadev.digital.metacustomitemslib.compatibility.MobHuntingCompat;
-import metadev.digital.metacustomitemslib.compatibility.ProtocolLibCompat;
-import metadev.digital.metacustomitemslib.compatibility.TitleManagerCompat;
+import metadev.digital.metacustomitemslib.compatibility.addons.*;
 import metadev.digital.metacustomitemslib.config.ConfigManager;
 import metadev.digital.metacustomitemslib.config.Migrator;
 import metadev.digital.metacustomitemslib.config.MigratorException;
@@ -149,14 +144,14 @@ public class Core extends JavaPlugin {
 
 		mCompatibilityManager = new CompatibilityManager(plugin);
 
-		mCompatibilityManager.registerPlugin(ProtocolLibCompat.class, CompatPlugin.ProtocolLib);
+		mCompatibilityManager.registerPlugin(ProtocolLibCompat.class, SupportedPluginEntities.ProtocolLib);
 
-		mCompatibilityManager.registerPlugin(TitleManagerCompat.class, CompatPlugin.TitleManager);
-		mCompatibilityManager.registerPlugin(ActionbarCompat.class, CompatPlugin.Actionbar);
-		mCompatibilityManager.registerPlugin(CMICompat.class, CompatPlugin.CMI);
+		mCompatibilityManager.registerPlugin(TitleManagerCompat.class, SupportedPluginEntities.TitleManager);
+		mCompatibilityManager.registerPlugin(ActionbarCompat.class, SupportedPluginEntities.Actionbar);
+		mCompatibilityManager.registerPlugin(CMICompat.class, SupportedPluginEntities.CMI);
 
-		mCompatibilityManager.registerPlugin(BagOfGoldCompat.class, CompatPlugin.BagOfGold);
-		mCompatibilityManager.registerPlugin(MobHuntingCompat.class, CompatPlugin.MobHunting);
+		mCompatibilityManager.registerPlugin(BagOfGoldCompat.class, SupportedPluginEntities.BagOfGold);
+		mCompatibilityManager.registerPlugin(MobHuntingCompat.class, SupportedPluginEntities.MobHunting);
 
 		// Hook into Vault or Reserve
 		mEconomyManager = new EconomyManager(this);

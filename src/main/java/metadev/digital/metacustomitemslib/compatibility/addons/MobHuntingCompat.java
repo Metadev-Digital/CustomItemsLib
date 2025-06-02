@@ -1,6 +1,7 @@
-package metadev.digital.metacustomitemslib.compatibility;
+package metadev.digital.metacustomitemslib.compatibility.addons;
 
 import metadev.digital.metacustomitemslib.Core;
+import metadev.digital.metacustomitemslib.compatibility.SupportedPluginEntities;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
@@ -11,7 +12,7 @@ public class MobHuntingCompat {
 	private final String latestSupported = "9.2.0";
 
 	public MobHuntingCompat() {
-		mPlugin = Bukkit.getPluginManager().getPlugin(CompatPlugin.MobHunting.getName());
+		mPlugin = Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.MobHunting.getName());
 
 		if (mPlugin != null) {
 			if (mPlugin.getDescription().getVersion().compareTo(latestSupported) >= 0) {
@@ -27,7 +28,7 @@ public class MobHuntingCompat {
 			}
 		}
 		else {
-			Plugin oldMobHunt = Bukkit.getPluginManager().getPlugin(CompatPlugin.OldMobHunting.getName());
+			Plugin oldMobHunt = Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.OldMobHunting.getName());
 
 			if(oldMobHunt != null) {
 				Bukkit.getServer().getConsoleSender()
