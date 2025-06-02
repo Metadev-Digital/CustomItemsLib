@@ -186,7 +186,7 @@
         <!-- CMI --> <!-- TODO: The compat for this requires the API and Lib, but APi doesn't run if Lib is or something -->
         <dependency>
             <groupId>com.Zrips</groupId>
-            <artifactId>CMI</artifactId>
+            <artifactId>CMI-API</artifactId>
             <version>9.7.4.1</version>
             <scope>system</scope>
             <systemPath>${basedir}\lib\CMIAPI-9.7.4.1.jar</systemPath>

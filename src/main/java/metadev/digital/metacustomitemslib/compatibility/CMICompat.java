@@ -42,7 +42,7 @@ public class CMICompat {
 				}
 			}
 			else{
-				Bukkit.getConsoleSender().sendMessage(Core.PREFIX_ERROR + "Your current version of CMIAPI is not supported by CustomItemsLib. CustomItemsLib only supports version " + latestSupportedCMIAPI + "or newer.");
+				Bukkit.getConsoleSender().sendMessage(Core.PREFIX_ERROR + "Your current version of CMIAPI is not supported by CustomItemsLib. CustomItemsLib only supports version " + latestSupportedCMIAPI + " or newer.");
 			}
 		}
 	}
