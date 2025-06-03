@@ -10,7 +10,7 @@ import java.nio.file.Files;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 public class Migrator {
-    public static void moveLegacyConfiguration(File source, File target) {
+    public static void moveLegacyConfiguration(File source, File target) throws MigratorException{
         if (source.exists()) {
             Bukkit.getServer().getConsoleSender().sendMessage(Core.PREFIX_WARNING + "Found legacy CustomItemsLib configuration files. Attempting migration....");
             try {
