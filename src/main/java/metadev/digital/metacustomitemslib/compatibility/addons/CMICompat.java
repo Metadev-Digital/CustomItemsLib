@@ -2,7 +2,7 @@ package metadev.digital.metacustomitemslib.compatibility.addons;
 
 import com.Zrips.CMI.CMI;
 import com.Zrips.CMI.Modules.Holograms.HologramManager;
-import metadev.digital.metacustomitemslib.compatibility.SupportedPluginEntities;
+import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
 import net.Zrips.CMILib.ActionBar.CMIActionBar;
 import net.Zrips.CMILib.BossBar.BossBarInfo;
 import net.Zrips.CMILib.CMILib;

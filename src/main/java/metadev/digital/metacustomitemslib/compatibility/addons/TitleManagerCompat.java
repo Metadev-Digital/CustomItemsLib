@@ -2,7 +2,7 @@ package metadev.digital.metacustomitemslib.compatibility.addons;
 
 import io.puharesource.mc.titlemanager.api.v2.TitleManagerAPI;
 import metadev.digital.metacustomitemslib.Core;
-import metadev.digital.metacustomitemslib.compatibility.SupportedPluginEntities;
+import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;

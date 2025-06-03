@@ -5,7 +5,7 @@ import metadev.digital.metacustomitemslib.commands.DebugCommand;
 import metadev.digital.metacustomitemslib.commands.ReloadCommand;
 import metadev.digital.metacustomitemslib.commands.UpdateCommand;
 import metadev.digital.metacustomitemslib.commands.VersionCommand;
-import metadev.digital.metacustomitemslib.compatibility.SupportedPluginEntities;
+import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
 import metadev.digital.metacustomitemslib.compatibility.CompatibilityManager;
 import metadev.digital.metacustomitemslib.compatibility.addons.*;
 import metadev.digital.metacustomitemslib.config.ConfigManager;

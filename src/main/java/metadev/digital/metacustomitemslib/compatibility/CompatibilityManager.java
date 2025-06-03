@@ -1,6 +1,7 @@
 package metadev.digital.metacustomitemslib.compatibility;
 
 import metadev.digital.metacustomitemslib.Core;
+import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;

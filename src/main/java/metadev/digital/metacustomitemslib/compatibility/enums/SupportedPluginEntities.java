@@ -1,4 +1,4 @@
-package metadev.digital.metacustomitemslib.compatibility;
+package metadev.digital.metacustomitemslib.compatibility.enums;
 
 public enum SupportedPluginEntities {
 	// ActionAnnouncer was ID 0. Reserve ID

@@ -1,6 +1,6 @@
 package metadev.digital.metacustomitemslib.compatibility.addons;
 
-import metadev.digital.metacustomitemslib.compatibility.SupportedPluginEntities;
+import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.CitizensPlugin;
 import net.citizensnpcs.api.event.CitizensEnableEvent;
