@@ -183,6 +183,10 @@ public class Servers {
 	// *******************************************************************
 	// Version detection
 	// *******************************************************************
+	public String getServerVersion() {
+		return Bukkit.getBukkitVersion().split("-")[0];
+	}
+
 	public static boolean isGlowstoneServer() {
 		return Bukkit.getServer().getName().equalsIgnoreCase("Glowstone");
 	}
