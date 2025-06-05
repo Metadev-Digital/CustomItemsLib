@@ -85,4 +85,16 @@ public class VersionSet {
     public Version getFloor() {
         return floor;
     }
+
+    /***
+     *
+     * @return - String description of the version bounds inside a VersionSet
+     */
+    @Override
+    public String toString() {
+        if (set && isDoubleBound()) return "Between " + floor.getVersion() + " and " + ceiling.getVersion();
+        if (set && ceiling.isSet()) return "Below " + ceiling.getVersion();
+        if (set && floor.isSet()) return "Above " + floor.getVersion();
+        return "";
+    }
 }
