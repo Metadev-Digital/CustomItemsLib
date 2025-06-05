@@ -40,11 +40,11 @@ public class CMICompat {
 					supported = true;
 				}
 				else {
-					Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_ERROR + " Your current version of CMILib is not supported by CustomItemsLib.");
+					Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_ERROR + " Your current version of CMILib is not supported by " + Prefixes.PLUGIN + ".");
 				}
 			}
 			else{
-				Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_ERROR + "Your current version of CMIAPI is not supported by CustomItemsLib. CustomItemsLib only supports version " + latestSupportedCMIAPI + " or newer.");
+				Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_ERROR + "Your current version of CMIAPI is not supported by " + Prefixes.PLUGIN + ". " + Prefixes.PLUGIN + " only supports version " + latestSupportedCMIAPI + " or newer.");
 			}
 		}
 	}

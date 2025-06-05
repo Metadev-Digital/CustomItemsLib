@@ -25,7 +25,7 @@ public class ProtocolLibCompat {
 				Bukkit.getServer().getConsoleSender()
 						.sendMessage(Prefixes.PREFIX + ChatColor.RED + "Your current version of ProtocolLib ("
 								+ mPlugin.getDescription().getVersion()
-								+ ") is not supported by CustomItemsLib. Please upgrade to " + latestSupported + " or newer.");
+								+ ") is not supported by " + Prefixes.PLUGIN + ". Please upgrade to " + latestSupported + " or newer.");
 			} else {
 				Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX + "Enabling compatibility with ProtocolLib ("
 						+ mPlugin.getDescription().getVersion() + ").");

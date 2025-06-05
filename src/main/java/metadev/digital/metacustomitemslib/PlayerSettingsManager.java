@@ -124,7 +124,7 @@ public class PlayerSettingsManager implements Listener {
 				ps.setLast_logon(System.currentTimeMillis());
 				mPlayerSettings.put(offlinePlayer.getUniqueId(), ps);
 				if (ps.getTexture() == null || ps.getTexture().equals("")) {
-					Core.getMessages().debug("Store %s's skin in CustomItemsLib Skin Cache", offlinePlayer.getName());
+					Core.getMessages().debug("Store %s's skin in " + Prefixes.PLUGIN + " Skin Cache", offlinePlayer.getName());
 				}
 			}
 

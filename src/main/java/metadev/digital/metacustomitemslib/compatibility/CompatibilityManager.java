@@ -29,7 +29,7 @@ public class CompatibilityManager implements Listener {
 			register(c, pluginName);
 		} catch (Exception e) {
 			Bukkit.getConsoleSender()
-					.sendMessage(Prefixes.PREFIX_ERROR + "CustomItemsLib could not register with [" + pluginName
+					.sendMessage(Prefixes.PREFIX_ERROR + Prefixes.PLUGIN + " could not register with [" + pluginName
 							+ "] please check if [" + pluginName + "] is compatible with the server ["
 							+ Bukkit.getServer().getBukkitVersion() + "]");
 			if (Core.getConfigManager().debug)

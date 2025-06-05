@@ -2,6 +2,7 @@ package metadev.digital.metacustomitemslib.compatibility;
 
 import metadev.digital.metacustomitemslib.compatibility.exceptions.SpinupShutdownException;
 import metadev.digital.metacustomitemslib.messages.MessageHelper;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import org.bukkit.plugin.Plugin;
 
 public interface ICompat {
@@ -20,7 +21,7 @@ public interface ICompat {
                     "Your current version of " + compatPlugin.getName() + " ( " + compatPlugin.getDescription().getVersion() + " ) "
                     : "The requested feature ( " + unsupportedFeature.getName() + " ) ";
 
-            MessageHelper.error(intro + " is not supported by your current versions of MetaCustomItemsLib and Minecraft. " +
+            MessageHelper.error(intro + " is not supported by your current versions of " + Prefixes.PLUGIN + " and Minecraft. " +
                     "This feature is supported in version(s): " + unsupportedFeature.getConstraintsExplanationText());
         }
     }

@@ -416,7 +416,7 @@ public abstract class DatabaseDataStore implements IDataStore {
 			if (!rs.next()) {
 				Statement create = mConnection.createStatement();
 				Bukkit.getConsoleSender()
-						.sendMessage(Prefixes.PREFIX + " Adding RandomBounty Player to CustomItemsLibs Database.");
+						.sendMessage(Prefixes.PREFIX + " Adding RandomBounty Player to " + Prefixes.PLUGIN + "'s Database.");
 				create.executeUpdate(
 						"insert into mh_PlayerSettings (UUID,PLAYER_ID,NAME,LAST_WORLDGRP,LEARNING_MODE,MUTE_MODE) values ('"
 								+ DataStoreManager.RANDOM_PLAYER_UUID + "',0,'RandomBounty','default',0,0)");
@@ -455,7 +455,7 @@ public abstract class DatabaseDataStore implements IDataStore {
 			statement.close();
 			mConnection.close();
 			Bukkit.getConsoleSender()
-					.sendMessage(Prefixes.PREFIX + " " + n + " players was deleted from the CustomItemsLib database.");
+					.sendMessage(Prefixes.PREFIX + " " + n + " players was deleted from the " + Prefixes.PLUGIN + " database.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

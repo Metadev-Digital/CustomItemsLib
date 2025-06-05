@@ -31,7 +31,7 @@ public class TitleManagerCompat {
 			else {
 				Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_WARNING
 						+ "Your current version of TitleManager. ("	+ mPlugin.getDescription().getVersion()
-						+ ") is not supported by CustomItemsLib. Please upgrade to " + latestSupported + " or newer.");
+						+ ") is not supported by " + Prefixes.PLUGIN + ". Please upgrade to " + latestSupported + " or newer.");
 			}
 			supported = true;
 		}
