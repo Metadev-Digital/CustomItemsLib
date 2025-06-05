@@ -135,6 +135,21 @@ public class Feature {
     // ****** HELPER FUNCTIONS ******
 
     /***
+     * Retrieve a logical representation of the version constraints of this feature
+     * @return - The String value containing a description of the feature's VersionSet constraints
+     */
+    public String getConstraintsExplanationText() {
+        String serverText = serverVersion.toString();
+        String pluginText = pluginVersion.toString();
+
+        return (!serverText.isEmpty() ? "Required server version: " + serverText : "") +
+                (!serverText.isEmpty() && !pluginText.isEmpty() ? " && " : "") +
+                (!pluginText.isEmpty() ? "Required plugin version: " : "") +
+                (serverText.isEmpty() && pluginText.isEmpty() ? "No valid version constraints." : "") +
+                ".";
+    }
+
+    /***
      * Compare provided object to current feature based off of an equal name value
      * @param compare - Object containing the feature we are comparing to
      * @return - The T/F value whether the provided object equals the current
