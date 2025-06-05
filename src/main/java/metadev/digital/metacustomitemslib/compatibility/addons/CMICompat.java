@@ -3,6 +3,7 @@ package metadev.digital.metacustomitemslib.compatibility.addons;
 import com.Zrips.CMI.CMI;
 import com.Zrips.CMI.Modules.Holograms.HologramManager;
 import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import net.Zrips.CMILib.ActionBar.CMIActionBar;
 import net.Zrips.CMILib.BossBar.BossBarInfo;
 import net.Zrips.CMILib.CMILib;
@@ -23,27 +24,27 @@ public class CMICompat {
 
 	public CMICompat() {
 		if (!isEnabledInConfig()) {
-			Bukkit.getConsoleSender().sendMessage(Core.PREFIX + "Compatibility with CMI is disabled in config.yml");
+			Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX + "Compatibility with CMI is disabled in config.yml");
 		}
 		else {
 			mPlugin = Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.CMI.getName());
 
 			if (mPlugin != null && mPlugin.getDescription().getVersion().compareTo(latestSupportedCMIAPI) >= 0) {
-				Bukkit.getConsoleSender().sendMessage(Core.PREFIX + "Enabling compatibility with CMI ("
+				Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX + "Enabling compatibility with CMI ("
 						+ mPlugin.getDescription().getVersion() + ").");
 
 				mPlugin2 = Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.CMILib.getName());
 				if (mPlugin2 != null && mPlugin2.getDescription().getVersion().compareTo(latestSupportedCMILib) >= 0) {
-					Bukkit.getConsoleSender().sendMessage(Core.PREFIX + "Enabling compatibility with CMILib ("
+					Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX + "Enabling compatibility with CMILib ("
 							+ mPlugin2.getDescription().getVersion() + ").");
 					supported = true;
 				}
 				else {
-					Bukkit.getConsoleSender().sendMessage(Core.PREFIX_ERROR + " Your current version of CMILib is not supported by CustomItemsLib.");
+					Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_ERROR + " Your current version of CMILib is not supported by CustomItemsLib.");
 				}
 			}
 			else{
-				Bukkit.getConsoleSender().sendMessage(Core.PREFIX_ERROR + "Your current version of CMIAPI is not supported by CustomItemsLib. CustomItemsLib only supports version " + latestSupportedCMIAPI + " or newer.");
+				Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_ERROR + "Your current version of CMIAPI is not supported by CustomItemsLib. CustomItemsLib only supports version " + latestSupportedCMIAPI + " or newer.");
 			}
 		}
 	}

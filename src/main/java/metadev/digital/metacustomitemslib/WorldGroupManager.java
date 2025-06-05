@@ -1,6 +1,7 @@
 package metadev.digital.metacustomitemslib;
 
 import com.google.common.io.Files;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.OfflinePlayer;
@@ -115,7 +116,7 @@ public class WorldGroupManager {
 		}
 		worldGroups.get(getDefaultWorldgroup()).add(world);
 		save();
-		Bukkit.getConsoleSender().sendMessage(Core.PREFIX_WARNING + "The world '" + world
+		Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_WARNING + "The world '" + world
 				+ "' was missing in the worldgroups.yml file. It has beed added to the default group in worldgroups.yml in the BagOfGold folder. Please review the worldgroups.");
 		return getDefaultWorldgroup();
 	}

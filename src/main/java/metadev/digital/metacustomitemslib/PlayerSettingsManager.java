@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.UUID;
 
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -129,7 +130,7 @@ public class PlayerSettingsManager implements Listener {
 
 			@Override
 			public void onError(Throwable error) {
-				Bukkit.getConsoleSender().sendMessage(Core.PREFIX + ChatColor.RED + "[ERROR] " + offlinePlayer.getName()
+				Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX + ChatColor.RED + "[ERROR] " + offlinePlayer.getName()
 						+ " is new, creating user in database.");
 				mPlayerSettings.put(offlinePlayer.getUniqueId(), new PlayerSettings(offlinePlayer));
 			}

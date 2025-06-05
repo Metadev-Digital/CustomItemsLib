@@ -6,6 +6,7 @@ import metadev.digital.metabagofgold.compatibility.ShopkeepersCompat;
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.Tools;
 import metadev.digital.metacustomitemslib.compatibility.addons.BagOfGoldCompat;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import metadev.digital.metacustomitemslib.server.Servers;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -131,14 +132,14 @@ public class CoreRewardListeners implements Listener {
 		Player player = event.getPlayer();
 
 		if (Reward.isFakeReward(item)) {
-			player.sendMessage(Core.PREFIX_WARNING + "This was a FAKE reward with no value.");
+			player.sendMessage(Prefixes.PREFIX_WARNING + "This was a FAKE reward with no value.");
 			return;
 		}
 
 		if (Reward.isReward(item)) {
 			Reward reward = Reward.getReward(item);
 			if (!reward.checkHash()) {
-				Bukkit.getConsoleSender().sendMessage(Core.PREFIX_WARNING + player.getName()
+				Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_WARNING + player.getName()
 						+ " has tried to change the value of a BagOfGold Item. Value set to 0!(5)");
 				reward.setMoney(0);
 				ItemStack is = Reward.setDisplayNameAndHiddenLores(item.getItemStack(), reward);
@@ -193,7 +194,7 @@ public class CoreRewardListeners implements Listener {
 		Block block = event.getBlockPlaced();
 
 		if (Reward.isFakeReward(is)) {
-			player.sendMessage(Core.PREFIX_WARNING + "This was a FAKE reward with no value.");
+			player.sendMessage(Prefixes.PREFIX_WARNING + "This was a FAKE reward with no value.");
 			return;
 		}
 
@@ -212,7 +213,7 @@ public class CoreRewardListeners implements Listener {
 					BagOfGold.getInstance().getRewardManager().removeMoneyFromPlayerBalance(player, reward.getMoney());
 				}
 			} else {
-				Bukkit.getConsoleSender().sendMessage(Core.PREFIX_WARNING + player.getName()
+				Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_WARNING + player.getName()
 						+ " has tried to change the value of a BagOfGold Item. Value set to 0!(6)");
 				reward.setMoney(0);
 				is = Reward.setDisplayNameAndHiddenLores(is, reward);
@@ -248,7 +249,7 @@ public class CoreRewardListeners implements Listener {
 						player.getWorld().dropItem(player.getLocation(), helmet);
 					}
 				} else {
-					Bukkit.getConsoleSender().sendMessage(Core.PREFIX_WARNING + player.getName()
+					Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_WARNING + player.getName()
 							+ " has tried to change the value of a BagOfGold Item. Value set to 0!(8)");
 					reward.setMoney(0);
 					helmet = Reward.setDisplayNameAndHiddenLores(helmet, reward);
@@ -316,7 +317,7 @@ public class CoreRewardListeners implements Listener {
 			Item item = (Item) entity;
 
 			if (Reward.isFakeReward(item)) {
-				player.sendMessage(Core.PREFIX_WARNING + "This was a FAKE reward and it was removed.");
+				player.sendMessage(Prefixes.PREFIX_WARNING + "This was a FAKE reward and it was removed.");
 				item.remove();
 				return;
 			}
@@ -338,7 +339,7 @@ public class CoreRewardListeners implements Listener {
 
 						}
 					} else {
-						Bukkit.getConsoleSender().sendMessage(Core.PREFIX_WARNING + player.getName()
+						Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_WARNING + player.getName()
 								+ " has tried to change the value of a BagOfGold Item. Value set to 0!(7)");
 						reward.setMoney(0);
 						ItemStack is = Reward.setDisplayNameAndHiddenLores(item.getItemStack(), reward);
@@ -467,7 +468,7 @@ public class CoreRewardListeners implements Listener {
 		if (Reward.isReward(isCurrentSlot)) {
 			Reward reward = Reward.getReward(isCurrentSlot);
 			if (!reward.checkHash()) {
-				Bukkit.getConsoleSender().sendMessage(Core.PREFIX_WARNING + player.getName()
+				Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_WARNING + player.getName()
 						+ " has tried to change the value of a BagOfGold Item. Value set to 0!(9)");
 				reward.setMoney(0);
 				isCurrentSlot = Reward.setDisplayNameAndHiddenLores(isCurrentSlot, reward);
@@ -482,7 +483,7 @@ public class CoreRewardListeners implements Listener {
 		if (Reward.isReward(isCursor)) {
 			Reward reward = Reward.getReward(isCursor);
 			if (!reward.checkHash()) {
-				Bukkit.getConsoleSender().sendMessage(Core.PREFIX_WARNING + player.getName()
+				Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_WARNING + player.getName()
 						+ " has tried to change the value of a BagOfGold Item. Value set to 0!(10)");
 				reward.setMoney(0);
 				isCursor = Reward.setDisplayNameAndHiddenLores(isCursor, reward);
@@ -497,7 +498,7 @@ public class CoreRewardListeners implements Listener {
 		if (Reward.isReward(isNumberKey)) {
 			Reward reward = Reward.getReward(isNumberKey);
 			if (!reward.checkHash()) {
-				Bukkit.getConsoleSender().sendMessage(Core.PREFIX_WARNING + player.getName()
+				Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_WARNING + player.getName()
 						+ " has tried to change the value of a BagOfGold Item. Value set to 0!(11a)");
 				reward.setMoney(0);
 				isNumberKey = Reward.setDisplayNameAndHiddenLores(isNumberKey, reward);
@@ -506,7 +507,7 @@ public class CoreRewardListeners implements Listener {
 		if (Reward.isReward(isSwapOffhand)) {
 			Reward reward = Reward.getReward(isSwapOffhand);
 			if (!reward.checkHash()) {
-				Bukkit.getConsoleSender().sendMessage(Core.PREFIX_WARNING + player.getName()
+				Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_WARNING + player.getName()
 						+ " has tried to change the value of a BagOfGold Item. Value set to 0!(11b)");
 				reward.setMoney(0);
 				isSwapOffhand = Reward.setDisplayNameAndHiddenLores(isSwapOffhand, reward);

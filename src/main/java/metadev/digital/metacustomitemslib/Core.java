@@ -12,6 +12,7 @@ import metadev.digital.metacustomitemslib.config.ConfigManager;
 import metadev.digital.metacustomitemslib.config.Migrator;
 import metadev.digital.metacustomitemslib.config.MigratorException;
 import metadev.digital.metacustomitemslib.messages.Messages;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import metadev.digital.metacustomitemslib.rewards.CoreRewardManager;
 import metadev.digital.metacustomitemslib.rewards.RewardBlockManager;
 import metadev.digital.metacustomitemslib.server.Servers;
@@ -59,12 +60,6 @@ public class Core extends JavaPlugin {
 
 	public boolean disabling = false;
 
-	//TODO: Move logs to messages
-	public static final String PREFIX = ChatColor.GOLD + "[CustomItemsLib] " + ChatColor.RESET;
-	public static final String PREFIX_DEBUG = ChatColor.GOLD + "[CustomItemsLib][Debug] " + ChatColor.RESET;
-	public static final String PREFIX_WARNING = ChatColor.GOLD + "[CustomItemsLib][Warning] " + ChatColor.RED;
-	public static final String PREFIX_ERROR = ChatColor.GOLD + "[CustomItemsLib][Error] " + ChatColor.RED;
-
 	@Override
 	public void onLoad() {
 	}
@@ -104,7 +99,7 @@ public class Core extends JavaPlugin {
 
 		List<String> itemtypes = Arrays.asList("SKULL", "ITEM", "KILLER", "KILLED", "GRINGOTTS_STYLE");
 		if (!itemtypes.contains(mConfig.rewardItemtype)) {
-			Bukkit.getConsoleSender().sendMessage(PREFIX + ChatColor.RED
+			Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX + ChatColor.RED
 					+ "The type define with reward_itemtype in your config is unknown: " + mConfig.rewardItemtype);
 		}
 

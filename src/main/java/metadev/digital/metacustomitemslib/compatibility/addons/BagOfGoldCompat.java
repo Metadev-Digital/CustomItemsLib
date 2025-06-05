@@ -1,7 +1,7 @@
 package metadev.digital.metacustomitemslib.compatibility.addons;
 
-import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
@@ -16,19 +16,19 @@ public class BagOfGoldCompat {
 
 		if (mPlugin != null) {
 			if (mPlugin.getDescription().getVersion().compareTo(latestSupported) >= 0) {
-				Bukkit.getServer().getConsoleSender().sendMessage(Core.PREFIX
+				Bukkit.getServer().getConsoleSender().sendMessage(Prefixes.PREFIX
 						+ "Enabling compatibility with BagOfGold (" + mPlugin.getDescription().getVersion() + ")");
 				supported = true;
 			} else {
 				Bukkit.getServer().getConsoleSender()
-						.sendMessage(Core.PREFIX_ERROR + "Your current version of BagOfGold ("
+						.sendMessage(Prefixes.PREFIX_ERROR + "Your current version of BagOfGold ("
 								+ mPlugin.getDescription().getVersion()
 								+ ") is not supported by CustomItemsLib. Please upgrade to " + latestSupported + " or newer.");
 				Bukkit.getPluginManager().disablePlugin(mPlugin);
 			}
 		} else {
 			Bukkit.getServer().getConsoleSender()
-					.sendMessage(Core.PREFIX + "BagOfGold is not installed on this server");
+					.sendMessage(Prefixes.PREFIX + "BagOfGold is not installed on this server");
 		}
 
 	}

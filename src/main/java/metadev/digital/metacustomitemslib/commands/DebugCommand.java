@@ -1,6 +1,7 @@
 package metadev.digital.metacustomitemslib.commands;
 
 import metadev.digital.metacustomitemslib.Core;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
@@ -71,12 +72,12 @@ public class DebugCommand implements ICommand {
 		if (debug) {
 			Core.getConfigManager().debug = false;
 			Core.getMessages().senderSendMessage(sender,
-					Core.PREFIX + Core.getMessages().getString("core.commands.debug.disabled"));
+					Prefixes.PREFIX + Core.getMessages().getString("core.commands.debug.disabled"));
 			Core.getConfigManager().saveConfig();
 		} else {
 			Core.getConfigManager().debug = true;
 			Core.getMessages().senderSendMessage(sender,
-					Core.PREFIX + Core.getMessages().getString("core.commands.debug.enabled"));
+					Prefixes.PREFIX + Core.getMessages().getString("core.commands.debug.enabled"));
 			Core.getConfigManager().saveConfig();
 		}
 

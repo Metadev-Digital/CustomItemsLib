@@ -2,6 +2,7 @@ package metadev.digital.metacustomitemslib.compatibility.addons;
 
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -17,11 +18,11 @@ public class ActionbarCompat {
 	public ActionbarCompat() {
 		if (!isEnabledInConfig()) {
 			Bukkit.getConsoleSender()
-					.sendMessage(Core.PREFIX + " Compatibility with Actionbar is disabled in config.yml ");
+					.sendMessage(Prefixes.PREFIX + " Compatibility with Actionbar is disabled in config.yml ");
 		} else {
 			mPlugin = Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.Actionbar.getName());
 
-			Bukkit.getConsoleSender().sendMessage(Core.PREFIX + " Enabling compatibility with Actionbar ("
+			Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX + " Enabling compatibility with Actionbar ("
 					+ getActionbar().getDescription().getVersion() + ")");
 			supported = true;
 		}
@@ -45,7 +46,7 @@ public class ActionbarCompat {
 
 	public static void setMessage(Player player, String text) {
 		if (supported) {
-			Core.getMessages().debug(Core.PREFIX_WARNING
+			Core.getMessages().debug(Prefixes.PREFIX_WARNING
 					+ "ActionbarCompat: setMessage() is not made yet. I cant get access to source code or API.");
 			player.sendMessage(text);
 

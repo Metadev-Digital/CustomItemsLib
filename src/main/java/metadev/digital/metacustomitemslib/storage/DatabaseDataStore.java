@@ -2,6 +2,7 @@ package metadev.digital.metacustomitemslib.storage;
 
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.PlayerSettings;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.Plugin;
@@ -99,7 +100,7 @@ public abstract class DatabaseDataStore implements IDataStore {
 				statement.close();
 				Core.getConfigManager().saveConfig();
 				Bukkit.getConsoleSender().sendMessage(
-						Core.PREFIX + " Database version " + Core.getConfigManager().databaseVersion + " detected.");
+						Prefixes.PREFIX + " Database version " + Core.getConfigManager().databaseVersion + " detected.");
 			}
 
 			switch (Core.getConfigManager().databaseVersion) {
@@ -156,7 +157,7 @@ public abstract class DatabaseDataStore implements IDataStore {
 			}
 			n++;
 		} while (Core.getDataStoreManager().isRunning() && n < 40);
-		Bukkit.getConsoleSender().sendMessage(Core.PREFIX + " Closing database connection.");
+		Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX + " Closing database connection.");
 	}
 
 	// ******************************************************************
@@ -199,7 +200,7 @@ public abstract class DatabaseDataStore implements IDataStore {
 			throw new DataStoreException(e);
 		}
 		throw new UserNotFoundException(
-				Core.PREFIX + " User " + offlinePlayer.toString() + " is not present in database");
+				Prefixes.PREFIX + " User " + offlinePlayer.toString() + " is not present in database");
 	}
 
 	// @Override
@@ -277,7 +278,7 @@ public abstract class DatabaseDataStore implements IDataStore {
 			}
 			mGetPlayerUUID.close();
 			mConnection.close();
-			throw new UserNotFoundException(Core.PREFIX + " User " + name + " is not present in database");
+			throw new UserNotFoundException(Prefixes.PREFIX + " User " + name + " is not present in database");
 		} catch (SQLException e) {
 			throw new DataStoreException(e);
 		}
@@ -415,7 +416,7 @@ public abstract class DatabaseDataStore implements IDataStore {
 			if (!rs.next()) {
 				Statement create = mConnection.createStatement();
 				Bukkit.getConsoleSender()
-						.sendMessage(Core.PREFIX + " Adding RandomBounty Player to CustomItemsLibs Database.");
+						.sendMessage(Prefixes.PREFIX + " Adding RandomBounty Player to CustomItemsLibs Database.");
 				create.executeUpdate(
 						"insert into mh_PlayerSettings (UUID,PLAYER_ID,NAME,LAST_WORLDGRP,LEARNING_MODE,MUTE_MODE) values ('"
 								+ DataStoreManager.RANDOM_PLAYER_UUID + "',0,'RandomBounty','default',0,0)");
@@ -454,7 +455,7 @@ public abstract class DatabaseDataStore implements IDataStore {
 			statement.close();
 			mConnection.close();
 			Bukkit.getConsoleSender()
-					.sendMessage(Core.PREFIX + " " + n + " players was deleted from the CustomItemsLib database.");
+					.sendMessage(Prefixes.PREFIX + " " + n + " players was deleted from the CustomItemsLib database.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

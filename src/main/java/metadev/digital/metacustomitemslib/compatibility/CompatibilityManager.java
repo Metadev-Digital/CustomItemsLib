@@ -2,6 +2,7 @@ package metadev.digital.metacustomitemslib.compatibility;
 
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -28,7 +29,7 @@ public class CompatibilityManager implements Listener {
 			register(c, pluginName);
 		} catch (Exception e) {
 			Bukkit.getConsoleSender()
-					.sendMessage(Core.PREFIX_ERROR + "CustomItemsLib could not register with [" + pluginName
+					.sendMessage(Prefixes.PREFIX_ERROR + "CustomItemsLib could not register with [" + pluginName
 							+ "] please check if [" + pluginName + "] is compatible with the server ["
 							+ Bukkit.getServer().getBukkitVersion() + "]");
 			if (Core.getConfigManager().debug)

@@ -3,6 +3,7 @@ package metadev.digital.metacustomitemslib.compatibility.addons;
 import io.puharesource.mc.titlemanager.api.v2.TitleManagerAPI;
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -18,17 +19,17 @@ public class TitleManagerCompat {
 
 	public TitleManagerCompat() {
 		if (!isEnabledInConfig()) {
-			Bukkit.getConsoleSender().sendMessage(Core.PREFIX_WARNING
+			Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_WARNING
 					+ "Compatibility with TitleManager is disabled in config.yml");
 		} else {
 			mPlugin = Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.TitleManager.getName());
-			Bukkit.getConsoleSender().sendMessage(Core.PREFIX
+			Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX
 					+ "Enabling compatibility with TitleManager ("
 					+ mPlugin.getDescription().getVersion() + ")");
 			if (mPlugin.getDescription().getVersion().compareTo(latestSupported) >= 0)
 				api = getTitleManagerAPI();
 			else {
-				Bukkit.getConsoleSender().sendMessage(Core.PREFIX_WARNING
+				Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_WARNING
 						+ "Your current version of TitleManager. ("	+ mPlugin.getDescription().getVersion()
 						+ ") is not supported by CustomItemsLib. Please upgrade to " + latestSupported + " or newer.");
 			}

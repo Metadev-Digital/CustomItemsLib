@@ -2,6 +2,7 @@ package metadev.digital.metacustomitemslib.storage;
 
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.PlayerSettings;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import metadev.digital.metacustomitemslib.storage.async.IDataStoreTask;
 import metadev.digital.metacustomitemslib.storage.async.PlayerSettingsRetrieverTask;
 import metadev.digital.metacustomitemslib.storage.async.StoreTask;
@@ -37,7 +38,7 @@ public class DataStoreManager {
 		int savePeriod = Core.getConfigManager().savePeriod;
 		if (savePeriod < 1200) {
 			savePeriod = 1200;
-			Bukkit.getConsoleSender().sendMessage(Core.PREFIX_WARNING
+			Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_WARNING
 					+ "save-period in your config.yml is too low. Please raise it to 1200 or higher");
 		}
 		mStoreThread = new StoreThread(savePeriod);
@@ -98,7 +99,7 @@ public class DataStoreManager {
 				e.printStackTrace();
 		}
 		throw new UserNotFoundException(
-				Core.PREFIX + " User " + offlinePlayer.getName() + " is not present in Core database");
+				Prefixes.PREFIX + " User " + offlinePlayer.getName() + " is not present in Core database");
 	}
 
 	public OfflinePlayer getPlayerByPlayerId(int playerId) throws UserNotFoundException {
@@ -108,7 +109,7 @@ public class DataStoreManager {
 			if (Core.getConfigManager().debug)
 				e.printStackTrace();
 		}
-		throw new UserNotFoundException(Core.PREFIX + " User " + playerId + " is not present in Core database");
+		throw new UserNotFoundException(Prefixes.PREFIX + " User " + playerId + " is not present in Core database");
 	}
 
 	public final static String RANDOM_PLAYER_UUID = "bb3be6f2-b457-11ea-b3de-0242ac130004";
