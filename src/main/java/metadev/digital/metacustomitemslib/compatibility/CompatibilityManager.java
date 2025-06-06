@@ -2,6 +2,7 @@ package metadev.digital.metacustomitemslib.compatibility;
 
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
+import metadev.digital.metacustomitemslib.compatibility.exceptions.SpinupShutdownException;
 import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
@@ -68,6 +69,18 @@ public class CompatibilityManager implements Listener {
 				return true;
 		}
 		return false;
+	}
+
+	public void triggerSoftShutdown() {
+        for (Object compatClass : mCompatClasses) {
+			if(compatClass.getClass().isAssignableFrom(ICompat.class)){
+				try{
+					if(((ICompat) compatClass).isLoaded()) ((ICompat) compatClass).shutdown();
+				} catch (SpinupShutdownException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
 	}
 
 	@EventHandler(priority = EventPriority.NORMAL)
