@@ -6,7 +6,7 @@ import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-
+// TODO: REMOVE AND REPLACE WITH PAPI https://www.spigotmc.org/resources/placeholderapi.6245/
 public class ActionbarCompat {
 
 	private static Plugin mPlugin;
