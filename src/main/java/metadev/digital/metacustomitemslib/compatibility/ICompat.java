@@ -13,8 +13,40 @@ public interface ICompat {
     boolean isEnabled();
     boolean isSupported();
     boolean isActive();
+    boolean isLoaded();
     Plugin getPluginInstance();
 
+    /***
+     * Standardized server debug messaging for enabling a plugin compatibility
+     */
+    default void detectedMessage(){
+        if(compatPlugin != null) {
+            MessageHelper.debug(compatPlugin.getName() + " detected. Validating support and attempting to enable plugin compatibility.");
+        }
+    }
+
+    /***
+     * Standardized server messaging for a successfully enabled plugin compatibility
+     */
+    default void successfullyLoadedMessage(){
+        if(compatPlugin != null) {
+            MessageHelper.notice(compatPlugin.getName() + " compatibility successfully loaded.");
+        }
+    }
+
+    /***
+     * Standardized server debug messaging for a successfully shutdown plugin compatibility
+     */
+    default void successfullyShutdownMessage(){
+        if(compatPlugin != null) {
+            MessageHelper.debug(compatPlugin.getName() + " compatibility successfully shutdown.");
+        }
+    }
+
+    /***
+     * Standardized server messaging for features which are not supported
+     * @param unsupportedFeature - The feature in question that is unsupported
+     */
     default void unsupportedMessage(Feature unsupportedFeature) {
         if(compatPlugin != null){
             String intro = unsupportedFeature.getName().equals("base") ?
@@ -26,6 +58,11 @@ public interface ICompat {
         }
     }
 
+    /***
+     * Standardized server messaging for features which have been disabled
+     * @param disabledFeature - Feature this message is about which is disabled
+     * @param helpText - String help text on what the enable criteria for this feature is when relevant
+     */
     default void disabledMessage(Feature disabledFeature, String helpText) {
         if(compatPlugin != null){
             String intro = disabledFeature.getName().equals("base") ?
@@ -33,6 +70,17 @@ public interface ICompat {
                     : "Compatibility for the feature " + disabledFeature.getName() + " ";
 
             MessageHelper.error(intro + " is currently disabled." + (!helpText.isEmpty() ? " To enable: " + helpText : ""));
+        }
+    }
+
+    /***
+     * Standardized server messaging for plugin compatibilities which have run into a critical error
+     * @param error - String value of any error help text
+     */
+    default void pluginError(String error){
+        if(compatPlugin != null) {
+            MessageHelper.error(" Compatibility with " + compatPlugin.getName() + " ran into a critical runtime error.");
+            if(!error.isEmpty()) MessageHelper.error(error);
         }
     }
 }
