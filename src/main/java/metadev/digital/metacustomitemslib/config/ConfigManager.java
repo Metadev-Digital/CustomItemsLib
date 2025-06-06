@@ -83,6 +83,10 @@ public class ConfigManager extends AutoConfig {
 						+ "\nIntegration to other plugins."
 						+ "\n########################################################################");
 
+		setCategoryComment("plugins.metamobhunting",
+				"########################################################################" + "\nMetaMobHunting"
+						+ "\n########################################################################");
+
 		setCategoryComment("plugins.protocollib",
 				"########################################################################" + "\nProtocollib"
 						+ "\n########################################################################");
@@ -294,6 +298,9 @@ public class ConfigManager extends AutoConfig {
 	// #####################################################################################
 	// Plugin integration
 	// #####################################################################################
+
+	@ConfigField(name = "enable_integration_mobhunting", category = "plugins.mobhunting", comment = "Enable/Disable integration with MetaMobHunting")
+	public boolean enableMobHunting = true;
 
 	@ConfigField(name = "enable_integration_titleapi", category = "plugins.titleapi", comment = "Enable/Disable integration with TitleAPI")
 	public boolean enableIntegrationTitleAPI = true;
