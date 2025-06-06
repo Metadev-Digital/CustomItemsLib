@@ -149,7 +149,7 @@ public class MobHuntingCompat implements ICompat, IFeatureHolder {
 			feature = features.getFeature(name);
 			return feature;
 		} catch (FeatureNotFoundException e) {
-			MessageHelper.debug("Triggered a FeatureNotFoundException when trying to return active flag of the feature " + name + " in the " + compatPlugin.getName() +" compat class." );
+			MessageHelper.debug("Triggered a FeatureNotFoundException when trying to return the feature " + name + " in the " + compatPlugin.getName() +" compat class." );
 		}
 		return null;
 	}
