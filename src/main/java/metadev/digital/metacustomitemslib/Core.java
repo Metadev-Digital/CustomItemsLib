@@ -180,6 +180,8 @@ public class Core extends JavaPlugin {
 			mRewardBlockManager.saveData();
 			getMessages().debug("Saving worldgroups.");
 			mWorldGroupManager.save();
+			getMessages().debug("Shutting down compatibilities.");
+			mCompatibilityManager.triggerSoftShutdown();
 			getMessages().debug("Shutdown StoreManager");
 			mDataStoreManager.shutdown();
 			getMessages().debug("Shutdown Store");
