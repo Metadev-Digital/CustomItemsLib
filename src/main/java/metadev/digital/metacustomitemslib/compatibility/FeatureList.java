@@ -23,7 +23,7 @@ public class FeatureList {
      * @param pluginVersion - String value used to compare semantic versions for valid version for plugin -> feature support
      */
     public FeatureList(String pluginVersion){
-        this.featureSet = new HashSet<>();
+        this.featureSet = new HashSet<Feature>();
         this.pluginVersion = pluginVersion;
     }
 

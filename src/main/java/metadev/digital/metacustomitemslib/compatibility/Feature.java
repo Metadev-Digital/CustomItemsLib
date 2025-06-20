@@ -160,5 +160,16 @@ public class Feature {
         if( compare == null || this.getClass() != compare.getClass() ) return false;
         return Objects.equals(this.name, ((Feature) compare).name);
     }
+
+    /***
+     * Generate hashcode of feature
+     * @return - Int hashcode based off of the name of the feature
+     */
+    @Override
+    public int hashCode() {
+        int result = 47807;
+        result = 31 * result + (this.name != null ? this.name.hashCode() : 0 );
+        return result;
+    }
 }
 
