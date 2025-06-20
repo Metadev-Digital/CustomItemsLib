@@ -92,6 +92,16 @@ public class MobHuntingCompat implements ICompat, IFeatureHolder {
 		return compatPlugin;
 	}
 
+	@Override
+	public String getPluginName() {
+		return compatPlugin.getName();
+	}
+
+	@Override
+	public String getPluginVersion() {
+		return compatPlugin.getDescription().getVersion();
+	}
+
 	// ****** IFeatureHolder ******
 
 	@Override
