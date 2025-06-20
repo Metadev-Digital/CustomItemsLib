@@ -300,7 +300,7 @@ public class ConfigManager extends AutoConfig {
 	// #####################################################################################
 
 	@ConfigField(name = "enable_integration_mobhunting", category = "plugins.mobhunting", comment = "Enable/Disable integration with MetaMobHunting")
-	public boolean enableMobHunting = true;
+	public boolean enableIntegrationMobHunting = true;
 
 	@ConfigField(name = "enable_integration_titleapi", category = "plugins.titleapi", comment = "Enable/Disable integration with TitleAPI")
 	public boolean enableIntegrationTitleAPI = true;

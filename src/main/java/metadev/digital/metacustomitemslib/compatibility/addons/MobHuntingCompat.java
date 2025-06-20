@@ -99,7 +99,7 @@ public class MobHuntingCompat implements ICompat, IFeatureHolder {
 		features = new FeatureList("");
 
 		// Base plugin
-		enabled = Core.getConfigManager().enableMobHunting;
+		enabled = Core.getConfigManager().enableIntegrationMobHunting;
 		features.addFeature("base", pMin, BoundIdentifierEnum.FLOOR, VersionSetIdentifierEnum.PLUGIN, enabled);
 		supported = isFeatureSupported("base");
 
