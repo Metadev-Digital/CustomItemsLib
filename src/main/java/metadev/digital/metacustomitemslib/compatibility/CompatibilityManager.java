@@ -9,6 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.PluginEnableEvent;
+import org.bukkit.plugin.Plugin;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -68,6 +69,16 @@ public class CompatibilityManager implements Listener {
 			if (c.getName().equalsIgnoreCase(class1.getName()))
 				return true;
 		}
+		return false;
+	}
+
+	public static boolean isCompatibilityEnabled(Plugin enableCheck) {
+		for (Object compatClass : mCompatClasses) { // TODO: isCompatibilityEnabled NEEDS TESTED
+			if(compatClass.getClass().isAssignableFrom(ICompat.class) && compatClass.getClass().getName().equalsIgnoreCase(enableCheck.getClass().getName())){
+				return ((ICompat) compatClass).isLoaded();
+			}
+		}
+
 		return false;
 	}
 
