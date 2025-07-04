@@ -8,7 +8,7 @@ public enum SupportedPluginEntities {
 	BattleArena("BattleArena", 4), //
 	// BossBarApi was ID 5. Reserve ID
 	BossShop("BossShopPro", 6), //
-	Citizens("Citizens", 7), //
+	Citizens("Citizens", 7), // Used in MobHunting && BagOfGold
 	ConquestiaMobs("ConquestiaMobs", 8), //
 	CrackShot("CrackShot", 9), //
 	CustomMobs("CustomMobs", 10), //
