@@ -33,12 +33,13 @@ import java.util.List;
 
 public class ProtocolLibCompat implements ICompat, IFeatureHolder {
 
+	// ****** Standard ******
 	private Plugin compatPlugin;
 	private static boolean enabled = false, supported = false, loaded = false;
 	private static String sMin, sMax, pMin = "5.3.0", pMax;
 	private static FeatureList features;
 
-	// Plugin Specific
+	// ****** Plugin Specific ******
 	private static ProtocolManager protocolManager;
 
 	// https://www.spigotmc.org/resources/protocollib.1997/
@@ -53,7 +54,6 @@ public class ProtocolLibCompat implements ICompat, IFeatureHolder {
 				Bukkit.getPluginManager().disablePlugin(compatPlugin);
 			}
 		}
-
 	}
 
 	// ****** ICompat ******

@@ -17,10 +17,13 @@ import org.bukkit.plugin.Plugin;
 
 public class MobHuntingCompat implements ICompat, IFeatureHolder {
 
+	// ****** Standard ******
 	private Plugin compatPlugin;
 	private static boolean enabled = false, supported = false, loaded = false;
 	private static String sMin, sMax, pMin = "9.2.0", pMax;
 	private static FeatureList features;
+
+	// ****** Plugin Specific ******
 
 	public MobHuntingCompat() {
 		compatPlugin = Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.MobHunting.getName());
