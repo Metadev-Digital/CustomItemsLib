@@ -50,8 +50,8 @@ public class ProtocolLibCompat implements ICompat, IFeatureHolder {
 		if(compatPlugin != null) {
 			try {
 				start();
-			} catch (SpinupShutdownException e) {
-				Bukkit.getPluginManager().disablePlugin(compatPlugin);
+			} catch (SpinupShutdownException ignored) {
+				// Do nothing beyond report error
 			}
 		}
 	}
@@ -123,7 +123,7 @@ public class ProtocolLibCompat implements ICompat, IFeatureHolder {
 
 	@Override
 	public void registerFeatures() {
-		features = new FeatureList("");
+		features = new FeatureList(getPluginVersion());
 
 		// Base plugin
 		enabled = Core.getConfigManager().enableIntegrationProtocolLib;
@@ -149,7 +149,7 @@ public class ProtocolLibCompat implements ICompat, IFeatureHolder {
 	public boolean isFeatureSupported(String name) {
 		boolean featureSupported = false;
 		try {
-			featureSupported = features.isFeatureEnabled(name);
+			featureSupported = features.isFeatureSupported(name);
 		} catch (FeatureNotFoundException e) {
 			MessageHelper.debug("Triggered a FeatureNotFoundException when trying to return supported flag of the feature " + name + " in the " + compatPlugin.getName() +" compat class." );
 		}
