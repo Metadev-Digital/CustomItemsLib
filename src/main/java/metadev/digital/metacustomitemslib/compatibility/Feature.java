@@ -144,7 +144,7 @@ public class Feature {
 
         return (!serverText.isEmpty() ? "Required server version: " + serverText : "") +
                 (!serverText.isEmpty() && !pluginText.isEmpty() ? " && " : "") +
-                (!pluginText.isEmpty() ? "Required plugin version: " : "") +
+                (!pluginText.isEmpty() ? "Required plugin version: " + pluginText : "") +
                 (serverText.isEmpty() && pluginText.isEmpty() ? "No valid version constraints." : "") +
                 ".";
     }
