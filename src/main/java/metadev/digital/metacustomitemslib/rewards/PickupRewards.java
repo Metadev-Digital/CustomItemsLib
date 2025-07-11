@@ -2,7 +2,6 @@ package metadev.digital.metacustomitemslib.rewards;
 
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.Tools;
-import metadev.digital.metacustomitemslib.compatibility.CompatibilityManager;
 import metadev.digital.metacustomitemslib.compatibility.addons.ProtocolLibCompat;
 import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
 import org.bukkit.Bukkit;
@@ -32,7 +31,7 @@ public class PickupRewards {
 					item.remove();
 					if (Core.getCoreRewardManager().getDroppedMoney().containsKey(item.getEntityId()))
 						Core.getCoreRewardManager().getDroppedMoney().remove(item.getEntityId());
-					if (CompatibilityManager.isCompatibilityEnabled(Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.ProtocolLib.getName())))
+					if (Core.getCompatibilityManager().isCompatibilityLoaded(Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.ProtocolLib.getName())))
 						ProtocolLibCompat.pickupMoney(player, item); // TODO: OTHER END OF ISCOMPATIBLITYENABLED WHICH NEEDS TESTED
 
 					if (reward.getMoney() == 0) {
