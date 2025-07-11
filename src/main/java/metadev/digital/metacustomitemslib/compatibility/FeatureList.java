@@ -64,7 +64,19 @@ public class FeatureList {
     }
 
     /***
-     * Create and adds a feature to the hashset based off of the available information passed on call. Exists in 5 variants.
+     * Create and adds a feature to the hashset based off of the available information passed on call. Exists in 6 variants.
+     * @param name - String name for identifying the feature
+     * @param enabled - Whether this feature is currently enabled based upon compat specific logic
+     */
+    public void addFeature(String name, boolean enabled){
+        VersionSet server = new VersionSet();
+        VersionSet plugin = new VersionSet();
+        
+        register(name, server, plugin, enabled);
+    }
+
+    /***
+     * Create and adds a feature to the hashset based off of the available information passed on call. Exists in 6 variants.
      * @param name - String name for identifying the feature
      * @param version - String version as semantic version when there is only a single bound for this feature
      * @param boundingIdentifier - BoundingIdentifierEnum value for whether the single version string provided is to be used as a ceiling or floor
@@ -79,7 +91,7 @@ public class FeatureList {
     }
 
     /***
-     * Create and adds a feature to the hashset based off of the available information passed on call. Exists in 5 variants.
+     * Create and adds a feature to the hashset based off of the available information passed on call. Exists in 6 variants.
      * @param name - String name for identifying the feature
      * @param minVer - String version as semantic version representing the minimum version required for this binding
      * @param maxVer - String version as semantic version representing the maximum version supported for this binding
@@ -94,7 +106,7 @@ public class FeatureList {
     }
 
     /***
-     * Create and adds a feature to the hashset based off of the available information passed on call. Exists in 5 variants.
+     * Create and adds a feature to the hashset based off of the available information passed on call. Exists in 6 variants.
      * @param name - String name for identifying the feature
      * @param serverVersion - String version as semantic version when there is only a single bound for SERVER support for this feature
      * @param boundingIdentifier - BoundingIdentifierEnum value for whether the SERVER version string provided is to be used as a ceiling or floor
@@ -110,7 +122,7 @@ public class FeatureList {
     }
 
     /***
-     * Create and adds a feature to the hashset based off of the available information passed on call. Exists in 5 variants.
+     * Create and adds a feature to the hashset based off of the available information passed on call. Exists in 6 variants.
      * @param name - String name for identifying the feature
      * @param minServerVer - String version as semantic version representing the minimum version required for SERVER support for this binding
      * @param maxServerVer - String version as semantic version representing the maximum version required for SERVER support for this binding
@@ -126,7 +138,7 @@ public class FeatureList {
     }
 
     /***
-     * Create and adds a feature to the hashset based off of the available information passed on call. Exists in 5 variants.
+     * Create and adds a feature to the hashset based off of the available information passed on call. Exists in 6 variants.
      * @param name - String name for identifying the feature
      * @param minServerVer - String version as semantic version representing the minimum version required for SERVER support for this binding
      * @param maxServerVer - String version as semantic version representing the maximum version required for SERVER support for this binding
