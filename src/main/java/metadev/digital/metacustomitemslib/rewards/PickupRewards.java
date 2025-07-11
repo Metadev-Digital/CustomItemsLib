@@ -32,7 +32,7 @@ public class PickupRewards {
 					if (Core.getCoreRewardManager().getDroppedMoney().containsKey(item.getEntityId()))
 						Core.getCoreRewardManager().getDroppedMoney().remove(item.getEntityId());
 					if (Core.getCompatibilityManager().isCompatibilityLoaded(Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.ProtocolLib.getName())))
-						ProtocolLibCompat.pickupMoney(player, item); // TODO: OTHER END OF ISCOMPATIBLITYENABLED WHICH NEEDS TESTED
+						ProtocolLibCompat.pickupMoney(player, item);
 
 					if (reward.getMoney() == 0) {
 						Core.getMessages().debug("%s picked up a %s" + ChatColor.RESET + " (# of rewards left=%s)",
