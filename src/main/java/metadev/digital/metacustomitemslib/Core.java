@@ -5,18 +5,14 @@ import metadev.digital.metacustomitemslib.commands.DebugCommand;
 import metadev.digital.metacustomitemslib.commands.ReloadCommand;
 import metadev.digital.metacustomitemslib.commands.UpdateCommand;
 import metadev.digital.metacustomitemslib.commands.VersionCommand;
-import metadev.digital.metacustomitemslib.compatibility.ActionbarCompat;
-import metadev.digital.metacustomitemslib.compatibility.BagOfGoldCompat;
-import metadev.digital.metacustomitemslib.compatibility.CMICompat;
-import metadev.digital.metacustomitemslib.compatibility.CompatPlugin;
+import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
 import metadev.digital.metacustomitemslib.compatibility.CompatibilityManager;
-import metadev.digital.metacustomitemslib.compatibility.MobHuntingCompat;
-import metadev.digital.metacustomitemslib.compatibility.ProtocolLibCompat;
-import metadev.digital.metacustomitemslib.compatibility.TitleManagerCompat;
+import metadev.digital.metacustomitemslib.compatibility.addons.*;
 import metadev.digital.metacustomitemslib.config.ConfigManager;
 import metadev.digital.metacustomitemslib.config.Migrator;
 import metadev.digital.metacustomitemslib.config.MigratorException;
 import metadev.digital.metacustomitemslib.messages.Messages;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import metadev.digital.metacustomitemslib.rewards.CoreRewardManager;
 import metadev.digital.metacustomitemslib.rewards.RewardBlockManager;
 import metadev.digital.metacustomitemslib.server.Servers;
@@ -64,11 +60,13 @@ public class Core extends JavaPlugin {
 
 	public boolean disabling = false;
 
-	//TODO: Move logs to messages
-	public static final String PREFIX = ChatColor.GOLD + "[CustomItemsLib] " + ChatColor.RESET;
-	public static final String PREFIX_DEBUG = ChatColor.GOLD + "[CustomItemsLib][Debug] " + ChatColor.RESET;
-	public static final String PREFIX_WARNING = ChatColor.GOLD + "[CustomItemsLib][Warning] " + ChatColor.RED;
-	public static final String PREFIX_ERROR = ChatColor.GOLD + "[CustomItemsLib][Error] " + ChatColor.RED;
+	// PROJECT HEALTH REMAINING OBJECTIVES
+	// TODO: TEST ACTIONBARHELPER AND RELATED COMPAT COMMANDS
+	// TODO: COREREWARDSLISTENER & PICKUPREWARDS SINCE THEY'VE MOVED FROM STATIC BAGOFGOLD METHOD TO CORE.CONFIGMANAGER
+	// TODO: REWORK SERVER VERSION HANDLING
+	// TODO: REWORK MOB ENTITY IF STATEMENT TREE HANDLING
+	// TODO: ADD TRANSLATIONS FOR NEW COMPAT FEATURE CONSOLE MESSAGES & CONFIG MIGRATION PROCESS
+	// TODO: AUDIT CONFIG AND APPLY A NEW VERSION
 
 	@Override
 	public void onLoad() {
@@ -109,7 +107,7 @@ public class Core extends JavaPlugin {
 
 		List<String> itemtypes = Arrays.asList("SKULL", "ITEM", "KILLER", "KILLED", "GRINGOTTS_STYLE");
 		if (!itemtypes.contains(mConfig.rewardItemtype)) {
-			Bukkit.getConsoleSender().sendMessage(PREFIX + ChatColor.RED
+			Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX + ChatColor.RED
 					+ "The type define with reward_itemtype in your config is unknown: " + mConfig.rewardItemtype);
 		}
 
@@ -149,14 +147,14 @@ public class Core extends JavaPlugin {
 
 		mCompatibilityManager = new CompatibilityManager(plugin);
 
-		mCompatibilityManager.registerPlugin(ProtocolLibCompat.class, CompatPlugin.ProtocolLib);
+		mCompatibilityManager.registerPlugin(ProtocolLibCompat.class, SupportedPluginEntities.ProtocolLib);
 
-		mCompatibilityManager.registerPlugin(TitleManagerCompat.class, CompatPlugin.TitleManager);
-		mCompatibilityManager.registerPlugin(ActionbarCompat.class, CompatPlugin.Actionbar);
-		mCompatibilityManager.registerPlugin(CMICompat.class, CompatPlugin.CMI);
+		mCompatibilityManager.registerPlugin(TitleManagerCompat.class, SupportedPluginEntities.TitleManager);
+		mCompatibilityManager.registerPlugin(CMILibCompat.class, SupportedPluginEntities.CMILib);
+		mCompatibilityManager.registerPlugin(CMICompat.class, SupportedPluginEntities.CMI);
 
-		mCompatibilityManager.registerPlugin(BagOfGoldCompat.class, CompatPlugin.BagOfGold);
-		mCompatibilityManager.registerPlugin(MobHuntingCompat.class, CompatPlugin.MobHunting);
+		mCompatibilityManager.registerPlugin(BagOfGoldCompat.class, SupportedPluginEntities.BagOfGold);
+		mCompatibilityManager.registerPlugin(MobHuntingCompat.class, SupportedPluginEntities.MobHunting);
 
 		// Hook into Vault or Reserve
 		mEconomyManager = new EconomyManager(this);
@@ -169,6 +167,10 @@ public class Core extends JavaPlugin {
 			getMessages().error("===============================================");
 			return;
 		}
+
+		// Toggle Core Feature after compats are loaded
+		// TODO: Core Feature Handler
+		mMessages.instantiateActionBarHelper();
 
 		// Check for new updates
 		mUpdateManager = new UpdateManager(plugin);
@@ -190,6 +192,8 @@ public class Core extends JavaPlugin {
 			mRewardBlockManager.saveData();
 			getMessages().debug("Saving worldgroups.");
 			mWorldGroupManager.save();
+			getMessages().debug("Shutting down compatibilities.");
+			mCompatibilityManager.triggerSoftShutdown();
 			getMessages().debug("Shutdown StoreManager");
 			mDataStoreManager.shutdown();
 			getMessages().debug("Shutdown Store");
@@ -221,6 +225,10 @@ public class Core extends JavaPlugin {
 
 	public static RewardBlockManager getRewardBlockManager() {
 		return mRewardBlockManager;
+	}
+
+	public static CompatibilityManager getCompatibilityManager() {
+		return mCompatibilityManager;
 	}
 
 	public static IDataStore getStoreManager() {

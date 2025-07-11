@@ -28,6 +28,8 @@ commands:
     permission: customitemslib.cmd
     aliases:
       - cil
+      - mcil
+      - metacustomitemslib
     usage: /<command> command
 permissions:
   customitemslib.cmd:

@@ -183,6 +183,23 @@ public class Servers {
 	// *******************************************************************
 	// Version detection
 	// *******************************************************************
+	public static String getServerVersion() {
+		return Bukkit.getBukkitVersion().split("-")[0];
+	}
+
+	public static ArchitectureEnum getServerArchitecture() {
+		String serverName = Bukkit.getServer().getName();
+		String versionTitle = Bukkit.getServer().getVersion().toLowerCase();
+
+		if (serverName.equalsIgnoreCase("Paper") && versionTitle.contains("paper")) return ArchitectureEnum.PAPER;
+		if (serverName.equalsIgnoreCase("Purpur") && versionTitle.contains("purpur")) return ArchitectureEnum.PURPUR;
+		if (serverName.equalsIgnoreCase("CraftBukkit") && versionTitle.contains("spigot")) return ArchitectureEnum.SPIGOT;
+		if (serverName.equalsIgnoreCase("CraftBukkit") && versionTitle.contains("bukkit")) return ArchitectureEnum.BUKKIT;
+		if (serverName.equalsIgnoreCase("Glowstone")) return  ArchitectureEnum.GLOWSTONE;
+
+		return ArchitectureEnum.UNKNOWN;
+	}
+
 	public static boolean isGlowstoneServer() {
 		return Bukkit.getServer().getName().equalsIgnoreCase("Glowstone");
 	}

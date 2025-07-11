@@ -1,11 +1,15 @@
 package metadev.digital.metacustomitemslib.compatibility;
 
 import metadev.digital.metacustomitemslib.Core;
+import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
+import metadev.digital.metacustomitemslib.compatibility.exceptions.SpinupShutdownException;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.PluginEnableEvent;
+import org.bukkit.plugin.Plugin;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -15,19 +19,19 @@ public class CompatibilityManager implements Listener {
 
 	private Core plugin;
 	private static HashSet<Object> mCompatClasses = new HashSet<Object>();
-	private static HashMap<CompatPlugin, Class<?>> mWaitingCompatClasses = new HashMap<CompatPlugin, Class<?>>();
+	private static HashMap<SupportedPluginEntities, Class<?>> mWaitingCompatClasses = new HashMap<SupportedPluginEntities, Class<?>>();
 
 	public CompatibilityManager(Core plugin) {
 		this.plugin = plugin;
 		Bukkit.getPluginManager().registerEvents(this, plugin);
 	}
 
-	public void registerPlugin(@SuppressWarnings("rawtypes") Class c, CompatPlugin pluginName) {
+	public void registerPlugin(@SuppressWarnings("rawtypes") Class c, SupportedPluginEntities pluginName) {
 		try {
 			register(c, pluginName);
 		} catch (Exception e) {
 			Bukkit.getConsoleSender()
-					.sendMessage(Core.PREFIX_ERROR + "CustomItemsLib could not register with [" + pluginName
+					.sendMessage(Prefixes.PREFIX_ERROR + Prefixes.PLUGIN + " could not register with [" + pluginName
 							+ "] please check if [" + pluginName + "] is compatible with the server ["
 							+ Bukkit.getServer().getBukkitVersion() + "]");
 			if (Core.getConfigManager().debug)
@@ -41,7 +45,7 @@ public class CompatibilityManager implements Listener {
 	 * @param compatibilityHandler The class that will be created
 	 * @param pluginName           The name of the plugin to check
 	 */
-	private void register(Class<?> compatibilityHandler, CompatPlugin pluginName) {
+	private void register(Class<?> compatibilityHandler, SupportedPluginEntities pluginName) {
 		if (Bukkit.getPluginManager().isPluginEnabled(pluginName.getName())) {
 			try {
 				mCompatClasses.add(compatibilityHandler.newInstance());
@@ -68,12 +72,34 @@ public class CompatibilityManager implements Listener {
 		return false;
 	}
 
+	public boolean isCompatibilityLoaded(Plugin enableCheck) {
+		for (Object compatClass : mCompatClasses) {
+			if(compatClass.getClass().isAssignableFrom(ICompat.class) && compatClass.getClass().getName().equalsIgnoreCase(enableCheck.getClass().getName())){
+				return ((ICompat) compatClass).isLoaded();
+			}
+		}
+
+		return false;
+	}
+
+	public void triggerSoftShutdown() {
+        for (Object compatClass : mCompatClasses) {
+			if(compatClass.getClass().isAssignableFrom(ICompat.class)){
+				try{
+					if(((ICompat) compatClass).isLoaded()) ((ICompat) compatClass).shutdown();
+				} catch (SpinupShutdownException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+	}
+
 	@EventHandler(priority = EventPriority.NORMAL)
 	private void onPluginEnabled(PluginEnableEvent event) {
-		CompatPlugin compatPlugin = CompatPlugin.getCompatPlugin(event.getPlugin().getName());
-		if (mWaitingCompatClasses.containsKey(compatPlugin)) {
-			registerPlugin(mWaitingCompatClasses.get(compatPlugin), compatPlugin);
-			mWaitingCompatClasses.remove(compatPlugin);
+		SupportedPluginEntities supportedPlugin = SupportedPluginEntities.getSupportedPlugin(event.getPlugin().getName());
+		if (mWaitingCompatClasses.containsKey(supportedPlugin)) {
+			registerPlugin(mWaitingCompatClasses.get(supportedPlugin), supportedPlugin);
+			mWaitingCompatClasses.remove(supportedPlugin);
 		}
 	}
 
