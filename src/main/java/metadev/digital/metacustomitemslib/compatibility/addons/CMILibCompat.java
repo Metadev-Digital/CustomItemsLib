@@ -1,7 +1,6 @@
 package metadev.digital.metacustomitemslib.compatibility.addons;
 
-import com.Zrips.CMI.CMI;
-import com.Zrips.CMI.Modules.Holograms.HologramManager;
+import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.compatibility.Feature;
 import metadev.digital.metacustomitemslib.compatibility.FeatureList;
 import metadev.digital.metacustomitemslib.compatibility.ICompat;
@@ -12,24 +11,27 @@ import metadev.digital.metacustomitemslib.compatibility.enums.VersionSetIdentifi
 import metadev.digital.metacustomitemslib.compatibility.exceptions.FeatureNotFoundException;
 import metadev.digital.metacustomitemslib.compatibility.exceptions.SpinupShutdownException;
 import metadev.digital.metacustomitemslib.messages.MessageHelper;
-import metadev.digital.metacustomitemslib.Core;
+import net.Zrips.CMILib.ActionBar.CMIActionBar;
+import net.Zrips.CMILib.BossBar.BossBarInfo;
+import net.Zrips.CMILib.CMILib;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-public class CMICompat implements ICompat, IFeatureHolder {
+public class CMILibCompat implements ICompat, IFeatureHolder {
 
 	// ****** Standard ******
 	private Plugin compatPlugin;
 	private static boolean enabled = false, supported = false, loaded = false;
-	private static String sMin, sMax, pMin = "9.7.4.1", pMax;
+	private static String sMin, sMax, pMin = "1.5.4.4", pMax;
 	private static FeatureList features;
 
 	// ****** Plugin Specific ******
 
-	// https://www.spigotmc.org/resources/cmi-ranks-kits-portals-essentials-mysql-sqlite-bungeecord.3742/
+	// https://www.spigotmc.org/resources/cmilib.87610/
 
-	public CMICompat() {
-		compatPlugin = Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.CMI.getName());
+	public CMILibCompat() {
+		compatPlugin = Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.CMILib.getName());
 
 		if(compatPlugin != null) {
 			try {
@@ -38,6 +40,7 @@ public class CMICompat implements ICompat, IFeatureHolder {
 				// Do nothing beyond report error
 			}
 		}
+
 	}
 
 	// ****** ICompat ******
@@ -109,7 +112,7 @@ public class CMICompat implements ICompat, IFeatureHolder {
 		features = new FeatureList(getPluginVersion());
 
 		// Base plugin
-		enabled = Core.getConfigManager().enableIntegrationCMI;
+		enabled = Core.getConfigManager().enableIntegrationCMILib;
 		features.addFeature("base", pMin, BoundIdentifierEnum.FLOOR, VersionSetIdentifierEnum.PLUGIN, enabled);
 		supported = isFeatureSupported("base");
 
@@ -166,13 +169,15 @@ public class CMICompat implements ICompat, IFeatureHolder {
 
 	// ****** Plugin Specific ******
 
-	public CMI getCMIPlugin() {
-		return (CMI) compatPlugin;
+	public static void sendActionBarMessage(Player player, String text) {
+		CMIActionBar.send(player, text);
 	}
 
-	public static boolean isFullyLoaded() { return CMI.getInstance().isFullyLoaded(); }
-
-	public HologramManager getHologramManager() {
-		return ((CMI) compatPlugin).getHologramManager();
+	public static void sendBossBarMessage(Player player, String text) {
+		BossBarInfo bossBar = new BossBarInfo(player, "...");
+		bossBar.setSeconds(10);
+		bossBar.setTitleOfBar(text);
+		bossBar.setKeepForTicks(0);
+		CMILib.getInstance().getBossBarManager().addBossBar(player, bossBar);
 	}
 }
