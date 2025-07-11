@@ -72,8 +72,8 @@ public class CompatibilityManager implements Listener {
 		return false;
 	}
 
-	public static boolean isCompatibilityEnabled(Plugin enableCheck) {
-		for (Object compatClass : mCompatClasses) { // TODO: isCompatibilityEnabled NEEDS TESTED
+	public boolean isCompatibilityLoaded(Plugin enableCheck) {
+		for (Object compatClass : mCompatClasses) {
 			if(compatClass.getClass().isAssignableFrom(ICompat.class) && compatClass.getClass().getName().equalsIgnoreCase(enableCheck.getClass().getName())){
 				return ((ICompat) compatClass).isLoaded();
 			}
