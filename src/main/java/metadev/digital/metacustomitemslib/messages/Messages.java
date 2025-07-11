@@ -2,9 +2,8 @@ package metadev.digital.metacustomitemslib.messages;
 
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.Strings;
-import metadev.digital.metacustomitemslib.compatibility.addons.ActionbarCompat;
-import metadev.digital.metacustomitemslib.compatibility.addons.CMICompat;
-import metadev.digital.metacustomitemslib.compatibility.addons.CitizensCompat;
+import metadev.digital.metacustomitemslib.compatibility.addons.ActionBarHelper;
+import metadev.digital.metacustomitemslib.compatibility.addons.CMILibCompat;
 import metadev.digital.metacustomitemslib.compatibility.addons.TitleManagerCompat;
 import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import metadev.digital.metacustomitemslib.server.Servers;
@@ -28,7 +27,7 @@ import java.util.stream.Collectors;
 public class Messages {
 
 	private Plugin plugin;
-
+	private ActionBarHelper actionBarHelper;
 	private File dataFolder;
 	private String datapath = "";
 
@@ -399,7 +398,7 @@ public class Messages {
 
 		Core.getMessages().debug(final_message);
 
-		if (  TitleManagerCompat.isSupported() || ActionbarCompat.isSupported()	|| CMICompat.isSupported()) {
+		if ( actionBarHelper != null && actionBarHelper.isActionBarActive()) {
 			long last = 0L;
 			long time_between_messages = 80L;
 			long delay = 1L, now = System.currentTimeMillis();
@@ -443,16 +442,16 @@ public class Messages {
 		if (isEmpty(message))
 			return;
 
-		if (ActionbarCompat.isSupported()) {
-			ActionbarCompat.setMessage(player, message);
-		} else if (CMICompat.isSupported()) {
-			CMICompat.sendActionBarMessage(player, message);
-		} else {
-			if (!Core.getPlayerSettingsManager().getPlayerSettings(player).isMuted())
-				if (Servers.isMC115OrNewer())
-					player.sendTitle("", message);
-				else
-					player.sendMessage(message);
+		if ( actionBarHelper != null && actionBarHelper.isActionBarActive()) {
+			if(actionBarHelper.isCMILibActive()) CMILibCompat.sendActionBarMessage(player, message);
+			else if(actionBarHelper.isTitleManagerActive()) TitleManagerCompat.setActionBar(player, message);
+			else {
+				if (!Core.getPlayerSettingsManager().getPlayerSettings(player).isMuted())
+					if (Servers.isMC115OrNewer())
+						player.sendTitle("", message);
+					else
+						player.sendMessage(message);
+			}
 		}
 	}
 
@@ -464,8 +463,7 @@ public class Messages {
 	 * @param args
 	 */
 	public void learn(Player player, String text, Object... args) {
-		if (player != null && !CitizensCompat.isNPC(player)
-				&& Core.getPlayerSettingsManager().getPlayerSettings(player).isLearningMode() && !isEmpty(text))
+		if (player != null && Core.getPlayerSettingsManager().getPlayerSettings(player).isLearningMode() && !isEmpty(text))
 			playerBossbarMessage(player, text, args);
 	}
 
@@ -481,8 +479,8 @@ public class Messages {
 		if (isEmpty(message))
 			return;
 
-		if (CMICompat.isSupported()) {
-			CMICompat.sendBossBarMessage(player, String.format(message, args));
+		if ( actionBarHelper != null && actionBarHelper.isCMILibActive()) {
+			CMILibCompat.sendBossBarMessage(player, String.format(message, args));
 		} else {
 			player.sendMessage(ChatColor.AQUA + getString("core.learn.prefix") + " " + String.format(message, args));
 		}
@@ -499,4 +497,7 @@ public class Messages {
 			sender.sendMessage(message);
 	}
 
+	public void instantiateActionBarHelper() {
+		actionBarHelper = new ActionBarHelper();
+	}
 }
