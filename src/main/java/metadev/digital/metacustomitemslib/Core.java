@@ -142,7 +142,7 @@ public class Core extends JavaPlugin {
 		mCompatibilityManager.registerPlugin(ProtocolLibCompat.class, SupportedPluginEntities.ProtocolLib);
 
 		mCompatibilityManager.registerPlugin(TitleManagerCompat.class, SupportedPluginEntities.TitleManager);
-		mCompatibilityManager.registerPlugin(ActionbarCompat.class, SupportedPluginEntities.Actionbar);
+		mCompatibilityManager.registerPlugin(CMILibCompat.class, SupportedPluginEntities.CMILib);
 		mCompatibilityManager.registerPlugin(CMICompat.class, SupportedPluginEntities.CMI);
 
 		mCompatibilityManager.registerPlugin(BagOfGoldCompat.class, SupportedPluginEntities.BagOfGold);
@@ -159,6 +159,10 @@ public class Core extends JavaPlugin {
 			getMessages().error("===============================================");
 			return;
 		}
+
+		// Toggle Core Feature after compats are loaded
+		// TODO: Core Feature Handler
+		mMessages.instantiateActionBarHelper();
 
 		// Check for new updates
 		mUpdateManager = new UpdateManager(plugin);
@@ -213,6 +217,10 @@ public class Core extends JavaPlugin {
 
 	public static RewardBlockManager getRewardBlockManager() {
 		return mRewardBlockManager;
+	}
+
+	public static CompatibilityManager getCompatibilityManager() {
+		return mCompatibilityManager;
 	}
 
 	public static IDataStore getStoreManager() {
