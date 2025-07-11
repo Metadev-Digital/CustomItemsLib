@@ -5,7 +5,7 @@ import metadev.digital.metabagofgold.PlayerBalance;
 import metadev.digital.metabagofgold.compatibility.ShopkeepersCompat;
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.Tools;
-import metadev.digital.metacustomitemslib.compatibility.addons.BagOfGoldCompat;
+import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
 import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import metadev.digital.metacustomitemslib.server.Servers;
 import org.bukkit.Bukkit;
@@ -169,7 +169,7 @@ public class CoreRewardListeners implements Listener {
 						// when dropping from the quickbar using Q key
 						Core.getMessages().debug("%s dropped %s %s using Q key", player.getName(), money,
 								reward.getDisplayName());
-						if (BagOfGoldCompat.isSupported())
+						if (Core.getCompatibilityManager().isCompatibilityLoaded(Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.BagOfGold.getName())))
 							BagOfGold.getInstance().getRewardManager().removeMoneyFromPlayerBalance(player, money);
 					}
 				}
@@ -209,7 +209,7 @@ public class CoreRewardListeners implements Listener {
 						ChatColor.stripColor(reward.toString()));
 				reward.setUniqueID(Core.getRewardBlockManager().getNextID());
 				Core.getRewardBlockManager().addReward(block, reward);
-				if (BagOfGoldCompat.isSupported() && reward.isMoney()) {
+				if (Core.getCompatibilityManager().isCompatibilityLoaded(Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.BagOfGold.getName())) && reward.isMoney()) {
 					BagOfGold.getInstance().getRewardManager().removeMoneyFromPlayerBalance(player, reward.getMoney());
 				}
 			} else {
@@ -327,7 +327,7 @@ public class CoreRewardListeners implements Listener {
 					Core.getCoreRewardManager().getDroppedMoney().remove(entity.getEntityId());
 					Reward reward = Reward.getReward(item);
 					if (reward.checkHash()) {
-						if (BagOfGoldCompat.isSupported() && reward.isMoney()) {
+						if (Core.getCompatibilityManager().isCompatibilityLoaded(Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.BagOfGold.getName())) && reward.isMoney()) {
 							double addedMoney = Core.getCoreRewardManager().addBagOfGoldMoneyToPlayer(player,
 									reward.getMoney());
 							if (addedMoney > 0) {
@@ -543,7 +543,7 @@ public class CoreRewardListeners implements Listener {
 		}
 
 		List<SlotType> allowedSlots;
-		if (BagOfGoldCompat.isSupported() && ShopkeepersCompat.isSupported())
+		if (Core.getCompatibilityManager().isCompatibilityLoaded(Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.BagOfGold.getName())) && ShopkeepersCompat.isSupported())
 			allowedSlots = Arrays.asList(SlotType.CONTAINER, SlotType.QUICKBAR, SlotType.OUTSIDE, SlotType.ARMOR,
 					SlotType.CRAFTING, SlotType.RESULT);
 		else
@@ -595,7 +595,7 @@ public class CoreRewardListeners implements Listener {
 							Core.getMessages().debug("COLLECT_TO_CURSOR: %s collected %s money to the cursor",
 									player.getName(), saldo);
 							if (clickedInventory.getType() == InventoryType.PLAYER) {
-								if (BagOfGoldCompat.isSupported() && cursor.isMoney())
+								if (Core.getCompatibilityManager().isCompatibilityLoaded(Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.BagOfGold.getName())) && cursor.isMoney())
 									BagOfGold.getInstance().getRewardManager().removeMoneyFromPlayerBalance(player,
 											saldo - money_in_hand);
 							}
@@ -614,7 +614,7 @@ public class CoreRewardListeners implements Listener {
 							Core.getMessages().debug(
 									"DROP_ALL_CURSOR, DROP_ONE_CURSOR: %s dropped %s BagOfGold outside the inventory",
 									player.getName(), reward.getMoney());
-							if (BagOfGoldCompat.isSupported() && reward.isMoney())
+							if (Core.getCompatibilityManager().isCompatibilityLoaded(Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.BagOfGold.getName())) && reward.isMoney())
 								BagOfGold.getInstance().getRewardManager().addMoneyToPlayerBalance(player,
 										reward.getMoney());
 						}
@@ -628,7 +628,7 @@ public class CoreRewardListeners implements Listener {
 							Reward reward = Reward.getReward(isCursor);
 							Core.getMessages().debug("DROP_ALL_SLOT, DROP_ONE_SLOT: %s dropped %s BagOfGold from slot",
 									player.getName(), reward.getMoney());
-							if (BagOfGoldCompat.isSupported() && reward.isMoney())
+							if (Core.getCompatibilityManager().isCompatibilityLoaded(Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.BagOfGold.getName())) && reward.isMoney())
 								BagOfGold.getInstance().getRewardManager().addMoneyToPlayerBalance(player,
 										reward.getMoney());
 						}
@@ -636,7 +636,7 @@ public class CoreRewardListeners implements Listener {
 					break;
 				case HOTBAR_SWAP, HOTBAR_MOVE_AND_READD:
 					// can be made by using key F or the keyboard and number keys
-					if (BagOfGoldCompat.isSupported() && (Reward.isReward(isCurrentSlot) || Reward.isReward(isCursor)
+					if (Core.getCompatibilityManager().isCompatibilityLoaded(Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.BagOfGold.getName())) && (Reward.isReward(isCurrentSlot) || Reward.isReward(isCursor)
 							|| Reward.isReward(isNumberKey) || Reward.isReward(isSwapOffhand))) {
 						if (clickedInventory.getType() != InventoryType.PLAYER) {
 							Reward keyReward = Reward.isReward(isNumberKey) ? Reward.getReward(isNumberKey)
@@ -656,7 +656,7 @@ public class CoreRewardListeners implements Listener {
 					break;
 				case MOVE_TO_OTHER_INVENTORY:
 					// Shift mouse click on the item to move item to another inventory
-					if (BagOfGoldCompat.isSupported()
+					if (Core.getCompatibilityManager().isCompatibilityLoaded(Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.BagOfGold.getName()))
 							&& (Reward.isReward(isCurrentSlot) || Reward.isReward(isCursor))) {
 						Reward reward = Reward.isReward(isCurrentSlot) ? Reward.getReward(isCurrentSlot)
 								: Reward.getReward(isCursor);
@@ -713,7 +713,7 @@ public class CoreRewardListeners implements Listener {
 							Core.getMessages().debug(
 									"PICKUP_ALL, PICKUP_ONE, PICKUP_SOME: %s moved BagOfGold (%s) out of Inventory",
 									player.getName(), reward.getMoney());
-							if (BagOfGoldCompat.isSupported() && reward.isMoney() && slotType != SlotType.ARMOR) {
+							if (Core.getCompatibilityManager().isCompatibilityLoaded(Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.BagOfGold.getName())) && reward.isMoney() && slotType != SlotType.ARMOR) {
 								Core.getMessages().debug(
 										"PICKUP_ALL, PICKUP_ONE, PICKUP_SOME: Remove %s money from %s balance",
 										reward.getMoney(), player.getName());
@@ -748,7 +748,7 @@ public class CoreRewardListeners implements Listener {
 
 								if (clickedInventory.getType() == InventoryType.PLAYER
 										|| clickedInventory.getType() == InventoryType.CRAFTING) {
-									if (BagOfGoldCompat.isSupported() && reward.isMoney()
+									if (Core.getCompatibilityManager().isCompatibilityLoaded(Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.BagOfGold.getName())) && reward.isMoney()
 											&& slotType != SlotType.ARMOR) {
 										Core.getMessages().debug("PICKUP_HALF: Remove %s money from %s balance",
 												reward.getMoney(), player.getName());
@@ -803,7 +803,7 @@ public class CoreRewardListeners implements Listener {
 									event.setCursor(isCursor);
 								}
 
-								if (BagOfGoldCompat.isSupported()
+								if (Core.getCompatibilityManager().isCompatibilityLoaded(Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.BagOfGold.getName()))
 										&& clickedInventory.getType() == InventoryType.PLAYER) {
 									BagOfGold.getInstance().getRewardManager().addMoneyToPlayerBalance(player, bagSize);
 								}
@@ -926,7 +926,7 @@ public class CoreRewardListeners implements Listener {
 								
 							}
 					
-							if (BagOfGoldCompat.isSupported()
+							if (Core.getCompatibilityManager().isCompatibilityLoaded(Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.BagOfGold.getName()))
 									&& clickedInventory.getType() == InventoryType.PLAYER) {
 								BagOfGold.getInstance().getRewardManager().addMoneyToPlayerBalance(player,
 										added_money);							
@@ -1017,7 +1017,7 @@ public class CoreRewardListeners implements Listener {
 								event.setCursor(isCurrentSlot);
 								Core.getMessages().debug("SWAP_WITH_CURSOR: %s merged two rewards(1)",
 										player.getName());
-								if (BagOfGoldCompat.isSupported()
+								if (Core.getCompatibilityManager().isCompatibilityLoaded(Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.BagOfGold.getName()))
 										&& clickedInventory.getType() == InventoryType.PLAYER) {
 									BagOfGold.getInstance().getRewardManager().addMoneyToPlayerBalance(player,
 											added_money);
@@ -1037,7 +1037,7 @@ public class CoreRewardListeners implements Listener {
 								event.setCursor(isCurrentSlot);
 								Core.getMessages().debug("SWAP_WITH_CURSOR: %s merged two rewards(2)",
 										player.getName());
-								if (BagOfGoldCompat.isSupported()
+								if (Core.getCompatibilityManager().isCompatibilityLoaded(Bukkit.getPluginManager().getPlugin(SupportedPluginEntities.BagOfGold.getName()))
 										&& clickedInventory.getType() == InventoryType.PLAYER) {
 									BagOfGold.getInstance().getRewardManager().addMoneyToPlayerBalance(player,
 											added_money);
