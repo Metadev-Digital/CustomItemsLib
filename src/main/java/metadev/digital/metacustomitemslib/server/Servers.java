@@ -8,66 +8,82 @@ public class Servers {
 	// Version detection TODO: Unfuck this, this is a terrible way to do this
 	// *******************************************************************
 
+	@Deprecated
 	public static boolean isMC121() {
 		return Bukkit.getBukkitVersion().contains("1.21");
 	}
 
+	@Deprecated
 	public static boolean isMC120() {
 		return Bukkit.getBukkitVersion().contains("1.20");
 	}
-	
+
+	@Deprecated
 	public static boolean isMC119() {
 		return Bukkit.getBukkitVersion().contains("1.19");
 	}
-	
+
+	@Deprecated
 	public static boolean isMC118() {
 		return Bukkit.getBukkitVersion().contains("1.18");
 	}
-	
+
+	@Deprecated
 	public static boolean isMC117() {
 		return Bukkit.getBukkitVersion().contains("1.17");
 	}
-	
+
+	@Deprecated
 	public static boolean isMC1162() {
 		return Bukkit.getBukkitVersion().contains("1.16.2");
 	}
-	
+
+	@Deprecated
 	public static boolean isMC116() {
 		return Bukkit.getBukkitVersion().contains("1.16");
 	}
-	
+
+	@Deprecated
 	public static boolean isMC115() {
 		return Bukkit.getBukkitVersion().contains("1.15");
 	}
 
+	@Deprecated
 	public static boolean isMC114() {
 		return Bukkit.getBukkitVersion().contains("1.14");
 	}
 
+	@Deprecated
 	public static boolean isMC113() {
 		return Bukkit.getBukkitVersion().contains("1.13");
 	}
 
+	@Deprecated
 	public static boolean isMC112() {
 		return Bukkit.getBukkitVersion().contains("1.12");
 	}
 
+	@Deprecated
 	public static boolean isMC111() {
 		return Bukkit.getBukkitVersion().contains("1.11");
 	}
 
+	@Deprecated
 	public static boolean isMC110() {
 		return Bukkit.getBukkitVersion().contains("1.10");
 	}
 
+	@Deprecated
 	public static boolean isMC19() {
 		return Bukkit.getBukkitVersion().contains("1.9");
 	}
 
+	@Deprecated
 	public static boolean isMC18() {
 		return Bukkit.getBukkitVersion().contains("1.8");
 	}
 
+	@Deprecated
 	public static boolean isMC121OrNewer() {
 		if (isMC121())
 			return true;
@@ -76,6 +92,7 @@ public class Servers {
 		return true;
 	}
 
+	@Deprecated
 	public static boolean isMC120OrNewer() {
 		if (isMC120())
 			return true;
@@ -84,6 +101,7 @@ public class Servers {
 		return true;
 	}
 
+	@Deprecated
 	public static boolean isMC119OrNewer() {
 		if (isMC119())
 			return true;
@@ -91,7 +109,8 @@ public class Servers {
 			return false;
 		return true;
 	}
-	
+
+	@Deprecated
 	public static boolean isMC118OrNewer() {
 		if (isMC118())
 			return true;
@@ -99,7 +118,8 @@ public class Servers {
 			return false;
 		return true;
 	}
-	
+
+	@Deprecated
 	public static boolean isMC117OrNewer() {
 		if (isMC117())
 			return true;
@@ -107,7 +127,8 @@ public class Servers {
 			return false;
 		return true;
 	}
-	
+
+	@Deprecated
 	public static boolean isMC1162OrNewer() {
 		if (isMC1162())
 			return true;
@@ -115,7 +136,8 @@ public class Servers {
 			return false;
 		return true;
 	}
-	
+
+	@Deprecated
 	public static boolean isMC116OrNewer() {
 		if (isMC116())
 			return true;
@@ -124,6 +146,7 @@ public class Servers {
 		return true;
 	}
 
+	@Deprecated
 	public static boolean isMC115OrNewer() {
 		if (isMC115())
 			return true;
@@ -132,6 +155,7 @@ public class Servers {
 		return true;
 	}
 
+	@Deprecated
 	public static boolean isMC114OrNewer() {
 		if (isMC114())
 			return true;
@@ -140,6 +164,7 @@ public class Servers {
 		return true;
 	}
 
+	@Deprecated
 	public static boolean isMC113OrNewer() {
 		if (isMC113())
 			return true;
@@ -148,6 +173,7 @@ public class Servers {
 		return true;
 	}
 
+	@Deprecated
 	public static boolean isMC112OrNewer() {
 		if (isMC112())
 			return true;
@@ -156,6 +182,7 @@ public class Servers {
 		return true;
 	}
 
+	@Deprecated
 	public static boolean isMC111OrNewer() {
 		if (isMC111())
 			return true;
@@ -164,6 +191,7 @@ public class Servers {
 		return true;
 	}
 
+	@Deprecated
 	public static boolean isMC110OrNewer() {
 		if (isMC110())
 			return true;
@@ -172,6 +200,7 @@ public class Servers {
 		return true;
 	}
 
+	@Deprecated
 	public static boolean isMC19OrNewer() {
 		if (isMC19())
 			return true;
@@ -185,6 +214,10 @@ public class Servers {
 	// *******************************************************************
 	public static String getServerVersion() {
 		return Bukkit.getBukkitVersion().split("-")[0];
+	}
+
+	public static boolean serverIsAfterProvidedVersion(String compareVersion) {
+		return getServerVersion().compareTo(compareVersion) >= 0;
 	}
 
 	public static ArchitectureEnum getServerArchitecture() {
