@@ -3,7 +3,6 @@ package metadev.digital.metacustomitemslib.update;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.*;
-import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -77,7 +76,7 @@ public final class UpdateChecker {
         return CompletableFuture.supplyAsync(() -> {
             int responseCode = -1;
             try {
-                URL url = new URI(URLEncoder.encode(UPDATE_URL, StandardCharsets.UTF_8)).toURL();
+                URL url = new URI(UPDATE_URL).toURL();
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.addRequestProperty("User-Agent", USER_AGENT);
 

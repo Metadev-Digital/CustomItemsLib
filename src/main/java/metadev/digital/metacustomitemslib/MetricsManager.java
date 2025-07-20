@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,7 +32,7 @@ public class MetricsManager {
             public void run() {
                 try {
                     // make a URL to MCStats.org
-                    URL url = new URI(URLEncoder.encode("https://bstats.org/", StandardCharsets.UTF_8)).toURL();
+                    URL url = new URI("https://bstats.org/").toURL();
                     if (!started) {
                         MessageHelper.debug("check if home page can be reached");
                         HttpTools.isHomePageReachable(url, new httpCallback() {

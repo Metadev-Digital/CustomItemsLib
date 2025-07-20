@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 
 import java.io.IOException;
 import java.net.*;
-import java.nio.charset.StandardCharsets;
 
 public class HttpTools {
 
@@ -46,7 +45,7 @@ public class HttpTools {
 					if (redirect) {
 
 						// get redirect url from "location" header field
-						URI newURI = new URI(URLEncoder.encode(urlConnect.getHeaderField("Location"), StandardCharsets.UTF_8));
+						URI newURI = new URI(urlConnect.getHeaderField("Location"));
 
 						// open the new connnection again
 						urlConnect = (HttpURLConnection) newURI.toURL().openConnection();

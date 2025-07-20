@@ -18,7 +18,6 @@ import org.bukkit.profile.PlayerTextures;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.*;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
@@ -44,7 +43,7 @@ public class CoreCustomItems {
 			PlayerProfile playerProfile = Bukkit.createPlayerProfile(reward.getSkinUUID(), reward.getDisplayName().replaceAll("\\s+", "_"));
 			PlayerTextures textures = playerProfile.getTextures();
 
-			textures.setSkin(new URI(URLEncoder.encode(textureURL, StandardCharsets.UTF_8)).toURL());
+			textures.setSkin(new URI(textureURL).toURL());
 
 			skullMeta.setOwnerProfile(playerProfile);
 			skull.setItemMeta(skullMeta);
