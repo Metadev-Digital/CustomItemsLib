@@ -17,8 +17,8 @@ import org.bukkit.profile.PlayerTextures;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
@@ -44,7 +44,7 @@ public class CoreCustomItems {
 			PlayerProfile playerProfile = Bukkit.createPlayerProfile(reward.getSkinUUID(), reward.getDisplayName().replaceAll("\\s+", "_"));
 			PlayerTextures textures = playerProfile.getTextures();
 
-			textures.setSkin(new URL(textureURL));
+			textures.setSkin(new URI(URLEncoder.encode(textureURL, StandardCharsets.UTF_8)).toURL());
 
 			skullMeta.setOwnerProfile(playerProfile);
 			skull.setItemMeta(skullMeta);
@@ -56,9 +56,12 @@ public class CoreCustomItems {
         } catch (NullPointerException e) {
 			Core.getMessages().debug("setOwnerProfile on skullMeta created an NPE");
 			e.printStackTrace();
-		}
+		} catch (URISyntaxException e) {
+			Core.getMessages().debug("There was an issue building the texture url object");
+			e.printStackTrace();
+        }
 
-		return skull;
+        return skull;
     }
 
 	/**
@@ -96,6 +99,7 @@ public class CoreCustomItems {
 	 * @return
 	 * @deprecated - Player head drop system changed in 1.21.1 API
 	 */
+	@Deprecated
 	private static String[] getSkinFromUUID(UUID uuid) {
 		try {
 			URL url_1 = new URL(
@@ -131,6 +135,7 @@ public class CoreCustomItems {
 	 * @return
 	 * @deprecated - Player head drop system changed in 1.21.1 API
 	 */
+	@Deprecated
 	private static ItemStack getPlayerHeadOwningPlayer(UUID uuid, String name, int amount, double money) {
 		ItemStack skull = CoreCustomItems.getDefaultPlayerHead(amount);
 		SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
