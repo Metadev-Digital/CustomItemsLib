@@ -1,6 +1,6 @@
 name: MetaCustomItemsLib
 main: metadev.digital.metacustomitemslib.Core
-version: 2.2.0
+version: 3.0.0
 description: MetaCustomItemsLib is shared library used by BagOfGold and MobHunting.
 dev-url: https://github.com/Metadev-Digital/CustomItemsLib
 author: JebusChrystler
@@ -21,7 +21,7 @@ softdepend:
   - CMILib
   - ActionBar
   - TitleManager
-api-version: 1.21.5
+api-version: 1.21.8
 commands:
   customitemslib:
     description: Allows you to use commands in MetaCustomItemsLib
