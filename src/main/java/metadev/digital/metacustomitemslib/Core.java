@@ -5,6 +5,7 @@ import metadev.digital.metacustomitemslib.commands.DebugCommand;
 import metadev.digital.metacustomitemslib.commands.ReloadCommand;
 import metadev.digital.metacustomitemslib.commands.UpdateCommand;
 import metadev.digital.metacustomitemslib.commands.VersionCommand;
+import metadev.digital.metacustomitemslib.commands.TestCommand;
 import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
 import metadev.digital.metacustomitemslib.compatibility.CompatibilityManager;
 import metadev.digital.metacustomitemslib.compatibility.addons.*;
@@ -63,11 +64,11 @@ public class Core extends JavaPlugin {
 	// TODO: FINISH REMOVING DEPRECATED SERVER VERSION CALLS
 
 	// PROJECT HEALTH REMAINING OBJECTIVES
-	// TODO: TEST ACTIONBARHELPER AND RELATED COMPAT COMMANDS
 	// TODO: COREREWARDSLISTENER & PICKUPREWARDS SINCE THEY'VE MOVED FROM STATIC BAGOFGOLD METHOD TO CORE.CONFIGMANAGER
 	// TODO: REWORK MOB ENTITY IF STATEMENT TREE HANDLING
 	// TODO: ADD TRANSLATIONS FOR NEW COMPAT FEATURE CONSOLE MESSAGES & CONFIG MIGRATION PROCESS
 	// TODO: AUDIT CONFIG AND APPLY A NEW VERSION
+	// TODO: ADD UNIT TESTS VIA MOCKBUKKIT
 
 	@Override
 	public void onLoad() {
@@ -124,6 +125,9 @@ public class Core extends JavaPlugin {
 		mCommandDispatcher.registerCommand(new UpdateCommand(this));
 		mCommandDispatcher.registerCommand(new VersionCommand(this));
 		mCommandDispatcher.registerCommand(new DebugCommand(this));
+
+		// Test Command
+		// mCommandDispatcher.registerCommand(new TestCommand(this));
 
 		if (mConfig.databaseType.equalsIgnoreCase("mysql"))
 			mStore = new MySQLDataStore(plugin);
