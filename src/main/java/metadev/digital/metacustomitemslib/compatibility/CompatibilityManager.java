@@ -48,7 +48,7 @@ public class CompatibilityManager implements Listener {
 	private void register(Class<?> compatibilityHandler, SupportedPluginEntities pluginName) {
 		if (Bukkit.getPluginManager().isPluginEnabled(pluginName.getName())) {
 			try {
-				mCompatClasses.add(compatibilityHandler.newInstance());
+				mCompatClasses.add(compatibilityHandler.getDeclaredConstructor().newInstance());
 			} catch (Exception e) {
 				throw new RuntimeException(e);
 			}
