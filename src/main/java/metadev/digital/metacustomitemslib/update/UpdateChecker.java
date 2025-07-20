@@ -2,8 +2,8 @@ package metadev.digital.metacustomitemslib.update;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.net.*;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,7 +20,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 /**
  * A utility class to assist in checking for updates for plugins uploaded to
  * <a href="https://spigotmc.org/resources/">SpigotMC</a>. Before any members of this
- * class are accessed, {@link #init(JavaPlugin, int)} must be invoked by the plugin,
+ * class are accessed, {@link #init(JavaPlugin)} must be invoked by the plugin,
  * preferrably in its {@link JavaPlugin#onEnable()} method, though that is not a
  * requirement.
  * <p>
@@ -51,7 +51,8 @@ public final class UpdateChecker {
     };
 
     private static final String USER_AGENT = "METACUSTOMITEMSLIB-update-checker";
-    private static final String UPDATE_URL = "https://api.spigotmc.org/simple/0.1/index.php?action=getResource&id=117869";
+    private static final String PLUGIN_ID = "117869";
+    private static final String UPDATE_URL = "https://api.spigotmc.org/simple/0.1/index.php?action=getResource&id=" + PLUGIN_ID;
     private static final Pattern DECIMAL_SCHEME_PATTERN = Pattern.compile("\\d+(?:\\.\\d+)*");
 
     private static UpdateChecker instance;
@@ -59,12 +60,10 @@ public final class UpdateChecker {
     private UpdateResult lastResult = null;
 
     private final JavaPlugin plugin;
-    private final int pluginID;
     private final VersionScheme versionScheme;
 
-    private UpdateChecker(JavaPlugin plugin, int pluginID, VersionScheme versionScheme) {
+    private UpdateChecker(JavaPlugin plugin, VersionScheme versionScheme) {
         this.plugin = plugin;
-        this.pluginID = pluginID;
         this.versionScheme = versionScheme;
     }
 
@@ -78,14 +77,14 @@ public final class UpdateChecker {
         return CompletableFuture.supplyAsync(() -> {
             int responseCode = -1;
             try {
-                URL url = new URL(String.format(UPDATE_URL, pluginID));
+                URL url = new URI(URLEncoder.encode(UPDATE_URL, StandardCharsets.UTF_8)).toURL();
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.addRequestProperty("User-Agent", USER_AGENT);
 
                 InputStreamReader reader = new InputStreamReader(connection.getInputStream());
                 responseCode = connection.getResponseCode();
 
-                JsonElement element = new JsonParser().parse(reader);
+                JsonElement element = JsonParser.parseReader(reader).getAsJsonObject();
                 reader.close();
 
                 JsonObject versionObject = element.getAsJsonObject();
@@ -103,6 +102,8 @@ public final class UpdateChecker {
                 return new UpdateResult(UpdateReason.COULD_NOT_CONNECT);
             } catch (JsonSyntaxException e) {
                 return new UpdateResult(UpdateReason.INVALID_JSON);
+            } catch (URISyntaxException e) {
+                return new UpdateResult(UpdateReason.INVALID_URL);
             }
 
             return new UpdateResult(responseCode == 401 ? UpdateReason.UNAUTHORIZED_QUERY : UpdateReason.UNKNOWN_ERROR);
@@ -132,19 +133,15 @@ public final class UpdateChecker {
      * (which is recommended after initialization).
      *
      * @param plugin the plugin for which to check updates. Cannot be null
-     * @param pluginID the ID of the plugin as identified in the SpigotMC resource link. For example,
-     * "https://www.spigotmc.org/resources/veinminer.<b>12038</b>/" would expect "12038" as a value. The
-     * value must be greater than 0
      * @param versionScheme a custom version scheme parser. Cannot be null
      *
      * @return the UpdateChecker instance
      */
-    public static UpdateChecker init(JavaPlugin plugin, int pluginID, VersionScheme versionScheme) {
+    public static UpdateChecker init(JavaPlugin plugin, VersionScheme versionScheme) {
         Preconditions.checkArgument(plugin != null, "Plugin cannot be null");
-        Preconditions.checkArgument(pluginID > 0, "Plugin ID must be greater than 0");
         Preconditions.checkArgument(versionScheme != null, "null version schemes are unsupported");
 
-        return (instance == null) ? instance = new UpdateChecker(plugin, pluginID, versionScheme) : instance;
+        return (instance == null) ? instance = new UpdateChecker(plugin, versionScheme) : instance;
     }
 
     /**
@@ -153,18 +150,14 @@ public final class UpdateChecker {
      * (which is recommended after initialization).
      *
      * @param plugin the plugin for which to check updates. Cannot be null
-     * @param pluginID the ID of the plugin as identified in the SpigotMC resource link. For example,
-     * "https://www.spigotmc.org/resources/veinminer.<b>12038</b>/" would expect "12038" as a value. The
-     * value must be greater than 0
-     *
      * @return the UpdateChecker instance
      */
-    public static UpdateChecker init(JavaPlugin plugin, int pluginID) {
-        return init(plugin, pluginID, VERSION_SCHEME_DECIMAL);
+    public static UpdateChecker init(JavaPlugin plugin) {
+        return init(plugin, VERSION_SCHEME_DECIMAL);
     }
 
     /**
-     * Get the initialized instance of UpdateChecker. If {@link #init(JavaPlugin, int)} has not yet been
+     * Get the initialized instance of UpdateChecker. If {@link #init(JavaPlugin)} has not yet been
      * invoked, this method will throw an exception.
      *
      * @return the UpdateChecker instance
@@ -175,7 +168,7 @@ public final class UpdateChecker {
     }
 
     /**
-     * Check whether the UpdateChecker has been initialized or not (if {@link #init(JavaPlugin, int)}
+     * Check whether the UpdateChecker has been initialized or not (if {@link #init(JavaPlugin)}
      * has been invoked) and {@link #get()} is safe to use.
      *
      * @return true if initialized, false otherwise
@@ -223,6 +216,11 @@ public final class UpdateChecker {
          * The JSON retrieved from SpiGet was invalid or malformed.
          */
         INVALID_JSON,
+
+        /**
+         * The URL retrieved from SpiGet was invalid or malformed.
+         */
+        INVALID_URL,
 
         /**
          * A 401 error was returned by the SpiGet API.

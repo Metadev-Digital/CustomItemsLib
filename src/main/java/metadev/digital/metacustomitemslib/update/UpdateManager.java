@@ -12,7 +12,7 @@ public class UpdateManager {
         this.plugin = plugin;
         this.lastResult = null;
 
-        this.pluginUpdateChecker = UpdateChecker.init(this.plugin, 117869);
+        this.pluginUpdateChecker = UpdateChecker.init(this.plugin);
         isInitialized();
     }
 
@@ -36,6 +36,7 @@ public class UpdateManager {
                     || lastRanResult.getReason() == UpdateChecker.UpdateReason.COULD_NOT_CONNECT
                     || lastRanResult.getReason() == UpdateChecker.UpdateReason.UNAUTHORIZED_QUERY
                     || lastRanResult.getReason() == UpdateChecker.UpdateReason.INVALID_JSON
+                    || lastRanResult.getReason() == UpdateChecker.UpdateReason.INVALID_URL
                     || lastRanResult.getReason() == UpdateChecker.UpdateReason.UNRELEASED_VERSION
                     || lastRanResult.getReason() == UpdateChecker.UpdateReason.UP_TO_DATE
             ) {
@@ -70,7 +71,12 @@ public class UpdateManager {
                     Core.getMessages().error("===============================================");
                     Core.getMessages().error("====      " + Core.getMessages().getString("core.commands.update.header") + "    ====");
                     Core.getMessages().error("===============================================");
-                    Core.getMessages().error(Core.getMessages().getString("core.commands.update.invalid"));
+                    Core.getMessages().error(Core.getMessages().getString("core.commands.update.invalid-json"));
+                case INVALID_URL:
+                    Core.getMessages().error("===============================================");
+                    Core.getMessages().error("====      " + Core.getMessages().getString("core.commands.update.header") + "    ====");
+                    Core.getMessages().error("===============================================");
+                    Core.getMessages().error(Core.getMessages().getString("core.commands.update.invalid-url"));
                 case UNAUTHORIZED_QUERY:
                     Core.getMessages().error("===============================================");
                     Core.getMessages().error("====      " + Core.getMessages().getString("core.commands.update.header") + "    ====");
@@ -107,7 +113,9 @@ public class UpdateManager {
                 case COULD_NOT_CONNECT:
                     return Core.getMessages().getString("core.commands.update.could-not-connect");
                 case INVALID_JSON:
-                    return Core.getMessages().getString("core.commands.update.invalid");
+                    return Core.getMessages().getString("core.commands.update.invalid-json");
+                case INVALID_URL:
+                    return Core.getMessages().getString("core.commands.update.invalid-url");
                 case UNAUTHORIZED_QUERY:
                     return Core.getMessages().getString("core.commands.update.unauthorized");
                 case UNRELEASED_VERSION:
