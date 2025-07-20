@@ -4,6 +4,7 @@ import metadev.digital.metacustomitemslib.compatibility.enums.BoundIdentifierEnu
 import metadev.digital.metacustomitemslib.compatibility.enums.VersionSetIdentifierEnum;
 import metadev.digital.metacustomitemslib.compatibility.exceptions.FeatureNotFoundException;
 import metadev.digital.metacustomitemslib.server.Servers;
+import org.apache.maven.artifact.versioning.ComparableVersion;
 
 import java.util.HashSet;
 
@@ -229,15 +230,21 @@ public class FeatureList {
     private boolean isWithinVersionBounds(VersionSet bounds, String version){
         if (!bounds.isSet()) return true; // No version restrictions set
 
+        ComparableVersion currentVersion = new ComparableVersion(version);
         if (bounds.isDoubleBound()){ // A ceiling and floor were set
-            return version.compareTo(bounds.getFloor().getVersion()) >= 0 && version.compareTo(bounds.getCeiling().getVersion()) <=0;
+            ComparableVersion floorVersion = new ComparableVersion(bounds.getFloor().getVersion());
+            ComparableVersion ceilingVersion = new ComparableVersion(bounds.getCeiling().getVersion());
+
+            return currentVersion.compareTo(floorVersion) >= 0 && currentVersion.compareTo(ceilingVersion) <=0;
         }
 
         BoundIdentifierEnum boundIdentifier = bounds.getBoundingIdentifier();
         if(boundIdentifier == null) return false; // bound was set, but failed to identify valid restrictions default false
 
+        ComparableVersion compareVersion = new ComparableVersion(boundIdentifier == BoundIdentifierEnum.FLOOR ? bounds.getFloor().getVersion() : bounds.getCeiling().getVersion());
+
         return boundIdentifier == BoundIdentifierEnum.FLOOR ?
-                version.compareTo(bounds.getFloor().getVersion()) >= 0 :
-                version.compareTo(bounds.getCeiling().getVersion()) <=0;
+                currentVersion.compareTo(compareVersion) >= 0 :
+                currentVersion.compareTo(compareVersion) <= 0;
     }
 }
