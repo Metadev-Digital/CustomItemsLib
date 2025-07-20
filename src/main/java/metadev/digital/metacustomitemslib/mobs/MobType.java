@@ -17,6 +17,11 @@ public enum MobType {
 	// ******************************************************************
 	// Minecraft 1.21
 	// ******************************************************************
+
+	HappyGhast("HappyGhast","2e0aae61-31a9-4c2f-8eda-77f7674d09f2", "Happy Ghast", "ewogICJ0aW1lc3RhbXAiIDogMTc1MzAzMTcyMDQyNCwKICAicHJvZmlsZUlkIiA6ICJhZTg3MzEyNjBmMzY0ZWE2YjU3YTRkYjI5Mjk1YTA1OCIsCiAgInByb2ZpbGVOYW1lIiA6ICJGdW50aW1lX0ZveHlfMTkiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjc1OTRhODliOTgwM2MyZjI1M2FjMjI1MmI2NzhlNWI4MDgzZjliNGJjNmRkYTkwMGMwOThmNjU2MzI0YTQ3NSIsCiAgICAgICJtZXRhZGF0YSIgOiB7CiAgICAgICAgIm1vZGVsIiA6ICJzbGltIgogICAgICB9CiAgICB9CiAgfQp9",
+			"YgYJFwi8FuFEV6YboZb6nNk+3UaUISB8Hd6oJENdBnZepDzt7YBhDZOoJZGLFiUxHXAuX62LBQcx1dxvYDSyPS3cmDK24dNkwU8Nb7aqJpwaWedejm274G5PPnq4jCLnUIfgc9Sp0W8ETegLPCVm7J9hN14EBVyfCXVl4YLPYB7BnjjITls3bnIC5feqoQiceDMM/doUwTdLuYR0FMfwtORssyxpXMZwT/8eaZVw/TJW6T/0l2m3fAvMmDNM2Fa177Zg8TFq/wKZcvUZzitCjXgpPufZbLhFUh00kWHVjGBM54ahUHCwjitTm5dv8lsfqBZ6L8dRlE9Iu+Z+YdxUXJWNlNZ2zM0ehrmW562U8jyvciENZXY52KRK0yZyFS1JMAu/dF/BmuJ7FfWzdJKHHtQK/U+qfSB6+3+GVdLHxPT6fUKfMK7VO0UIhL4B4lCRECJF6l4rfKdhY1ltJm2eBTy4qRn7cNU5HE4mZnTyldNdEQCdlQEX+vE+6bm19ik5G17SxNOfEMcYHEnSwigkFWbIopFDnSr85lteW0aZ5KEIMdiHpiCOTiuSIO1q4ttBfq65+x2rgpEYEjtRirbjJp9rr3AuZaHrEjA+44nuzEkJOvvg29hIO0lPNm7uqa1DER4v7pLAc5vWd/pdqs7+okpX+/PeCIXlU5ObBgd0YHQ=",
+			"https://textures.minecraft.net/texture/f7594a89b9803c2f253ac2252b678e5b8083f9b4bc6dda900c098f656324a475"),
+
 	Creaking("Creaking", "8bf1141f-b11e-4ecb-845b-55c21e1c5c4b", "Creaking", "ewogICJ0aW1lc3RhbXAiIDogMTczMzc2MTUyODk4OCwKICAicHJvZmlsZUlkIiA6ICI4YmM3MjdlYThjZjA0YWUzYTI4MDVhY2YzNjRjMmQyNCIsCiAgInByb2ZpbGVOYW1lIiA6ICJub3RpbnZlbnRpdmUiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDRmZjdiZWZiMjY5YWMyY2I3YTQxOWM5N2NjNWQ0NjA1MmQ4OWE3NjYzMzcxOWRhZTY4NWJlZDI3NDQxNjI2MyIsCiAgICAgICJtZXRhZGF0YSIgOiB7CiAgICAgICAgIm1vZGVsIiA6ICJzbGltIgogICAgICB9CiAgICB9CiAgfQp9",
 			"IWt4TKrj4T1mrt8YaiaexMl44n4mfXoLShEkGN9K/fTthZc8pID8mohJlGCea/GdlIqU7CC18wl5mcnClaUK75oEXgbIbpwu8CiHmzAKlWTa1V5VqKdr5jz95bhoa6laMMi/pkB9cLKoTwZPUuI7+9QZ+48ZlAh7mQGGjLXoEQOOYw49KSk7tW7tuQ0azyZQekgCPhyogzzSM9fmi+qYsU/rK6Me2U0Teqe8FLw6DFdwyfcSHp07V3DRsJZihP+bw0zIS9KvJhk5gYGeILCiWPeh18BMTnIlwgufCqpzw9s2D0QVfKUo0291KYYwFZDK2qFTsLFSxQ6vQVfe85zbZ88ciTy+fvvOFBhSc6zk34wH0OfMe5D2OWu9RBUoauVuHHhQipg7ZQSKob4Uvsq5r4iJDaC05RLyYBe3wwbAJEp9n190XVLU6skJPNQo1c7mc5WLK6w5Jrwdj6T4n4q46TijAyR9hh7oEEwlVWwYJH0sbAYnR9imLxm8WQZfAIx3yHJcDs2Zn6V4qStPICw6KAtJIDGVAhgUeGpbRujhZhoYMxCX8Map4GADI1yqYJX77xBxXZDm3sR10L4a7uvJGCuAfRPZwBFXUbGZc9IMH0GAJW3nZ0Sd7pJNxi2HeroNwmC3uM0zd6W8ZSrcShLwkadR4w1m+ooja6GSmvbfL54=",
 			"https://textures.minecraft.net/texture/44ff7befb269ac2cb7a419c97cc5d46052d89a76633719dae685bed274416263"),
@@ -689,7 +694,9 @@ public enum MobType {
 	public boolean matches(Entity entity) {
 		// TODO: Evaluate if we even need to bother supporting old versions of minecraft on new versions of plugin
 		if(Servers.isMC121OrNewer()) {
-			if (this == Creaking)
+			if (this == HappyGhast)
+				return entity instanceof  org.bukkit.entity.HappyGhast;
+			else if (this == Creaking)
 				return entity instanceof org.bukkit.entity.Creaking;
 			else if (this == Breeze)
 				return entity instanceof org.bukkit.entity.Breeze;
