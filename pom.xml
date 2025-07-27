@@ -186,9 +186,9 @@
         <dependency>
             <groupId>net.Zrips</groupId>
             <artifactId>CMILib</artifactId>
-            <version>1.5.5.5</version>
+            <version>1.5.5.7</version>
             <scope>system</scope>
-            <systemPath>${basedir}\lib\CMILib1.5.5.5.jar</systemPath>
+            <systemPath>${basedir}\lib\CMILib1.5.5.7.jar</systemPath>
         </dependency>
 
         <!-- Title Manager -->
