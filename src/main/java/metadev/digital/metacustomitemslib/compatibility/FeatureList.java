@@ -215,36 +215,9 @@ public class FeatureList {
      */
     private boolean validateSupport(VersionSet serverRestrictions, VersionSet pluginRestrictions, String currentPluginVersion) {
         String currentServerVersion = Servers.getServerVersion();
-        boolean isServerSupported = isWithinVersionBounds(serverRestrictions, currentServerVersion);
-        boolean isPluginSupported = isWithinVersionBounds(pluginRestrictions, currentPluginVersion);
+        boolean isServerSupported = VersionSet.isWithinVersionBounds(serverRestrictions, currentServerVersion);
+        boolean isPluginSupported = VersionSet.isWithinVersionBounds(pluginRestrictions, currentPluginVersion);
 
         return isPluginSupported && isServerSupported;
-    }
-
-    /***
-     * Helper function to validateSupport to check if a provided semantic version exists within the ceiling and floor of the provided bounds
-     * @param bounds - VersionSet bounds for valid support
-     * @param version - String version as semantic version to be checked if it is within supported range of provided bounds
-     * @return boolean value of whether the provided version is valid against the provided bounds
-     */
-    private boolean isWithinVersionBounds(VersionSet bounds, String version){
-        if (!bounds.isSet()) return true; // No version restrictions set
-
-        ComparableVersion currentVersion = new ComparableVersion(version);
-        if (bounds.isDoubleBound()){ // A ceiling and floor were set
-            ComparableVersion floorVersion = new ComparableVersion(bounds.getFloor().getVersion());
-            ComparableVersion ceilingVersion = new ComparableVersion(bounds.getCeiling().getVersion());
-
-            return currentVersion.compareTo(floorVersion) >= 0 && currentVersion.compareTo(ceilingVersion) <=0;
-        }
-
-        BoundIdentifierEnum boundIdentifier = bounds.getBoundingIdentifier();
-        if(boundIdentifier == null) return false; // bound was set, but failed to identify valid restrictions default false
-
-        ComparableVersion compareVersion = new ComparableVersion(boundIdentifier == BoundIdentifierEnum.FLOOR ? bounds.getFloor().getVersion() : bounds.getCeiling().getVersion());
-
-        return boundIdentifier == BoundIdentifierEnum.FLOOR ?
-                currentVersion.compareTo(compareVersion) >= 0 :
-                currentVersion.compareTo(compareVersion) <= 0;
     }
 }
