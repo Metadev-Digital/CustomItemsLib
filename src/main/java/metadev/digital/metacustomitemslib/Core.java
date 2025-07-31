@@ -81,7 +81,7 @@ public class Core extends JavaPlugin {
 		plugin = this;
 
 		if (Bukkit.getPluginManager().getPlugin("CustomItemsLib") != null) {
-			throw new RuntimeException("[CustomItemsLib] Detected two versions of CustomItemsLib running. Please remove the CustomItemsLib jar if you wish to use MetaCustomItemsLib.");
+			throw new RuntimeException("[MetaCustomItemsLib] Detected two versions of CustomItemsLib running. Please remove the CustomItemsLib jar if you wish to use MetaCustomItemsLib.");
 		}
 
 		if (!mFile.exists()) {
@@ -101,7 +101,7 @@ public class Core extends JavaPlugin {
 		if (mConfig.loadConfig()) {
 			mConfig.saveConfig();
 		} else
-			throw new RuntimeException("[CustomItemsLib] Could not load config.yml");
+			throw new RuntimeException("[MetaCustomItemsLib] Could not load config.yml");
 
 		mMessages = new Messages(plugin);
 		mMessages.setLanguage(mConfig.language + ".lang");
