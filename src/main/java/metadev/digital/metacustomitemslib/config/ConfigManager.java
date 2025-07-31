@@ -219,6 +219,9 @@ public class ConfigManager extends AutoConfig {
 			+ "\n\nOBS: If the Gringotts plugin is installed and support not disabled, the droped item will be the Gringotts chosen item.")
 	public String rewardItemtype = "SKULL";
 
+	@ConfigField(name = "enable_minecraft_mob_variants", category = "reward.variants", comment = "Enable/Disable whether Minecraft mobs with variants are handled as different entities or as a single base mob. (I.E. True: Villager or Farmer or Librarian or... | False: Villager) ")
+	public boolean isEnableMinecraftMobVariants = true;
+
 	// #####################################################################################
 	// ITEM style
 	// #####################################################################################
