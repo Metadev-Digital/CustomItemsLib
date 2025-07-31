@@ -220,7 +220,7 @@ public class CoreRewardManager {
 			Item item = location.getWorld().dropItem(location, is);
 			getDroppedMoney().put(item.getEntityId(), reward.getMoney());
 		} else if (reward.isKilledHeadReward()) {
-			MobType mob = MobType.getMobType(reward.getSkinUUID());
+			MobType mob = MobType.getMobTypeByUUID(reward.getSkinUUID());
 			if (mob != null) {
 				ItemStack is = CoreCustomItems.getCustomHead(mob, reward.getDisplayName(), 1,
 						reward.getMoney(), reward.getSkinUUID());
@@ -257,7 +257,7 @@ public class CoreRewardManager {
 			}
 
 			if (Core.getConfigManager().rewardItemtype.equalsIgnoreCase("KILLED")) {
-				MobType mob = MobType.getMobType(killedEntity);
+				MobType mob = MobType.getMobTypeByEntity(killedEntity);
 				rewardType = RewardType.KILLED;
 				skinuuid = mob.getSkinUUID();
 				is = CoreCustomItems.getCustomHead(mob, mob.getEntityName(), 1, money, skinuuid);
