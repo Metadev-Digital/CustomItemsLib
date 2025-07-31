@@ -156,7 +156,7 @@
         <dependency>
             <groupId>com.comphenix.protocol</groupId>
             <artifactId>ProtocolLib</artifactId>
-            <version>5.4.0-SNAPSHOT-753</version>
+            <version>5.4.0-SNAPSHOT-755</version>
             <scope>system</scope>
             <systemPath>${basedir}\lib\ProtocolLib.jar</systemPath>
         </dependency>
@@ -186,9 +186,9 @@
         <dependency>
             <groupId>net.Zrips</groupId>
             <artifactId>CMILib</artifactId>
-            <version>1.5.5.7</version>
+            <version>1.5.5.9</version>
             <scope>system</scope>
-            <systemPath>${basedir}\lib\CMILib1.5.5.7.jar</systemPath>
+            <systemPath>${basedir}\lib\CMILib1.5.5.9.jar</systemPath>
         </dependency>
 
         <!-- Title Manager -->
