@@ -6,7 +6,6 @@ import com.google.gson.JsonParser;
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.Strings;
 import metadev.digital.metacustomitemslib.mobs.MobType;
-import metadev.digital.metacustomitemslib.server.Servers;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
@@ -152,91 +151,76 @@ public class CoreCustomItems {
 
 	public static ItemStack getCustomHead(MobType minecraftMob, String name, int amount, double money, UUID skinUUID) {
 		ItemStack skull;
+		ItemStack tempSkull;
+
 		switch (minecraftMob) {
-		case Skeleton:
-			skull = CoreCustomItems.getDefaultSkeletonHead(amount);
-			skull = Reward.setDisplayNameAndHiddenLores(skull,
-					new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
-			break;
+			case Skeleton:
+				tempSkull = CoreCustomItems.getDefaultSkeletonHead(amount);
+				skull = Reward.setDisplayNameAndHiddenLores(tempSkull,
+						new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
+				break;
 
-		case WitherSkeleton:
-			skull = CoreCustomItems.getDefaultWitherSkeletonHead(amount);
-			skull = Reward.setDisplayNameAndHiddenLores(skull,
-					new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
-			break;
+			case WitherSkeleton:
+				tempSkull = CoreCustomItems.getDefaultWitherSkeletonHead(amount);
+				skull = Reward.setDisplayNameAndHiddenLores(tempSkull,
+						new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
+				break;
 
-		case Zombie:
-			skull = CoreCustomItems.getDefaultZombieHead(amount);
-			skull = Reward.setDisplayNameAndHiddenLores(skull,
-					new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
-			break;
+			case Zombie:
+				tempSkull = CoreCustomItems.getDefaultZombieHead(amount);
+				skull = Reward.setDisplayNameAndHiddenLores(tempSkull,
+						new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
+				break;
 
-		case PvpPlayer:
-			skull = getPlayerHead(skinUUID, name, amount, money);
-			break;
+			case PvpPlayer:
+				skull = getPlayerHead(skinUUID, name, amount, money);
+				break;
 
-		case Creeper:
-			skull = CoreCustomItems.getDefaultCreeperHead(amount);
-			skull = Reward.setDisplayNameAndHiddenLores(skull,
-					new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
-			break;
+			case Creeper:
+				tempSkull = CoreCustomItems.getDefaultCreeperHead(amount);
+				skull = Reward.setDisplayNameAndHiddenLores(tempSkull,
+						new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
+				break;
 
-		case EnderDragon:
-			skull = CoreCustomItems.getDefaultEnderDragonHead(amount);
-			skull = Reward.setDisplayNameAndHiddenLores(skull,
-					new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
-			break;
+			case EnderDragon:
+				tempSkull = CoreCustomItems.getDefaultEnderDragonHead(amount);
+				skull = Reward.setDisplayNameAndHiddenLores(tempSkull,
+						new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
+				break;
 
-		default:
-			ItemStack is = new ItemStack(
-					getCustomTexture(new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID),
-							minecraftMob.getTextureURL()));
-			is.setAmount(amount);
-			return is;
+			default:
+				skull = new ItemStack(
+						getCustomTexture(new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID),
+								minecraftMob.getTextureURL()));
+				skull.setAmount(amount);
+				break;
 		}
+
 		return skull;
 	}
 
 	private static ItemStack getDefaultSkeletonHead(int amount) {
-		if (Servers.isMC113OrNewer())
 			return new ItemStack(Material.SKELETON_SKULL, amount);
-		else
-			return new ItemStack(Material.matchMaterial("SKULL_ITEM"), amount, (short) 0);
 	}
 
 	private static ItemStack getDefaultWitherSkeletonHead(int amount) {
-		if (Servers.isMC113OrNewer())
 			return new ItemStack(Material.WITHER_SKELETON_SKULL, amount);
-		else
-			return new ItemStack(Material.matchMaterial("SKULL_ITEM"), amount, (short) 1);
 	}
 
 	private static ItemStack getDefaultZombieHead(int amount) {
-		if (Servers.isMC113OrNewer())
 			return new ItemStack(Material.ZOMBIE_HEAD, amount);
-		else
-			return new ItemStack(Material.matchMaterial("SKULL_ITEM"), amount, (short) 2);
 	}
 
 	private static ItemStack getDefaultPlayerHead(int amount) {
-		if (Servers.isMC113OrNewer())
 			return new ItemStack(Material.PLAYER_HEAD, amount);
-		else
-			return new ItemStack(Material.matchMaterial("SKULL_ITEM"), amount, (short) 3);
 	}
 
 	private static ItemStack getDefaultCreeperHead(int amount) {
-		if (Servers.isMC113OrNewer())
 			return new ItemStack(Material.CREEPER_HEAD, amount);
-		else
-			return new ItemStack(Material.matchMaterial("SKULL_ITEM"), amount, (short) 4);
 	}
 
 	private static ItemStack getDefaultEnderDragonHead(int amount) {
-		if (Servers.isMC113OrNewer())
 			return new ItemStack(Material.DRAGON_HEAD, amount);
-		else
-			return new ItemStack(Material.matchMaterial("SKULL_ITEM"), amount, (short) 5);
 	}
 
 }
