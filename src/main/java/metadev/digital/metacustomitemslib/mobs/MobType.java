@@ -1,7 +1,7 @@
 package metadev.digital.metacustomitemslib.mobs;
 
 import metadev.digital.metacustomitemslib.Core;
-import metadev.digital.metacustomitemslib.server.Servers;
+import metadev.digital.metacustomitemslib.server.Server;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
@@ -693,7 +693,7 @@ public enum MobType {
 
 	public boolean matches(Entity entity) {
 		// TODO: Evaluate if we even need to bother supporting old versions of minecraft on new versions of plugin
-		if(Servers.isMC121OrNewer()) {
+		if(Server.isMC121OrNewer()) {
 			if (this == HappyGhast)
 				return entity instanceof  org.bukkit.entity.HappyGhast;
 			else if (this == Creaking)
@@ -704,7 +704,7 @@ public enum MobType {
 				return entity instanceof org.bukkit.entity.Bogged;
 		}
 
-		if (Servers.isMC120OrNewer()) {
+		if (Server.isMC120OrNewer()) {
 			if (this == Camel)
 				return entity instanceof org.bukkit.entity.Camel;
 			else if (this == Sniffer)
@@ -713,7 +713,7 @@ public enum MobType {
 				return entity instanceof org.bukkit.entity.Armadillo;
 		}
 
-		if (Servers.isMC119OrNewer()) {
+		if (Server.isMC119OrNewer()) {
 			if (this == Warden)
 				return entity instanceof org.bukkit.entity.Warden;
 			else if (this == Frog)
@@ -724,10 +724,10 @@ public enum MobType {
 				return entity instanceof org.bukkit.entity.Allay;
 		}
 
-		if (Servers.isMC118OrNewer()) {
+		if (Server.isMC118OrNewer()) {
 		}
 
-		if (Servers.isMC117OrNewer()) {
+		if (Server.isMC117OrNewer()) {
 			if (this == Axolotl)
 				return entity instanceof org.bukkit.entity.Axolotl;
 			else if (this == Goat)
@@ -736,12 +736,12 @@ public enum MobType {
 				return entity instanceof org.bukkit.entity.GlowSquid;
 		}
 
-		if (Servers.isMC1162OrNewer()) {
+		if (Server.isMC1162OrNewer()) {
 			if (this == MobType.PiglinBrute)
 				return entity instanceof org.bukkit.entity.PiglinBrute;
 		}
 
-		if (Servers.isMC116OrNewer()) {
+		if (Server.isMC116OrNewer()) {
 			if (this == Hoglin)
 				return entity instanceof org.bukkit.entity.Hoglin;
 			else if (this == Piglin)
@@ -754,12 +754,12 @@ public enum MobType {
 				return entity instanceof org.bukkit.entity.PigZombie;
 		}
 
-		if (Servers.isMC115OrNewer()) {
+		if (Server.isMC115OrNewer()) {
 			if (this == Bee)
 				return entity instanceof org.bukkit.entity.Bee;
 		}
 
-		if (Servers.isMC114OrNewer()) {
+		if (Server.isMC114OrNewer()) {
 			if (this == Cat)
 				return entity instanceof org.bukkit.entity.Cat;
 			else if (this == Fox)
@@ -808,7 +808,7 @@ public enum MobType {
 				return (entity instanceof Villager && ((Villager) entity).getProfession() == Profession.WEAPONSMITH);
 		}
 
-		if (Servers.isMC113OrNewer()) {
+		if (Server.isMC113OrNewer()) {
 			if (this == Dolphin)
 				return entity instanceof org.bukkit.entity.Dolphin;
 			else if (this == Drowned)
@@ -831,14 +831,14 @@ public enum MobType {
 						|| (entity instanceof Item && ((Item) entity).getItemStack().getType() == Material.PUFFERFISH);
 		}
 
-		if (Servers.isMC112OrNewer()) {
+		if (Server.isMC112OrNewer()) {
 			if (this == Parrot)
 				return entity instanceof org.bukkit.entity.Parrot;
 			else if (this == Illusioner)
 				return entity instanceof org.bukkit.entity.Illusioner;
 		}
 
-		if (Servers.isMC111OrNewer()) {
+		if (Server.isMC111OrNewer()) {
 			if (this == Vex)
 				return entity instanceof org.bukkit.entity.Vex;
 			if (this == Llama)
@@ -870,7 +870,7 @@ public enum MobType {
 						&& (((org.bukkit.entity.Villager) entity).getProfession() == Profession.NITWIT);
 		}
 
-		if (Servers.isMC110OrNewer()) {
+		if (Server.isMC110OrNewer()) {
 			if (this == PolarBear)
 				return entity instanceof org.bukkit.entity.PolarBear;
 			else if (this == Stray)
@@ -879,7 +879,7 @@ public enum MobType {
 
 		// TODO: OLD VILLAGERS DEPRECATED SINCE VERSION 1.21
 		// Handle old villagers
-		if (Servers.isMC110OrNewer() && !Servers.isMC114OrNewer()) {
+		if (Server.isMC110OrNewer() && !Server.isMC114OrNewer()) {
 			if (this == Husk)
 				return entity instanceof Zombie
 						&& ((Zombie) entity).getVillagerProfession() == Profession.valueOf("HUSK");
@@ -903,7 +903,7 @@ public enum MobType {
 						&& (((org.bukkit.entity.Villager) entity).getProfession() == Profession.LIBRARIAN);
 		}
 
-		if (Servers.isMC19OrNewer()) {
+		if (Server.isMC19OrNewer()) {
 			if (this == Shulker)
 				return entity instanceof org.bukkit.entity.Shulker;
 			else if (this == Blaze){

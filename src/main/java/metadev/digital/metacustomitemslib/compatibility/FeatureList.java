@@ -3,8 +3,7 @@ package metadev.digital.metacustomitemslib.compatibility;
 import metadev.digital.metacustomitemslib.compatibility.enums.BoundIdentifierEnum;
 import metadev.digital.metacustomitemslib.compatibility.enums.VersionSetIdentifierEnum;
 import metadev.digital.metacustomitemslib.compatibility.exceptions.FeatureNotFoundException;
-import metadev.digital.metacustomitemslib.server.Servers;
-import org.apache.maven.artifact.versioning.ComparableVersion;
+import metadev.digital.metacustomitemslib.server.Server;
 
 import java.util.HashSet;
 
@@ -214,7 +213,7 @@ public class FeatureList {
      * @return - Combined boolean value of valid plugin and server support (T if 2x T, F if 1x F)
      */
     private boolean validateSupport(VersionSet serverRestrictions, VersionSet pluginRestrictions, String currentPluginVersion) {
-        String currentServerVersion = Servers.getServerVersion();
+        String currentServerVersion = Server.getServerVersion();
         boolean isServerSupported = VersionSet.isWithinVersionBounds(serverRestrictions, currentServerVersion);
         boolean isPluginSupported = VersionSet.isWithinVersionBounds(pluginRestrictions, currentPluginVersion);
 

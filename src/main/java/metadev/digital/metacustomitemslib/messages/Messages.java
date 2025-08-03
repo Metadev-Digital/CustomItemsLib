@@ -6,7 +6,7 @@ import metadev.digital.metacustomitemslib.compatibility.addons.ActionBarHelper;
 import metadev.digital.metacustomitemslib.compatibility.addons.CMILibCompat;
 import metadev.digital.metacustomitemslib.compatibility.addons.TitleManagerCompat;
 import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
-import metadev.digital.metacustomitemslib.server.Servers;
+import metadev.digital.metacustomitemslib.server.Server;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -421,10 +421,10 @@ public class Messages {
 				}
 			}, delay);
 		} else {
-			if( Servers.isMC119OrNewer()){
+			if( Server.isMC119OrNewer()){
 				player.sendTitle("", message,10,100,10);
 			}
-			else if (Servers.isMC115OrNewer())
+			else if (Server.isMC115OrNewer())
 				player.sendTitle("", message);
 			else
 				player.sendMessage(message);
@@ -447,7 +447,7 @@ public class Messages {
 			else if(actionBarHelper.isTitleManagerActive()) TitleManagerCompat.setActionBar(player, message);
 			else {
 				if (!Core.getPlayerSettingsManager().getPlayerSettings(player).isMuted())
-					if (Servers.isMC115OrNewer())
+					if (Server.isMC115OrNewer())
 						player.sendTitle("", message);
 					else
 						player.sendMessage(message);

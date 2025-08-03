@@ -7,7 +7,7 @@ import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.Tools;
 import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
 import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
-import metadev.digital.metacustomitemslib.server.Servers;
+import metadev.digital.metacustomitemslib.server.Server;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -386,11 +386,11 @@ public class CoreRewardListeners implements Listener {
 
 	private boolean isInventoryAllowed(Inventory inv) {
 		List<InventoryType> allowedInventories;
-		if (Servers.isMC114OrNewer())
+		if (Server.isMC114OrNewer())
 			allowedInventories = Arrays.asList(InventoryType.PLAYER, InventoryType.BARREL, InventoryType.ANVIL,
 					InventoryType.CHEST, InventoryType.DISPENSER, InventoryType.DROPPER, InventoryType.ENDER_CHEST,
 					InventoryType.HOPPER, InventoryType.SHULKER_BOX, InventoryType.CRAFTING, InventoryType.MERCHANT);
-		else if (Servers.isMC19OrNewer())
+		else if (Server.isMC19OrNewer())
 			allowedInventories = Arrays.asList(InventoryType.PLAYER, InventoryType.ANVIL, InventoryType.CHEST,
 					InventoryType.DISPENSER, InventoryType.DROPPER, InventoryType.ENDER_CHEST, InventoryType.HOPPER,
 					InventoryType.SHULKER_BOX, InventoryType.CRAFTING);
@@ -459,7 +459,7 @@ public class CoreRewardListeners implements Listener {
 
 		SlotType slotType = event.getSlotType();
 		Inventory inventory = event.getInventory();
-		Inventory clickedInventory = Servers.isMC113OrNewer() ? event.getClickedInventory() : inventory;
+		Inventory clickedInventory = Server.isMC113OrNewer() ? event.getClickedInventory() : inventory;
 
 		if (!Reward.isReward(isCurrentSlot) && !Reward.isReward(isCursor) && !Reward.isReward(isNumberKey)
 				&& !Reward.isReward(isSwapOffhand))

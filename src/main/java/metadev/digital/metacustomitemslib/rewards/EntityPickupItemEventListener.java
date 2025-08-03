@@ -1,7 +1,7 @@
 package metadev.digital.metacustomitemslib.rewards;
 
 import metadev.digital.metacustomitemslib.Core;
-import metadev.digital.metacustomitemslib.server.Servers;
+import metadev.digital.metacustomitemslib.server.Server;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -37,7 +37,7 @@ public class EntityPickupItemEventListener implements Listener {
 			// Entity is not a Player
 			if (entity.getType().equals(EntityType.ZOMBIE) || entity.getType().equals(EntityType.SKELETON)
 					|| entity.getType().equals(EntityType.WITHER_SKELETON)
-					|| (Servers.isMC116OrNewer()) && entity.getType().equals(EntityType.ZOMBIFIED_PIGLIN)) {
+					|| (Server.isMC116OrNewer()) && entity.getType().equals(EntityType.ZOMBIFIED_PIGLIN)) {
 				Core.getMessages().debug("A mob picked up the reward");
 				event.setCancelled(true);
 			}

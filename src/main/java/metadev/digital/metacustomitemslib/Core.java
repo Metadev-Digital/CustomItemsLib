@@ -5,7 +5,6 @@ import metadev.digital.metacustomitemslib.commands.DebugCommand;
 import metadev.digital.metacustomitemslib.commands.ReloadCommand;
 import metadev.digital.metacustomitemslib.commands.UpdateCommand;
 import metadev.digital.metacustomitemslib.commands.VersionCommand;
-import metadev.digital.metacustomitemslib.commands.TestCommand;
 import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
 import metadev.digital.metacustomitemslib.compatibility.CompatibilityManager;
 import metadev.digital.metacustomitemslib.compatibility.addons.*;
@@ -16,7 +15,7 @@ import metadev.digital.metacustomitemslib.messages.Messages;
 import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import metadev.digital.metacustomitemslib.rewards.CoreRewardManager;
 import metadev.digital.metacustomitemslib.rewards.RewardBlockManager;
-import metadev.digital.metacustomitemslib.server.Servers;
+import metadev.digital.metacustomitemslib.server.Server;
 import metadev.digital.metacustomitemslib.storage.DataStoreException;
 import metadev.digital.metacustomitemslib.storage.DataStoreManager;
 import metadev.digital.metacustomitemslib.storage.IDataStore;
@@ -182,7 +181,7 @@ public class Core extends JavaPlugin {
 		mUpdateManager.processCheckResultInConsole();
 
 		//Enable bStats
-		if (!Servers.isGlowstoneServer()) {
+		if (!Server.isGlowstoneServer()) {
 			mMetricsManager = new MetricsManager(this);
 			mMetricsManager.startBStatsMetrics();
 		}
