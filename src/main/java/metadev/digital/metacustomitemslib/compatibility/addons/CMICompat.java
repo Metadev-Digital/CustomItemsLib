@@ -19,7 +19,7 @@ import org.bukkit.plugin.Plugin;
 public class CMICompat implements ICompat, IFeatureHolder {
 
 	// ****** Standard ******
-	private Plugin compatPlugin;
+	private static Plugin compatPlugin;
 	private static boolean enabled = false, supported = false, loaded = false;
 	private static String sMin, sMax, pMin = "9.7.4.1", pMax;
 	private static FeatureList features;
@@ -166,13 +166,13 @@ public class CMICompat implements ICompat, IFeatureHolder {
 
 	// ****** Plugin Specific ******
 
-	public CMI getCMIPlugin() {
+	public static CMI getCMIPlugin() {
 		return (CMI) compatPlugin;
 	}
 
 	public static boolean isFullyLoaded() { return CMI.getInstance().isFullyLoaded(); }
 
-	public HologramManager getHologramManager() {
+	public static HologramManager getHologramManager() {
 		return ((CMI) compatPlugin).getHologramManager();
 	}
 }
