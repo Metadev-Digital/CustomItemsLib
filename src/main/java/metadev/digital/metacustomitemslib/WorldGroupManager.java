@@ -181,9 +181,9 @@ public class WorldGroupManager {
 
 	public void load() {
 		if (!file.exists()) {
-			File fileBagOfGold = new File(plugin.getDataFolder(), "../BagOfGold/worldgroups.yml");
+			File fileBagOfGold = new File(plugin.getDataFolder().getParent(), "/BagOfGold/worldgroups.yml");
 			if (!fileBagOfGold.exists()) {
-				File fileMobHunting = new File(plugin.getDataFolder(), "../MobHunting/worldgroups.yml");
+				File fileMobHunting = new File(plugin.getDataFolder().getParent(), "/MetaobHunting/worldgroups.yml");
 				if (!fileMobHunting.exists()) {
 					return;
 				} else {
@@ -191,7 +191,7 @@ public class WorldGroupManager {
 					try {
 						config.load(fileMobHunting);
 						config.save(file);
-						File fileMobHuntingOld = new File(plugin.getDataFolder(), "../MobHunting/worldgroups.yml.old");
+						File fileMobHuntingOld = new File(plugin.getDataFolder().getParent(), "/MetaMobHunting/worldgroups.yml.old");
 						Files.move(fileMobHunting, fileMobHuntingOld);
 					} catch (IllegalStateException | InvalidConfigurationException | IOException e) {
 						e.printStackTrace();
@@ -203,7 +203,7 @@ public class WorldGroupManager {
 				try {
 					config.load(fileBagOfGold);
 					config.save(file);
-					File fileBagOfGoldOld = new File(plugin.getDataFolder(), "../BagOfGold/worldgroups.yml.old");
+					File fileBagOfGoldOld = new File(plugin.getDataFolder().getParent(), "/BagOfGold/worldgroups.yml.old");
 					Files.move(fileBagOfGold, fileBagOfGoldOld);
 				} catch (IllegalStateException | InvalidConfigurationException | IOException e) {
 					e.printStackTrace();

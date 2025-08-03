@@ -33,7 +33,7 @@ public class RewardBlockManager {
 
 	public RewardBlockManager(Plugin plugin) {
 		this.plugin = plugin;
-		file = new File(plugin.getDataFolder().getParent(), "rewards.yml");
+		file = new File(plugin.getDataFolder(), "rewards.yml");
 		load();
 		Bukkit.getPluginManager().registerEvents(new CoreRewardListeners(plugin), plugin);
 	}
