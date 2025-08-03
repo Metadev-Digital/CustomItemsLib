@@ -187,10 +187,10 @@ public class RewardBlockManager {
 			e.printStackTrace();
 		}
 
-		// Import files from MobHunting to CustomItemsLib/rewards.yml
-		File file2 = new File(plugin.getDataFolder().getParent(), "MobHunting/rewards.yml");
+		// Import files from MetaMobHunting to MetaCustomItemsLib/rewards.yml
+		File file2 = new File(plugin.getDataFolder().getParent(), "MetaMobHunting/rewards.yml");
 		if (file2.exists()) {
-			Core.getMessages().debug("Loading rewards from MobHunting first time.");
+			Core.getMessages().debug("Loading rewards from MetaMobHunting first time.");
 			migrateRewardsFromMobHunting(file2);
 		}
 		
