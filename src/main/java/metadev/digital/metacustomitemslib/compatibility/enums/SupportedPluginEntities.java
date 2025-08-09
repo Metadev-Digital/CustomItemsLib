@@ -11,7 +11,7 @@ public enum SupportedPluginEntities {
 	Citizens("Citizens", 7), // Used in MobHunting && BagOfGold
 	// ConquestiaMobs was ID 8. ReserveID
 	CrackShot("CrackShot", 9), //
-	CustomMobs("CustomMobs", 10), //
+	// CustomMobs was ID 10. Reserve ID
 	DisguiseCraft("DisguiseCraft", 11), //
 	Essentials("Essentials", 12), //
 	ExtraHardMode("ExtraHardMode", 13), //
