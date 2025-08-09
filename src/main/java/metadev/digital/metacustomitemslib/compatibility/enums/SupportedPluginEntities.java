@@ -9,7 +9,7 @@ public enum SupportedPluginEntities {
 	// BossBarApi was ID 5. Reserve ID
 	BossShop("BossShopPro", 6), //
 	Citizens("Citizens", 7), // Used in MobHunting && BagOfGold
-	ConquestiaMobs("ConquestiaMobs", 8), //
+	// ConquestiaMobs was ID 8. ReserveID
 	CrackShot("CrackShot", 9), //
 	CustomMobs("CustomMobs", 10), //
 	DisguiseCraft("DisguiseCraft", 11), //
