@@ -3,7 +3,8 @@ package metadev.digital.metacustomitemslib.compatibility;
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
 import metadev.digital.metacustomitemslib.compatibility.exceptions.SpinupShutdownException;
-import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
+import metadev.digital.metacustomitemslib.messages.MessageHelper;
+import metadev.digital.metacustomitemslib.server.Server;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -13,7 +14,6 @@ import org.bukkit.plugin.Plugin;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 
 public class CompatibilityManager implements Listener {
 
@@ -30,10 +30,9 @@ public class CompatibilityManager implements Listener {
 		try {
 			register(c, pluginName);
 		} catch (Exception e) {
-			Bukkit.getConsoleSender()
-					.sendMessage(Prefixes.PREFIX_ERROR + Prefixes.PLUGIN + " could not register with [" + pluginName
+			MessageHelper.error("Could not register with [" + pluginName
 							+ "] please check if [" + pluginName + "] is compatible with the server ["
-							+ Bukkit.getServer().getBukkitVersion() + "]");
+							+ Server.getServerVersion() + "]");
 			if (Core.getConfigManager().debug)
 				e.printStackTrace();
 		}
@@ -63,12 +62,11 @@ public class CompatibilityManager implements Listener {
 	 * @return true if loaded.
 	 */
 	public boolean isPluginLoaded(Class<?> class1) {
-		Iterator<Object> i = mCompatClasses.iterator();
-		while (i.hasNext()) {
-			Class<?> c = i.next().getClass();
-			if (c.getName().equalsIgnoreCase(class1.getName()))
-				return true;
-		}
+        for (Object mCompatClass : mCompatClasses) {
+            Class<?> c = mCompatClass.getClass();
+            if (c.getName().equalsIgnoreCase(class1.getName()))
+                return true;
+        }
 		return false;
 	}
 
