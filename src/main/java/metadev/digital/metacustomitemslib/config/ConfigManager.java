@@ -141,7 +141,7 @@ public class ConfigManager extends AutoConfig {
 	// #####################################################################################
 
 	@ConfigField(name = "language", category = "general", comment = "The language (file) to use. You can put the name of the language file as the language code "
-			+ "\n(eg. en_US, fr_FR, hu_HU, nl_NL, pl_PL, pt_BR, ru_RU, zh_CN) or you can specify the name of a custom file without the .lang\nPlease check the lang/ folder for a list of all available translations.")
+			+ "\n(eg. en_US, es_ES, fr_FR, hu_HU, nl_NL, pl_PL, pt_BR, ru_RU, zh_CN) or you can specify the name of a custom file without the .lang\nPlease check the lang/ folder for a list of all available translations.")
 	public String language = "en_US";
 
 	@ConfigField(name = "debug", category = "general", comment = "Enable/disable debug information")
