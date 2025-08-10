@@ -12,22 +12,22 @@ public enum SupportedPluginEntities {
 	// ConquestiaMobs was ID 8. ReserveID
 	CrackShot("CrackShot", 9), //
 	// CustomMobs was ID 10. Reserve ID
-	DisguiseCraft("DisguiseCraft", 11), //
+	// DisguiseCraft was ID 11. Reserve ID
 	Essentials("Essentials", 12), //
 	ExtraHardMode("ExtraHardMode", 13), //
 	Factions("Factions", 14), //
 	Gringotts("Gringotts", 15), //
 	Herobrine("Herobrine", 16), //
 	Heroes("Heroes", 17), //
-	iDisguise("iDisguise", 18), //
+	// iDisguise was ID 18 ReserveID
 	InfernalMobs("InfernalMobs", 19), //
 	LibsDisguises("LibsDisguises", 20), //
 	mcMMO("mcMMO", 21), //
-	Minigames("Minigames", 22), //
-	MinigamesLib("MinigamesLib", 23), //
+	//Minigames("Minigames", 22)
+	//MinigamesLib("MinigamesLib", 23)
 	MobArena("MobArena", 24), //
-	MobDungeon("MobDungeon", 25), //
-	MobStacker("MobStacker", 26), //
+	//MobDungeon("MobDungeon", 25)
+	//MobStacker("MobStacker", 26),
 	MyPet("MyPet", 27), //
 	MysteriousHalloween("MysteriousHalloween", 28), //
 	MythicMobs("MythicMobs", 29), //
@@ -35,7 +35,7 @@ public enum SupportedPluginEntities {
 	ProtocolLib("ProtocolLib", 31), //
 	PVPArena("PVPArena", 32), //
 	Residence("Residence", 33), //
-	SmartGiants("SmartGiants", 34), //
+	//SmartGiants("SmartGiants", 34), //
 	StackMob("StackMob", 35), //
 	TARDISWeepingAngels("TARDISWeepingAngels", 36), //
 	// TitleAPI was ID 37. Reserve ID
@@ -47,7 +47,7 @@ public enum SupportedPluginEntities {
 	WorldGuard("WorldGuard", 43), //
 	Holograms("Holograms", 44), //
 	HolographicDisplays("HolographicDisplays", 45), //
-	PreciousStones("PreciousStones", 46), //
+	//PreciousStones("PreciousStones", 46),
 	BagOfGold("BagOfGold", 47), //
 	MobHunting("MetaMobHunting", 48), //
 	PerWorldInventory("PerWorldInventory", 49), //
