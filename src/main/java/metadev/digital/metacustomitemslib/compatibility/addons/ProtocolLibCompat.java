@@ -12,7 +12,7 @@ import com.comphenix.protocol.reflect.StructureModifier;
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.compatibility.Feature;
 import metadev.digital.metacustomitemslib.compatibility.FeatureList;
-import metadev.digital.metacustomitemslib.compatibility.ICompat;
+import metadev.digital.metacustomitemslib.compatibility.ICustomItemsLibCompat;
 import metadev.digital.metacustomitemslib.compatibility.IFeatureHolder;
 import metadev.digital.metacustomitemslib.compatibility.enums.BoundIdentifierEnum;
 import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
@@ -31,7 +31,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.Iterator;
 import java.util.List;
 
-public class ProtocolLibCompat implements ICompat, IFeatureHolder {
+public class ProtocolLibCompat implements ICustomItemsLibCompat, IFeatureHolder {
 
 	// ****** Standard ******
 	private Plugin compatPlugin;

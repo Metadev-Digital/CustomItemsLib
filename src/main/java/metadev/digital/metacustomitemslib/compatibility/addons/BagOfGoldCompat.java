@@ -3,7 +3,7 @@ package metadev.digital.metacustomitemslib.compatibility.addons;
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.compatibility.Feature;
 import metadev.digital.metacustomitemslib.compatibility.FeatureList;
-import metadev.digital.metacustomitemslib.compatibility.ICompat;
+import metadev.digital.metacustomitemslib.compatibility.ICustomItemsLibCompat;
 import metadev.digital.metacustomitemslib.compatibility.IFeatureHolder;
 import metadev.digital.metacustomitemslib.compatibility.enums.BoundIdentifierEnum;
 import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
@@ -14,7 +14,7 @@ import metadev.digital.metacustomitemslib.messages.MessageHelper;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
-public class BagOfGoldCompat implements ICompat, IFeatureHolder {
+public class BagOfGoldCompat implements ICustomItemsLibCompat, IFeatureHolder {
 
 	// ****** Standard ******
 	private Plugin compatPlugin;

@@ -4,7 +4,7 @@ import io.puharesource.mc.titlemanager.api.v2.TitleManagerAPI;
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.compatibility.Feature;
 import metadev.digital.metacustomitemslib.compatibility.FeatureList;
-import metadev.digital.metacustomitemslib.compatibility.ICompat;
+import metadev.digital.metacustomitemslib.compatibility.ICustomItemsLibCompat;
 import metadev.digital.metacustomitemslib.compatibility.IFeatureHolder;
 import metadev.digital.metacustomitemslib.compatibility.enums.BoundIdentifierEnum;
 import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
@@ -16,7 +16,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-public class TitleManagerCompat implements ICompat, IFeatureHolder {
+public class TitleManagerCompat implements ICustomItemsLibCompat, IFeatureHolder {
 
 	// ****** Standard ******
 	private Plugin compatPlugin;
