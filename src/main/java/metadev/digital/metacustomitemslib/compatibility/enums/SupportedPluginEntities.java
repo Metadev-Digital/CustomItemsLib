@@ -60,7 +60,8 @@ public enum SupportedPluginEntities {
 	LevelledMobs("LevelledMobs",56), //LevelledMobs
 	Shopkeepers("Shopkeepers",57),
 	WeaponMechanics("WeaponMechanics",58), //WeaponMechanics
-	OldMobHunting("MobHunting",59);
+	OldMobHunting("MobHunting",59),
+	ImprovedFactions("ImprovedFactions",60);
 
 	private final String name;
 	private final Integer id;
