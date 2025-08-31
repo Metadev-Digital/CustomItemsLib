@@ -29,7 +29,7 @@ public enum SupportedPluginEntities {
 	//MobDungeon("MobDungeon", 25)
 	//MobStacker("MobStacker", 26),
 	MyPet("MyPet", 27), //
-	MysteriousHalloween("MysteriousHalloween", 28), //
+	MysteriousHalloween("MysteriousHalloweenPlus", 28), //
 	MythicMobs("MythicMobs", 29), //
 	PlaceholderAPI("PlaceholderAPI", 30), //
 	ProtocolLib("ProtocolLib", 31), //
