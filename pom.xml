@@ -178,16 +178,16 @@
         <dependency>
             <groupId>com.Zrips</groupId>
             <artifactId>CMI</artifactId>
-            <version>9.8.0.2</version>
+            <version>9.8.0.5</version>
             <scope>system</scope>
-            <systemPath>${basedir}\lib\CMI-9.8.0.2.jar</systemPath>
+            <systemPath>${basedir}\lib\CMI-9.8.0.5.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>net.Zrips</groupId>
             <artifactId>CMILib</artifactId>
-            <version>1.5.6.2</version>
+            <version>1.5.6.3</version>
             <scope>system</scope>
-            <systemPath>${basedir}\lib\CMILib1.5.6.2.jar</systemPath>
+            <systemPath>${basedir}\lib\CMILib1.5.6.3.jar</systemPath>
         </dependency>
 
         <!-- Title Manager -->

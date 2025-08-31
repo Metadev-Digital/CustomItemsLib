@@ -23,7 +23,7 @@ public class CMILibCompat implements ICustomItemsLibCompat, IFeatureHolder {
 	// ****** Standard ******
 	private Plugin compatPlugin;
 	private static boolean enabled = false, supported = false, loaded = false;
-	private static String sMin, sMax, pMin = "1.5.4.4", pMax;
+	private static String sMin, sMax, pMin = "1.5.6.3", pMax;
 	private static FeatureList features;
 
 	// ****** Plugin Specific ******
