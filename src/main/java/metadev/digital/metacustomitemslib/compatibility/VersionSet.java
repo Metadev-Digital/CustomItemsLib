@@ -108,7 +108,7 @@ public class VersionSet {
     public static boolean isWithinVersionBounds(VersionSet bounds, String version){
         if (!bounds.isSet()) return true; // No version restrictions set
 
-        ComparableVersion currentVersion = new ComparableVersion(version);
+        ComparableVersion currentVersion = new ComparableVersion(version.replaceAll("[^0-9.]", ""));
         if (bounds.isDoubleBound()){ // A ceiling and floor were set
             ComparableVersion floorVersion = new ComparableVersion(bounds.getFloor().getVersion());
             ComparableVersion ceilingVersion = new ComparableVersion(bounds.getCeiling().getVersion());
