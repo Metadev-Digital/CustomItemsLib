@@ -3,6 +3,7 @@ package metadev.digital.metacustomitemslib.rewards;
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.Strings;
 import metadev.digital.metacustomitemslib.Tools;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
@@ -128,7 +129,7 @@ public class Reward {
 				this.encodedHash = str.substring(10);
 				String compareHash = Strings.encode(moneyStr + rewardTypeStr);
 				if (!encodedHash.equalsIgnoreCase(compareHash)) {
-					Bukkit.getConsoleSender().sendMessage(Core.PREFIX + ChatColor.RED
+					Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX + ChatColor.RED
 							+ "[Warning] A player has tried to change the value of a BagOfGold Item. Value set to 0!");
 					money = 0;
 					updateEncodedHash();

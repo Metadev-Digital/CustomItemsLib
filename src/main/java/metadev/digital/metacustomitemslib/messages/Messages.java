@@ -1,12 +1,12 @@
 package metadev.digital.metacustomitemslib.messages;
 
-//TODO: PlaceHolderAPICompat is throwing errors when being called here. Make CustomItemsLib version?
-import metadev.digital.metabagofgold.compatibility.PlaceholderAPICompat;
-
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.Strings;
-import metadev.digital.metacustomitemslib.compatibility.*;
-import metadev.digital.metacustomitemslib.server.Servers;
+import metadev.digital.metacustomitemslib.compatibility.addons.ActionBarHelper;
+import metadev.digital.metacustomitemslib.compatibility.addons.CMILibCompat;
+import metadev.digital.metacustomitemslib.compatibility.addons.TitleManagerCompat;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
+import metadev.digital.metacustomitemslib.server.Server;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 public class Messages {
 
 	private Plugin plugin;
-
+	private ActionBarHelper actionBarHelper;
 	private File dataFolder;
 	private String datapath = "";
 
@@ -40,7 +40,7 @@ public class Messages {
 
 	private static Map<String, String> mTranslationTable;
 	private static String[] mValidEncodings = new String[] { "UTF-16", "UTF-16BE", "UTF-16LE", "UTF-8", "ISO646-US" };
-	private static String[] sources = new String[] { "en_US.lang", "fr_FR.lang", "hu_HU.lang", "pl_PL.lang",
+	private static String[] sources = new String[] { "en_US.lang", "es_ES.lang", "fr_FR.lang", "hu_HU.lang", "nl_NL.lang","pl_PL.lang",
 			"pt_BR.lang", "ru_RU.lang", "zh_CN.lang" };
 
 	public void exportDefaultLanguages(Plugin plugin) {
@@ -51,7 +51,7 @@ public class Messages {
 		for (String source : sources) {
 			File dest = new File(folder, source);
 			if (!dest.exists()) {
-				Bukkit.getConsoleSender().sendMessage(Core.PREFIX + "Creating language file " + source + " from JAR.");
+				Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX + "Creating language file " + source + " from JAR.");
 				InputStream is = plugin.getResource("lang/" + source);
 				String outputFile = datapath + "/lang/" + source;
 				try {
@@ -67,13 +67,13 @@ public class Messages {
 					String outputFile = datapath + "/lang/" + source;
 					try {
 						if(Files.deleteIfExists(Path.of(outputFile))){
-							Bukkit.getConsoleSender().sendMessage(Core.PREFIX + "Newer version of language file " + source + " available from JAR, overwriting file.");
+							Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX + "Newer version of language file " + source + " available from JAR, overwriting file.");
 						}
 						Files.copy(is, Paths.get(outputFile));
 						File file = new File(outputFile);
 						sortFileOnDisk(file);
 					} catch (IOException e) {
-						Bukkit.getConsoleSender().sendMessage(Core.PREFIX_ERROR + "Failed to write to or generate new lang file.");
+						Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_ERROR + "Failed to write to or generate new lang file.");
 						e.printStackTrace();
 					}
                 }
@@ -108,7 +108,7 @@ public class Messages {
 				writer.close();
 				sortFileOnDisk(onDisk);
 				Bukkit.getConsoleSender()
-						.sendMessage(Core.PREFIX + "Updated " + onDisk.getName() + " language file with missing keys");
+						.sendMessage(Prefixes.PREFIX + "Updated " + onDisk.getName() + " language file with missing keys");
 			}
 
 			return true;
@@ -156,7 +156,7 @@ public class Messages {
 			reader.close();
 		} catch (Exception e) {
 			Bukkit.getServer().getConsoleSender()
-					.sendMessage(Core.PREFIX_ERROR + "Error reading the language file. Please check the format.");
+					.sendMessage(Prefixes.PREFIX_ERROR + "Error reading the language file. Please check the format.");
 		}
 
 		return map;
@@ -222,7 +222,7 @@ public class Messages {
 			if (encoding == null) {
 				FileInputStream input = new FileInputStream(file);
 				Bukkit.getConsoleSender()
-						.sendMessage(Core.PREFIX_ERROR + "Could not detect encoding of lang file. Defaulting to UTF-8");
+						.sendMessage(Prefixes.PREFIX_ERROR + "Could not detect encoding of lang file. Defaulting to UTF-8");
 				map = loadLang(input, "UTF-8");
 				input.close();
 			}
@@ -241,7 +241,7 @@ public class Messages {
 	public void setLanguage(String lang) {
 		File file = new File(dataFolder, "lang/" + lang);
 		if (!file.exists()) {
-			Bukkit.getConsoleSender().sendMessage(Core.PREFIX_WARNING
+			Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_WARNING
 					+ "Language file does not exist. Creating a new file based on en_US. You need to translate the file yourself.");
 			try {
 				file.createNewFile();
@@ -256,12 +256,12 @@ public class Messages {
 			mTranslationTable = loadLang(file);
 		} else {
 			Bukkit.getConsoleSender()
-					.sendMessage(Core.PREFIX_ERROR + "Could not read the language file:" + file.getName());
+					.sendMessage(Prefixes.PREFIX_ERROR + "Could not read the language file:" + file.getName());
 		}
 
 		if (mTranslationTable == null) {
 			mTranslationTable = new HashMap<String, String>();
-			Bukkit.getConsoleSender().sendMessage(Core.PREFIX_WARNING + "Creating empty translation table.");
+			Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_WARNING + "Creating empty translation table.");
 		}
 	}
 
@@ -269,7 +269,7 @@ public class Messages {
 		String value = mTranslationTable.get(key);
 
 		if (value == null) {
-			Bukkit.getConsoleSender().sendMessage(Core.PREFIX + "mTranslationTable has not key: " + key.toString());
+			Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX + "mTranslationTable has not key: " + key.toString());
 			throw new MissingResourceException("", "", key);
 		}
 
@@ -316,7 +316,7 @@ public class Messages {
 
 			return Strings.convertColors(ChatColor.translateAlternateColorCodes('&', output));
 		} catch (MissingResourceException e) {
-			Bukkit.getConsoleSender().sendMessage(Core.PREFIX_WARNING + " Could not find key: " + key.toString());
+			Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_WARNING + " Could not find key: " + key.toString());
 			return key;
 		}
 	}
@@ -337,7 +337,7 @@ public class Messages {
 	 */
 	public void debug(String message, Object... args) {
 		if (Core.getConfigManager().debug) {
-			Bukkit.getServer().getConsoleSender().sendMessage(Core.PREFIX_DEBUG + String.format(message, args));
+			Bukkit.getServer().getConsoleSender().sendMessage(Prefixes.PREFIX_DEBUG + String.format(message, args));
 		}
 	}
 
@@ -348,7 +348,7 @@ public class Messages {
 	 * @param args
 	 */
 	public void notice(String message, Object... args) {
-		Bukkit.getServer().getConsoleSender().sendMessage(Core.PREFIX + String.format(message, args));
+		Bukkit.getServer().getConsoleSender().sendMessage(Prefixes.PREFIX + String.format(message, args));
 	}
 
 	/**
@@ -358,7 +358,7 @@ public class Messages {
 	 * @param args
 	 */
 	public void warning(String message, Object... args) {
-		Bukkit.getServer().getConsoleSender().sendMessage(Core.PREFIX_WARNING + String.format(message, args));
+		Bukkit.getServer().getConsoleSender().sendMessage(Prefixes.PREFIX_WARNING + String.format(message, args));
 	}
 
 	/**
@@ -368,7 +368,7 @@ public class Messages {
 	 * @param args
 	 */
 	public void error(String message, Object... args) {
-		Bukkit.getServer().getConsoleSender().sendMessage(Core.PREFIX_ERROR + String.format(message, args));
+		Bukkit.getServer().getConsoleSender().sendMessage(Prefixes.PREFIX_ERROR + String.format(message, args));
 	}
 
 
@@ -394,12 +394,11 @@ public class Messages {
 			return;
 		}
 
-		final String final_message = (BagOfGoldCompat.isSupported()) ? PlaceholderAPICompat.setPlaceholders(player, message) : "";
+		final String final_message = "";
 
 		Core.getMessages().debug(final_message);
 
-		/*|| ActionAnnouncerCompat.isSupported()*/
-		if (  TitleManagerCompat.isSupported() || ActionbarCompat.isSupported()	|| ActionBarAPICompat.isSupported() || CMICompat.isSupported()) {
+		if ( actionBarHelper != null && actionBarHelper.isActionBarActive()) {
 			long last = 0L;
 			long time_between_messages = 80L;
 			long delay = 1L, now = System.currentTimeMillis();
@@ -422,10 +421,10 @@ public class Messages {
 				}
 			}, delay);
 		} else {
-			if( Servers.isMC119OrNewer()){
+			if( Server.isMC119OrNewer()){
 				player.sendTitle("", message,10,100,10);
 			}
-			else if (Servers.isMC115OrNewer())
+			else if (Server.isMC115OrNewer())
 				player.sendTitle("", message);
 			else
 				player.sendMessage(message);
@@ -443,20 +442,16 @@ public class Messages {
 		if (isEmpty(message))
 			return;
 
-		message = Strings.convertColors(PlaceholderAPICompat.setPlaceholders(player, message));
-			
-		if (ActionbarCompat.isSupported()) {
-			ActionbarCompat.setMessage(player, message);
-		} else if (ActionBarAPICompat.isSupported()) {
-			ActionBarAPICompat.setMessage(player, message);
-		} else if (CMICompat.isSupported()) {
-			CMICompat.sendActionBarMessage(player, message);
-		} else {
-			if (!Core.getPlayerSettingsManager().getPlayerSettings(player).isMuted())
-				if (Servers.isMC115OrNewer())
-					player.sendTitle("", message);
-				else
-					player.sendMessage(message);
+		if ( actionBarHelper != null && actionBarHelper.isActionBarActive()) {
+			if(actionBarHelper.isCMILibActive()) CMILibCompat.sendActionBarMessage(player, message);
+			else if(actionBarHelper.isTitleManagerActive()) TitleManagerCompat.setActionBar(player, message);
+			else {
+				if (!Core.getPlayerSettingsManager().getPlayerSettings(player).isMuted())
+					if (Server.isMC115OrNewer())
+						player.sendTitle("", message);
+					else
+						player.sendMessage(message);
+			}
 		}
 	}
 
@@ -468,8 +463,7 @@ public class Messages {
 	 * @param args
 	 */
 	public void learn(Player player, String text, Object... args) {
-		if (player != null && !CitizensCompat.isNPC(player)
-				&& Core.getPlayerSettingsManager().getPlayerSettings(player).isLearningMode() && !isEmpty(text))
+		if (player != null && Core.getPlayerSettingsManager().getPlayerSettings(player).isLearningMode() && !isEmpty(text))
 			playerBossbarMessage(player, text, args);
 	}
 
@@ -485,14 +479,8 @@ public class Messages {
 		if (isEmpty(message))
 			return;
 
-		message = Strings.convertColors(PlaceholderAPICompat.setPlaceholders(player, message));
-
-		if (BossBarAPICompat.isSupported()) {
-			BossBarAPICompat.addBar(player, String.format(message, args));
-		} else if (BarAPICompat.isSupported()) {
-			BarAPICompat.setMessageTime(player, String.format(message, args), 5);
-		} else if (CMICompat.isSupported()) {
-			CMICompat.sendBossBarMessage(player, String.format(message, args));
+		if ( actionBarHelper != null && actionBarHelper.isCMILibActive()) {
+			CMILibCompat.sendBossBarMessage(player, String.format(message, args));
 		} else {
 			player.sendMessage(ChatColor.AQUA + getString("core.learn.prefix") + " " + String.format(message, args));
 		}
@@ -509,4 +497,7 @@ public class Messages {
 			sender.sendMessage(message);
 	}
 
+	public void instantiateActionBarHelper() {
+		actionBarHelper = new ActionBarHelper();
+	}
 }

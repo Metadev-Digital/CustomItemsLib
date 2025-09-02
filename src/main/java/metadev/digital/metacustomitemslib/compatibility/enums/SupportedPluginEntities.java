@@ -1,0 +1,101 @@
+package metadev.digital.metacustomitemslib.compatibility.enums;
+
+public enum SupportedPluginEntities {
+	// ActionAnnouncer was ID 0. Reserve ID
+	// ActionBarApi was ID 1. Reserve ID
+	Actionbar("Actionbar", 2), //
+	BarApi("BarAPI", 3), //
+	BattleArena("BattleArena", 4), //
+	// BossBarApi was ID 5. Reserve ID
+	BossShop("BossShopPro", 6), //
+	Citizens("Citizens", 7), // Used in MobHunting && BagOfGold
+	// ConquestiaMobs was ID 8. ReserveID
+	CrackShot("CrackShot", 9), //
+	// CustomMobs was ID 10. Reserve ID
+	// DisguiseCraft was ID 11. Reserve ID
+	Essentials("Essentials", 12), //
+	ExtraHardMode("ExtraHardMode", 13), //
+	Factions("Factions", 14), //
+	Gringotts("Gringotts", 15), //
+	Herobrine("Herobrine", 16), //
+	Heroes("Heroes", 17), //
+	// iDisguise was ID 18 ReserveID
+	InfernalMobs("InfernalMobs", 19), //
+	LibsDisguises("LibsDisguises", 20), //
+	mcMMO("mcMMO", 21), //
+	//Minigames("Minigames", 22)
+	//MinigamesLib("MinigamesLib", 23)
+	MobArena("MobArena", 24), //
+	//MobDungeon("MobDungeon", 25)
+	//MobStacker("MobStacker", 26),
+	MyPet("MyPet", 27), //
+	MysteriousHalloween("MysteriousHalloweenPlus", 28), //
+	MythicMobs("MythicMobs", 29), //
+	PlaceholderAPI("PlaceholderAPI", 30), //
+	ProtocolLib("ProtocolLib", 31), //
+	PVPArena("PVPArena", 32), //
+	Residence("Residence", 33), //
+	//SmartGiants("SmartGiants", 34), //
+	StackMob("StackMob", 35), //
+	TARDISWeepingAngels("TARDISWeepingAngels", 36), //
+	// TitleAPI was ID 37. Reserve ID
+	TitleManager("TitleManager", 38), //
+	Towny("Towny", 39), //
+	VanishNoPacket("VanishNoPacket", 40), //
+	War("War", 41), //
+	WorldEdit("WorldEdit", 42), //
+	WorldGuard("WorldGuard", 43), //
+	Holograms("Holograms", 44), //
+	HolographicDisplays("HolographicDisplays", 45), //
+	//PreciousStones("PreciousStones", 46),
+	BagOfGold("BagOfGold", 47), //
+	MobHunting("MetaMobHunting", 48), //
+	PerWorldInventory("PerWorldInventory", 49), //
+	LorinthsRpgMobs("LorinthsRpgMobs", 50), //
+	CMI("CMI", 51), // CMI Holograms
+	EliteMobs("EliteMobs", 52), // EliteMobs
+	McMMOHorses("mcMMOHorse", 53), // McMMOHorses
+	Boss("Boss",54), //BOSS
+	CMILib("CMILib", 55), // CMILib
+	LevelledMobs("LevelledMobs",56), //LevelledMobs
+	Shopkeepers("Shopkeepers",57),
+	WeaponMechanics("WeaponMechanics",58), //WeaponMechanics
+	OldMobHunting("MobHunting",59),
+	ImprovedFactions("ImprovedFactions",60);
+
+	private final String name;
+	private final Integer id;
+
+	private SupportedPluginEntities(String name, Integer id) {
+		this.name = name;
+		this.id = id;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public boolean equalsName(String otherName) {
+		return (otherName != null) && name.equals(otherName);
+	}
+
+	public String toString() {
+		return name;
+	}
+
+	public SupportedPluginEntities valueOf(int id) {
+		return SupportedPluginEntities.values()[id];
+	}
+
+	public static SupportedPluginEntities getSupportedPlugin(String pluginname) {
+		for (SupportedPluginEntities name : values())
+			if (name.getName().equalsIgnoreCase(pluginname))
+				return name;
+		return null;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+}

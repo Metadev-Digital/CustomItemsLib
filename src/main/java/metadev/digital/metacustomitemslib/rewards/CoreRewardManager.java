@@ -2,8 +2,9 @@ package metadev.digital.metacustomitemslib.rewards;
 
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.Tools;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import metadev.digital.metacustomitemslib.mobs.MobType;
-import metadev.digital.metacustomitemslib.server.Servers;
+import metadev.digital.metacustomitemslib.server.Server;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
@@ -25,7 +26,7 @@ public class CoreRewardManager {
 		pickupRewards = new PickupRewards(plugin);
 		Bukkit.getPluginManager().registerEvents(new MoneyMergeEventListener(plugin), plugin);
 
-		if (Servers.isMC112OrNewer() && eventDoesExists())
+		if (Server.isMC112OrNewer() && eventDoesExists())
 			Bukkit.getPluginManager().registerEvents(new EntityPickupItemEventListener(pickupRewards), plugin);
 		else
 			Bukkit.getPluginManager().registerEvents(new PlayerPickupItemEventListener(pickupRewards), plugin);
@@ -123,7 +124,7 @@ public class CoreRewardManager {
 					} else {
 						// Hash is wrong
 						Bukkit.getConsoleSender()
-								.sendMessage(Core.PREFIX_WARNING + player.getName()
+								.sendMessage(Prefixes.PREFIX_WARNING + player.getName()
 										+ " has tried to change the value of a BagOfGold Item. Value set to 0!(1)");
 						rewardInSlot.setMoney(0);
 						is = Reward.setDisplayNameAndHiddenLores(is, rewardInSlot);
@@ -194,7 +195,7 @@ public class CoreRewardManager {
 					} 
 				} else {
 					// Hash is wrong
-					Bukkit.getConsoleSender().sendMessage(Core.PREFIX_WARNING + player.getName()
+					Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_WARNING + player.getName()
 							+ " has tried to change the value of a BagOfGold Item. Value set to 0!");
 					reward.setMoney(0);
 					is = Reward.setDisplayNameAndHiddenLores(is, reward);
@@ -235,7 +236,7 @@ public class CoreRewardManager {
 			getDroppedMoney().put(item.getEntityId(), reward.getMoney());
 		} else {
 			Bukkit.getConsoleSender()
-					.sendMessage(Core.PREFIX + ChatColor.RED + " Unhandled reward type in CoreRewardManager.");
+					.sendMessage(Prefixes.PREFIX + ChatColor.RED + " Unhandled reward type in CoreRewardManager.");
 		}
 	}
 

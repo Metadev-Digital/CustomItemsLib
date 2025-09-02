@@ -3,6 +3,7 @@ package metadev.digital.metacustomitemslib.rewards;
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.Tools;
 import metadev.digital.metacustomitemslib.materials.Materials;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -32,7 +33,7 @@ public class RewardBlockManager {
 
 	public RewardBlockManager(Plugin plugin) {
 		this.plugin = plugin;
-		file = new File(plugin.getDataFolder().getParent(), "CustomItemsLib/rewards.yml");
+		file = new File(plugin.getDataFolder(), "rewards.yml");
 		load();
 		Bukkit.getPluginManager().registerEvents(new CoreRewardListeners(plugin), plugin);
 	}
@@ -131,7 +132,7 @@ public class RewardBlockManager {
 			if (file.exists())
 				config.load(file);
 		} catch (IllegalArgumentException | InvalidConfigurationException e) {
-			Bukkit.getConsoleSender().sendMessage(Core.PREFIX + ChatColor.RED
+			Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX + ChatColor.RED
 					+ " The rewards.yml file contain broken rewards. They will be deleted. ");
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -144,7 +145,7 @@ public class RewardBlockManager {
 				reward.read(section);
 			} catch (InvalidConfigurationException e) {
 				Bukkit.getConsoleSender()
-						.sendMessage(Core.PREFIX + ChatColor.RED + " Could not load reward no. " + key + ".");
+						.sendMessage(Prefixes.PREFIX + ChatColor.RED + " Could not load reward no. " + key + ".");
 			}
 
 			Location location = (Location) section.get("location");
@@ -179,17 +180,17 @@ public class RewardBlockManager {
 				config.save(file);
 			}
 			if (n > 0) {
-				Core.getMessages().debug("Loaded %s rewards from the CustomItemsLib/rewards.yml file", n);
+				Core.getMessages().debug("Loaded %s rewards from the MetaCustomItemsLib/rewards.yml file", n);
 			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		// Import files from MobHunting to CustomItemsLib/rewards.yml
-		File file2 = new File(plugin.getDataFolder().getParent(), "MobHunting/rewards.yml");
+		// Import files from MetaMobHunting to MetaCustomItemsLib/rewards.yml
+		File file2 = new File(plugin.getDataFolder().getParent(), "MetaMobHunting/rewards.yml");
 		if (file2.exists()) {
-			Core.getMessages().debug("Loading rewards from MobHunting first time.");
+			Core.getMessages().debug("Loading rewards from MetaMobHunting first time.");
 			migrateRewardsFromMobHunting(file2);
 		}
 		
@@ -236,7 +237,7 @@ public class RewardBlockManager {
 			e.printStackTrace();
 		}
 		if (n > 0) {
-			Core.getMessages().debug("Loaded %s rewards from the CustomItemsLib/rewards.yml file." + ChatColor.RED
+			Core.getMessages().debug("Loaded %s rewards from the MetaCustomItemsLib/rewards.yml file." + ChatColor.RED
 					+ " Renaming MobHunting/rewards.yml to MobHunting/rewards.yml.old", n);
 			file.renameTo(new File(file.getPath() + ".old"));
 			dataChanged = true;
@@ -279,7 +280,7 @@ public class RewardBlockManager {
 			e.printStackTrace();
 		}
 		if (n > 0) {
-			Core.getMessages().debug("Loaded %s rewards from the CustomItemsLib/rewards.yml file." + ChatColor.RED
+			Core.getMessages().debug("Loaded %s rewards from the MetaCustomItemsLib/rewards.yml file." + ChatColor.RED
 					+ " Renaming BagOfGold/rewards.yml to BagOfGold/rewards.yml.old", n);
 			file.renameTo(new File(file.getPath() + ".old"));
 			dataChanged = true;

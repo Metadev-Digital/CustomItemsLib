@@ -2,10 +2,13 @@ package metadev.digital.metacustomitemslib;
 
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+import metadev.digital.metacustomitemslib.messages.MessageHelper;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.DrilldownPie;
 import org.bukkit.Bukkit;
@@ -29,27 +32,29 @@ public class MetricsManager {
             public void run() {
                 try {
                     // make a URL to MCStats.org
-                    URL url = new URL("https://bstats.org/");
+                    URL url = new URI("https://bstats.org/").toURL();
                     if (!started) {
-                        plugin.getMessages().debug("check if home page can be reached");
+                        MessageHelper.debug("check if home page can be reached");
                         HttpTools.isHomePageReachable(url, new httpCallback() {
 
                             @Override
                             public void onSuccess() {
                                 startBStatsMetrics();
-                                plugin.getMessages().debug("Metrics reporting to Https://bstats.org has started.");
+                                MessageHelper.debug("Metrics reporting to Https://bstats.org has started.");
                                 started = true;
                             }
 
                             @Override
                             public void onError() {
                                 started=false;
-                                plugin.getMessages().debug("https://bstats.org/ seems to be down");
+                                MessageHelper.debug("https://bstats.org/ seems to be down");
                             }
                         });
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
+                } catch (URISyntaxException e) {
+                    throw new RuntimeException(e);
                 }
 
             }
@@ -62,12 +67,12 @@ public class MetricsManager {
 
         bStatsMetrics.addCustomChart(new DrilldownPie("economy_api", () -> {
             Map<String, Map<String, Integer>> map = new HashMap<>();
-            String economyAPI = plugin.getEconomyManager().getVersion();
+            String economyAPI = Core.getEconomyManager().getVersion();
             Map<String, Integer> entry = new HashMap<>();
             entry.put(economyAPI, 1);
-            if (plugin.getEconomyManager().getVersion().endsWith("Vault")) {
+            if (Core.getEconomyManager().getVersion().endsWith("Vault")) {
                 map.put("Vault", entry);
-            } else if (plugin.getEconomyManager().getVersion().endsWith("Reserve")) {
+            } else if (Core.getEconomyManager().getVersion().endsWith("Reserve")) {
                 map.put("Reserve", entry);
             } else {
                 map.put("None", entry);

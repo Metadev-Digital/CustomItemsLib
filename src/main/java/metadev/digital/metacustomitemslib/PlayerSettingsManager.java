@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.UUID;
 
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -123,13 +124,13 @@ public class PlayerSettingsManager implements Listener {
 				ps.setLast_logon(System.currentTimeMillis());
 				mPlayerSettings.put(offlinePlayer.getUniqueId(), ps);
 				if (ps.getTexture() == null || ps.getTexture().equals("")) {
-					Core.getMessages().debug("Store %s's skin in CustomItemsLib Skin Cache", offlinePlayer.getName());
+					Core.getMessages().debug("Store %s's skin in " + Prefixes.PLUGIN + " Skin Cache", offlinePlayer.getName());
 				}
 			}
 
 			@Override
 			public void onError(Throwable error) {
-				Bukkit.getConsoleSender().sendMessage(Core.PREFIX + ChatColor.RED + "[ERROR] " + offlinePlayer.getName()
+				Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX + ChatColor.RED + "[ERROR] " + offlinePlayer.getName()
 						+ " is new, creating user in database.");
 				mPlayerSettings.put(offlinePlayer.getUniqueId(), new PlayerSettings(offlinePlayer));
 			}

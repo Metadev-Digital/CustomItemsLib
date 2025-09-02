@@ -2,6 +2,7 @@ package metadev.digital.metacustomitemslib.storage.async;
 
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.PlayerSettings;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import metadev.digital.metacustomitemslib.storage.DataStoreException;
 import metadev.digital.metacustomitemslib.storage.IDataStore;
 import metadev.digital.metacustomitemslib.storage.UserNotFoundException;
@@ -25,7 +26,7 @@ public class PlayerSettingsRetrieverTask implements IDataStoreTask<PlayerSetting
 			try {
 				return store.loadPlayerSettings(mPlayer);
 			} catch (UserNotFoundException e) {
-				Core.getMessages().debug("Creating new PlayerSettings for %s in the CustomItemsLib database.",
+				Core.getMessages().debug("Creating new PlayerSettings for %s in the " + Prefixes.PLUGIN + " database.",
 						mPlayer.getName());
 				String worldgroup = mPlayer.isOnline()
 						? Core.getWorldGroupManager().getCurrentWorldGroup(mPlayer)

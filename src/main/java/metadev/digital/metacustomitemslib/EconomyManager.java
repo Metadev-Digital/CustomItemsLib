@@ -1,5 +1,6 @@
 package metadev.digital.metacustomitemslib;
 
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import net.milkbowl.vault.economy.Economy;
 import net.tnemc.core.Reserve;
 import net.tnemc.core.economy.EconomyAPI;
@@ -88,7 +89,7 @@ public class EconomyManager {
 				vaultEconomy = vaultEcoProvider.getProvider();
 				setVersion(String.format("%s %s", vaultEcoProvider.getProvider().getName(), "via Vault"));
 				Bukkit.getConsoleSender().sendMessage(
-						Core.PREFIX + "CustomItemsLib is using " + getVersion() + " as Economy Provider");
+						Prefixes.PREFIX + Prefixes.PLUGIN + " is using " + getVersion() + " as Economy Provider");
 				Type = EcoType.VAULT;
 				return true;
 			}
@@ -106,7 +107,7 @@ public class EconomyManager {
 			reserveEconomy = ((Reserve) economyProvider).economy();
 			setVersion(String.format("%s %s", reserveEconomy.name(), "via Reserve"));
 			Bukkit.getConsoleSender()
-					.sendMessage(Core.PREFIX + "CustomItemsLib is using " + getVersion() + " as Economy Provider");
+					.sendMessage(Prefixes.PREFIX + Prefixes.PLUGIN + " is using " + getVersion() + " as Economy Provider");
 			Type = EcoType.RESERVE;
 			return true;
 		}

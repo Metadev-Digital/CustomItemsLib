@@ -32,6 +32,7 @@ public class ConfigManager extends AutoConfig {
 				"########################################################################" + "\nReward Type Settings"
 						+ "\n########################################################################");
 
+		// TODO: Update this to include url and uuids
 		setCategoryComment("reward.itemtype.skull",
 				"########################################################################" + "\nSKULL Settings"
 						+ "\n########################################################################" + "\nExamples:"
@@ -82,8 +83,26 @@ public class ConfigManager extends AutoConfig {
 						+ "\nIntegration to other plugins."
 						+ "\n########################################################################");
 
+		setCategoryComment("plugins.metamobhunting",
+				"########################################################################" + "\nMetaMobHunting"
+						+ "\n########################################################################");
+
 		setCategoryComment("plugins.protocollib",
 				"########################################################################" + "\nProtocollib"
+						+ "\n########################################################################");
+
+		setCategoryComment("plugins.bagofgold",
+				"########################################################################" + "\nBagOfGold"
+						+ "\n########################################################################");
+
+
+		setCategoryComment("plugins.cmi",
+				"########################################################################" + "\nCMI"
+						+ "\n########################################################################");
+
+
+		setCategoryComment("plugins.cmilib",
+				"########################################################################" + "\nCMI Lib"
 						+ "\n########################################################################");
 
 		setCategoryComment("plugins.bossbarapi",
@@ -96,22 +115,6 @@ public class ConfigManager extends AutoConfig {
 		setCategoryComment("plugins.titlemanager",
 				"########################################################################" + "\nTitleManager"
 						+ "\n########################################################################");
-
-		setCategoryComment("plugins.titleapi",
-				"########################################################################" + "\nTitleApi"
-						+ "\n########################################################################");
-
-		setCategoryComment("plugins.actionbar",
-				"########################################################################" + "\nActionbar"
-						+ "\n########################################################################");
-
-		setCategoryComment("plugins.actionbarapi",
-				"########################################################################" + "\nActionbarAPI"
-						+ "\n########################################################################");
-
-		/* TODO: ACTIONANNOUNCER Deprecated? setCategoryComment("plugins.actionannouncer",
-				"########################################################################" + "\nActionAnnouncer"
-						+ "\n########################################################################"); */
 
 		setCategoryComment("plugins.cmi", "########################################################################"
 				+ "\nCMI" + "\n########################################################################");
@@ -138,11 +141,11 @@ public class ConfigManager extends AutoConfig {
 	// #####################################################################################
 
 	@ConfigField(name = "language", category = "general", comment = "The language (file) to use. You can put the name of the language file as the language code "
-			+ "\n(eg. en_US, fr_FR, hu_HU, pt_BR, zh_CN, ru_RU ect.) or you can specify the name of a custom file without the .lang\nPlease check the lang/ folder for a list of all available translations.")
+			+ "\n(eg. en_US, es_ES, fr_FR, hu_HU, nl_NL, pl_PL, pt_BR, ru_RU, zh_CN) or you can specify the name of a custom file without the .lang\nPlease check the lang/ folder for a list of all available translations.")
 	public String language = "en_US";
 
 	@ConfigField(name = "debug", category = "general", comment = "Enable/disable debug information")
-	public boolean debug = true;
+	public boolean debug = false;
 
 	@ConfigField(name = "newplayer_learning_mode", category = "general", comment = "When a new playerjoins the server he will by default start"
 			+ "\nin 'LEARNING MODE' and get extra information about when he get rewards and not,"
@@ -298,36 +301,23 @@ public class ConfigManager extends AutoConfig {
 	// Plugin integration
 	// #####################################################################################
 
-	@ConfigField(name = "enable_integration_titleapi", category = "plugins.titleapi", comment = "Enable/Disable integration with TitleAPI")
-	public boolean enableIntegrationTitleAPI = true;
+	@ConfigField(name = "enable_integration_mobhunting", category = "plugins.mobhunting", comment = "Enable/Disable integration with MetaMobHunting")
+	public boolean enableIntegrationMobHunting = true;
+
+	@ConfigField(name = "enable_integration_bagofgold", category = "plugins.bagofgold", comment = "Enable/Disable integration with Bag Of Gold")
+	public boolean enableIntegrationBagOfGold = true;
 
 	@ConfigField(name = "enable_integration_titlemanager", category = "plugins.titlemanager", comment = "Enable/Disable integration with TitleManger. If you want messages in player chat you can set this to true."
 			+ "\nhttps://www.spigotmc.org/resources/titlemanager.1049/")
 	public boolean enableIntegrationTitleManager = true;
 
-	@ConfigField(name = "enable_integration_actionbar", category = "plugins.actionbar", comment = "Enable/Disable integration with Actionbar. If you want messages in player chat you can set this to true.")
-	public boolean enableIntegrationActionbar = true;
-
-	@ConfigField(name = "enable_integration_actionbarapi", category = "plugins.actionbarapi", comment = "Enable/Disable integration with ActionBarAPI. If you want messages in player chat you can set this to true."
-			+ "\nhttps://www.spigotmc.org/resources/actionbarapi_1_8_1_9_1_10.1315/")
-	public boolean enableIntegrationActionBarAPI = true;
-
-	/* TODO: ACTIONANNOUNCER Deprecated?
-	@ConfigField(name = "enable_integration_actionannouncer", category = "plugins.actionannouncer", comment = "Enable/Disable integration with ActionAnnouncer. If you want messages in player chat you can set this to true."
-			+ "\nhttps://www.spigotmc.org/resources/actionannouncer.1320/")
-	public boolean enableIntegrationActionAnnouncer = true;
-	 */
-
-	@ConfigField(name = "enable_integration_bossbarapi", category = "plugins.bossbarapi", comment = "Enable/Disable integration with BossBarAPI. If you want messages in player chat you can set this to true.")
-	public boolean enableIntegrationBossBarAPI = true;
-
-	@ConfigField(name = "enable_integration_barapi", category = "plugins.barapi", comment = "Enable/Disable integration with BarAPI. If you want messages in player chat you can set this to true."
-			+ "\nhttps://dev.bukkit.org/projects/bar_api")
-	public boolean enableIntegrationBarAPI = true;
-
 	@ConfigField(name = "enable_integration_cmi", category = "plugins.cmi", comment = "Enable/Disable integration with CMI."
 			+ "\nhttps://www.spigotmc.org/resources/cmi-270-commands-insane-kits-portals-essentials-economy-mysql-sqlite-much-more.3742/")
 	public boolean enableIntegrationCMI = true;
+
+	@ConfigField(name = "enable_integration_cmilib", category = "plugins.cmilib", comment = "Enable/Disable integration with CMI Lib."
+			+ "\nhttps://www.spigotmc.org/resources/cmilib.87610/")
+	public boolean enableIntegrationCMILib = true;
 
 	@ConfigField(name = "enable_integration_protocollib", category = "plugins.protocollib", comment = "Enable/Disable integration with ProtocolLib."
 			+ "\nhttps://www.spigotmc.org/resources/protocollib.1997/")
@@ -365,16 +355,7 @@ public class ConfigManager extends AutoConfig {
 	
 	// #####################################################################################
 	// Update Settings
-	// #####################################################################################
-	@ConfigField(name = "update-check", category = "updates", comment = "Check if there is a new version of the plugin available.")
+	// ##################################################################################### // TODO: Plumb this into version notification
+	@ConfigField(name = "update-check", category = "updates", comment = "Check if there is a new version of the plugin available on launch.")
 	public boolean updateCheck = true;
-
-	@ConfigField(name = "check_every", category = "updates", comment = "Set the number of seconds between each check. Recommended setting is"
-			+ "\ncheck_every: 7200 ~ to check every second hour.")
-	public int checkEvery = 7200;
-
-	@ConfigField(name = "autoupdate", category = "updates", comment = "Set 'autoupdate: true' if you want new updates downloaded and installed."
-			+ "\nYou will still have to reboot the server manually.")
-	public boolean autoupdate = false;
-
 }

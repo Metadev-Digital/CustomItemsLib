@@ -3,12 +3,9 @@ package metadev.digital.metacustomitemslib.rewards;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.Property;
 import metadev.digital.metacustomitemslib.Core;
 import metadev.digital.metacustomitemslib.Strings;
 import metadev.digital.metacustomitemslib.mobs.MobType;
-import metadev.digital.metacustomitemslib.server.Servers;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
@@ -19,9 +16,7 @@ import org.bukkit.profile.PlayerTextures;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Field;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
@@ -47,7 +42,7 @@ public class CoreCustomItems {
 			PlayerProfile playerProfile = Bukkit.createPlayerProfile(reward.getSkinUUID(), reward.getDisplayName().replaceAll("\\s+", "_"));
 			PlayerTextures textures = playerProfile.getTextures();
 
-			textures.setSkin(new URL(textureURL));
+			textures.setSkin(new URI(textureURL).toURL());
 
 			skullMeta.setOwnerProfile(playerProfile);
 			skull.setItemMeta(skullMeta);
@@ -59,54 +54,13 @@ public class CoreCustomItems {
         } catch (NullPointerException e) {
 			Core.getMessages().debug("setOwnerProfile on skullMeta created an NPE");
 			e.printStackTrace();
-		}
+		} catch (URISyntaxException e) {
+			Core.getMessages().debug("There was an issue building the texture url object");
+			e.printStackTrace();
+        }
 
-		return skull;
+        return skull;
     }
-
-	/**
-	 * Return an ItemStack with a custom texture. If Mojang changes the way they
-	 * calculate Signatures this method will stop working.
-	 *
-	 *
-	 * @param reward
-	 * @param mTextureValue
-	 * @param mTextureSignature
-	 * @return ItemStack with custom texture.
-	 * @deprecated - 1.21.1+ requires PlayerProfile and TextureURLs instead of GameProfile and Texture Value/Signatures
-	 */
-	public static ItemStack getCustomtexture(Reward reward, String mTextureValue, String mTextureSignature) {
-		ItemStack skull = CoreCustomItems.getDefaultPlayerHead(1);
-		if (mTextureSignature.isEmpty() || mTextureValue.isEmpty())
-			return skull;
-
-		// add custom texture to skull
-		SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
-		GameProfile profile = new GameProfile(reward.getSkinUUID(), reward.getDisplayName().replaceAll("\\s+", "_"));
-		if (mTextureSignature.isEmpty())
-			profile.getProperties().put("textures", new Property("textures", mTextureValue));
-		else
-			profile.getProperties().put("textures", new Property("textures", mTextureValue, mTextureSignature));
-		Field profileField = null;
-
-		try {
-			profileField = skullMeta.getClass().getDeclaredField("profile");
-		} catch (NoSuchFieldException | SecurityException e) {
-			e.printStackTrace();
-			return skull;
-		}
-		profileField.setAccessible(true);
-		try {
-			profileField.set(skullMeta, profile);
-		} catch (IllegalArgumentException | IllegalAccessException e) {
-			e.printStackTrace();
-		}
-		skull.setItemMeta(skullMeta);
-
-		// add displayname and lores to skull
-		skull = Reward.setDisplayNameAndHiddenLores(skull, reward);
-		return skull;
-	}
 
 	/**
 	 * Return an ItemStack with the Players head texture.
@@ -143,6 +97,7 @@ public class CoreCustomItems {
 	 * @return
 	 * @deprecated - Player head drop system changed in 1.21.1 API
 	 */
+	@Deprecated
 	private static String[] getSkinFromUUID(UUID uuid) {
 		try {
 			URL url_1 = new URL(
@@ -178,6 +133,7 @@ public class CoreCustomItems {
 	 * @return
 	 * @deprecated - Player head drop system changed in 1.21.1 API
 	 */
+	@Deprecated
 	private static ItemStack getPlayerHeadOwningPlayer(UUID uuid, String name, int amount, double money) {
 		ItemStack skull = CoreCustomItems.getDefaultPlayerHead(amount);
 		SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
@@ -195,91 +151,76 @@ public class CoreCustomItems {
 
 	public static ItemStack getCustomHead(MobType minecraftMob, String name, int amount, double money, UUID skinUUID) {
 		ItemStack skull;
+		ItemStack tempSkull;
+
 		switch (minecraftMob) {
-		case Skeleton:
-			skull = CoreCustomItems.getDefaultSkeletonHead(amount);
-			skull = Reward.setDisplayNameAndHiddenLores(skull,
-					new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
-			break;
+			case Skeleton:
+				tempSkull = CoreCustomItems.getDefaultSkeletonHead(amount);
+				skull = Reward.setDisplayNameAndHiddenLores(tempSkull,
+						new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
+				break;
 
-		case WitherSkeleton:
-			skull = CoreCustomItems.getDefaultWitherSkeletonHead(amount);
-			skull = Reward.setDisplayNameAndHiddenLores(skull,
-					new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
-			break;
+			case WitherSkeleton:
+				tempSkull = CoreCustomItems.getDefaultWitherSkeletonHead(amount);
+				skull = Reward.setDisplayNameAndHiddenLores(tempSkull,
+						new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
+				break;
 
-		case Zombie:
-			skull = CoreCustomItems.getDefaultZombieHead(amount);
-			skull = Reward.setDisplayNameAndHiddenLores(skull,
-					new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
-			break;
+			case Zombie:
+				tempSkull = CoreCustomItems.getDefaultZombieHead(amount);
+				skull = Reward.setDisplayNameAndHiddenLores(tempSkull,
+						new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
+				break;
 
-		case PvpPlayer:
-			skull = getPlayerHead(skinUUID, name, amount, money);
-			break;
+			case PvpPlayer:
+				skull = getPlayerHead(skinUUID, name, amount, money);
+				break;
 
-		case Creeper:
-			skull = CoreCustomItems.getDefaultCreeperHead(amount);
-			skull = Reward.setDisplayNameAndHiddenLores(skull,
-					new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
-			break;
+			case Creeper:
+				tempSkull = CoreCustomItems.getDefaultCreeperHead(amount);
+				skull = Reward.setDisplayNameAndHiddenLores(tempSkull,
+						new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
+				break;
 
-		case EnderDragon:
-			skull = CoreCustomItems.getDefaultEnderDragonHead(amount);
-			skull = Reward.setDisplayNameAndHiddenLores(skull,
-					new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
-			break;
+			case EnderDragon:
+				tempSkull = CoreCustomItems.getDefaultEnderDragonHead(amount);
+				skull = Reward.setDisplayNameAndHiddenLores(tempSkull,
+						new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID));
+				break;
 
-		default:
-			ItemStack is = new ItemStack(
-					getCustomTexture(new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID),
-							minecraftMob.getTextureURL()));
-			is.setAmount(amount);
-			return is;
+			default:
+				skull = new ItemStack(
+						getCustomTexture(new Reward(minecraftMob.getEntityName(), money, RewardType.KILLED, skinUUID),
+								minecraftMob.getTextureURL()));
+				skull.setAmount(amount);
+				break;
 		}
+
 		return skull;
 	}
 
 	private static ItemStack getDefaultSkeletonHead(int amount) {
-		if (Servers.isMC113OrNewer())
 			return new ItemStack(Material.SKELETON_SKULL, amount);
-		else
-			return new ItemStack(Material.matchMaterial("SKULL_ITEM"), amount, (short) 0);
 	}
 
 	private static ItemStack getDefaultWitherSkeletonHead(int amount) {
-		if (Servers.isMC113OrNewer())
 			return new ItemStack(Material.WITHER_SKELETON_SKULL, amount);
-		else
-			return new ItemStack(Material.matchMaterial("SKULL_ITEM"), amount, (short) 1);
 	}
 
 	private static ItemStack getDefaultZombieHead(int amount) {
-		if (Servers.isMC113OrNewer())
 			return new ItemStack(Material.ZOMBIE_HEAD, amount);
-		else
-			return new ItemStack(Material.matchMaterial("SKULL_ITEM"), amount, (short) 2);
 	}
 
 	private static ItemStack getDefaultPlayerHead(int amount) {
-		if (Servers.isMC113OrNewer())
 			return new ItemStack(Material.PLAYER_HEAD, amount);
-		else
-			return new ItemStack(Material.matchMaterial("SKULL_ITEM"), amount, (short) 3);
 	}
 
 	private static ItemStack getDefaultCreeperHead(int amount) {
-		if (Servers.isMC113OrNewer())
 			return new ItemStack(Material.CREEPER_HEAD, amount);
-		else
-			return new ItemStack(Material.matchMaterial("SKULL_ITEM"), amount, (short) 4);
 	}
 
 	private static ItemStack getDefaultEnderDragonHead(int amount) {
-		if (Servers.isMC113OrNewer())
 			return new ItemStack(Material.DRAGON_HEAD, amount);
-		else
-			return new ItemStack(Material.matchMaterial("SKULL_ITEM"), amount, (short) 5);
 	}
 
 }

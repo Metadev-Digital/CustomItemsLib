@@ -13,7 +13,7 @@ import java.util.*;
 public class Tools {
 
 	public static String format(double money) {
-		Locale locale = new Locale("en", "UK");
+		Locale locale = Locale.of("en", "UK");
 		String pattern = "0.#####";
 		DecimalFormat decimalFormat = (DecimalFormat) NumberFormat.getNumberInstance(locale);
 		decimalFormat.applyPattern(pattern);

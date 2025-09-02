@@ -3,9 +3,7 @@ package metadev.digital.metacustomitemslib;
 import org.bukkit.Bukkit;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.UnknownHostException;
+import java.net.*;
 
 public class HttpTools {
 
@@ -47,10 +45,10 @@ public class HttpTools {
 					if (redirect) {
 
 						// get redirect url from "location" header field
-						String newUrl = urlConnect.getHeaderField("Location");
+						URI newURI = new URI(urlConnect.getHeaderField("Location"));
 
 						// open the new connnection again
-						urlConnect = (HttpURLConnection) new URL(newUrl).openConnection();
+						urlConnect = (HttpURLConnection) newURI.toURL().openConnection();
 
 						status = urlConnect.getResponseCode();
 						Bukkit.getConsoleSender().sendMessage("[CORE] status2="+status);
@@ -65,8 +63,10 @@ public class HttpTools {
 					callback.onError();
 				} catch (IOException e) {
 					callback.onError();
-				}
-			}
+				} catch (URISyntaxException e) {
+					callback.onError();
+                }
+            }
 		};
 	}
 

@@ -28,7 +28,7 @@ public class MySQLDataStore extends DatabaseDataStore {
 	@Override
 	protected Connection setupConnection() throws DataStoreException {
 		try {
-			Locale.setDefault(new Locale("us", "US"));
+			Locale.setDefault(Locale.of("us", "US"));
 			Class.forName("com.mysql.jdbc.Driver");
 			MysqlDataSource dataSource = new MysqlDataSource();
 			dataSource.setUser(Core.getConfigManager().databaseUsername);

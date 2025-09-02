@@ -1,6 +1,7 @@
 package metadev.digital.metacustomitemslib.storage;
 
 import metadev.digital.metacustomitemslib.Core;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
@@ -66,7 +67,7 @@ public class SQLiteDataStore extends DatabaseDataStore {
 	@Override
 	public void databaseConvertToUtf8(String database_name) throws DataStoreException {
 		ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-		console.sendMessage(Core.PREFIX + ChatColor.RED + " this command is only for MySQL");
+		console.sendMessage(Prefixes.PREFIX + ChatColor.RED + " this command is only for MySQL");
 	}
 
 	// *******************************************************************************

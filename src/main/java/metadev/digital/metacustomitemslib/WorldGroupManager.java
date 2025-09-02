@@ -1,6 +1,7 @@
 package metadev.digital.metacustomitemslib;
 
 import com.google.common.io.Files;
+import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.OfflinePlayer;
@@ -18,10 +19,6 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
-/**
- * @author Rocologo
- *
- */
 public class WorldGroupManager {
 
 	private Plugin plugin;
@@ -33,7 +30,7 @@ public class WorldGroupManager {
 
 	public WorldGroupManager(Plugin plugin) {
 		this.plugin = plugin;
-		file = new File(plugin.getDataFolder(), "../CustomItemsLib/worldgroups.yml");
+		file = new File(plugin.getDataFolder(), "worldgroups.yml");
 		load();
 		if (worldGroups.isEmpty()) {
 			// TODO: check if worldgroups is the same as PerWorldInventory and MyPet if supported.
@@ -119,7 +116,7 @@ public class WorldGroupManager {
 		}
 		worldGroups.get(getDefaultWorldgroup()).add(world);
 		save();
-		Bukkit.getConsoleSender().sendMessage(Core.PREFIX_WARNING + "The world '" + world
+		Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX_WARNING + "The world '" + world
 				+ "' was missing in the worldgroups.yml file. It has beed added to the default group in worldgroups.yml in the BagOfGold folder. Please review the worldgroups.");
 		return getDefaultWorldgroup();
 	}
@@ -184,9 +181,9 @@ public class WorldGroupManager {
 
 	public void load() {
 		if (!file.exists()) {
-			File fileBagOfGold = new File(plugin.getDataFolder(), "../BagOfGold/worldgroups.yml");
+			File fileBagOfGold = new File(plugin.getDataFolder().getParent(), "/BagOfGold/worldgroups.yml");
 			if (!fileBagOfGold.exists()) {
-				File fileMobHunting = new File(plugin.getDataFolder(), "../MobHunting/worldgroups.yml");
+				File fileMobHunting = new File(plugin.getDataFolder().getParent(), "/MetaobHunting/worldgroups.yml");
 				if (!fileMobHunting.exists()) {
 					return;
 				} else {
@@ -194,7 +191,7 @@ public class WorldGroupManager {
 					try {
 						config.load(fileMobHunting);
 						config.save(file);
-						File fileMobHuntingOld = new File(plugin.getDataFolder(), "../MobHunting/worldgroups.yml.old");
+						File fileMobHuntingOld = new File(plugin.getDataFolder().getParent(), "/MetaMobHunting/worldgroups.yml.old");
 						Files.move(fileMobHunting, fileMobHuntingOld);
 					} catch (IllegalStateException | InvalidConfigurationException | IOException e) {
 						e.printStackTrace();
@@ -206,7 +203,7 @@ public class WorldGroupManager {
 				try {
 					config.load(fileBagOfGold);
 					config.save(file);
-					File fileBagOfGoldOld = new File(plugin.getDataFolder(), "../BagOfGold/worldgroups.yml.old");
+					File fileBagOfGoldOld = new File(plugin.getDataFolder().getParent(), "/BagOfGold/worldgroups.yml.old");
 					Files.move(fileBagOfGold, fileBagOfGoldOld);
 				} catch (IllegalStateException | InvalidConfigurationException | IOException e) {
 					e.printStackTrace();
