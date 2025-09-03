@@ -177,8 +177,10 @@ public class Core extends JavaPlugin {
 		mMessages.instantiateActionBarHelper();
 
 		// Check for new updates
-		mUpdateManager = new UpdateManager(plugin);
-		mUpdateManager.processCheckResultInConsole();
+        if (mConfig.updateCheck){
+            mUpdateManager = new UpdateManager(plugin);
+            mUpdateManager.processCheckResultInConsole();
+        }
 
 		//Enable bStats
 		if (!Server.isGlowstoneServer()) {

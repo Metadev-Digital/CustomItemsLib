@@ -355,7 +355,7 @@ public class ConfigManager extends AutoConfig {
 	
 	// #####################################################################################
 	// Update Settings
-	// ##################################################################################### // TODO: Plumb this into version notification
+	// #####################################################################################
 	@ConfigField(name = "update-check", category = "updates", comment = "Check if there is a new version of the plugin available on launch.")
 	public boolean updateCheck = true;
 }
