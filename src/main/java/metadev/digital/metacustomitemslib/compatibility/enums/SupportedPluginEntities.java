@@ -15,7 +15,7 @@ public enum SupportedPluginEntities {
 	// DisguiseCraft was ID 11. Reserve ID
 	Essentials("Essentials", 12), //
 	ExtraHardMode("ExtraHardMode", 13), //
-	Factions("Factions", 14), //
+	Factions("FactionsUUID", 14), //
 	Gringotts("Gringotts", 15), //
 	Herobrine("Herobrine", 16), //
 	Heroes("Heroes", 17), //
