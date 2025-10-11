@@ -51,7 +51,7 @@ public class Core extends JavaPlugin {
 	private static MetricsManager mMetricsManager;
 	private CommandDispatcher mCommandDispatcher;
 
-	// Public Placeholders used in BagOfGold and MobHunting
+	// Public Placeholders used in BagOfGold and MobHunting TODO: REMOVE THIS
 	public static final String PH_PLAYERNAME = "playername";
 	public static final String PH_MONEY = "money";
 	public static final String PH_REWARDNAME = "rewardname";
@@ -61,6 +61,7 @@ public class Core extends JavaPlugin {
 	public boolean disabling = false;
 
 	// TODO: FINISH REMOVING DEPRECATED SERVER VERSION CALLS
+    // TODO: REMOVE ANY REFERENCE TO BAGOFGOLD JAR TO GET RID OF CIRCULAR DEPENDENCIES
 
 	// PROJECT HEALTH REMAINING OBJECTIVES
 	// TODO: COREREWARDSLISTENER & PICKUPREWARDS SINCE THEY'VE MOVED FROM STATIC BAGOFGOLD METHOD TO CORE.CONFIGMANAGER

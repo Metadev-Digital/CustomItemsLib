@@ -6,7 +6,7 @@
 
     <groupId>metadev.digital</groupId>
     <artifactId>MetaCustomItemsLib</artifactId>
-    <version>3.0.0</version>
+    <version>3.1.0</version>
     <name>CustomItems Library</name>
     <url>https://github.com/Metadev-Digital/CustomItemsLib</url>
     <description>CustomItemsLib is a library with code shared between MobHunting and BagOfGold.</description>
@@ -122,7 +122,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.21.8-R0.1-SNAPSHOT</version>
+            <version>1.21.10-R0.1-SNAPSHOT</version>
         </dependency>
 
         <!-- Bstats -->
@@ -141,7 +141,7 @@
         <dependency>
             <groupId>metadev.digital</groupId>
             <artifactId>MetaBagOfGold</artifactId>
-            <version>4.5.11-SNAPSHOT</version>
+            <version>4.5.12-SNAPSHOT</version>
             <exclusions>
                 <exclusion>
                     <groupId>*</groupId>
@@ -149,7 +149,7 @@
                 </exclusion>
             </exclusions>
             <scope>system</scope>
-            <systemPath>${basedir}\lib\MetaBagOfGold-4.5.11-SNAPSHOT.jar</systemPath>
+            <systemPath>${basedir}\lib\MetaBagOfGold-4.5.12-SNAPSHOT.jar</systemPath>
         </dependency>
 
         <!-- ProtocolLib -->
@@ -178,16 +178,16 @@
         <dependency>
             <groupId>com.Zrips</groupId>
             <artifactId>CMI</artifactId>
-            <version>9.8.0.5</version>
+            <version>9.8.1.5</version>
             <scope>system</scope>
-            <systemPath>${basedir}\lib\CMI-9.8.0.5.jar</systemPath>
+            <systemPath>${basedir}\lib\CMI-9.8.1.5.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>net.Zrips</groupId>
             <artifactId>CMILib</artifactId>
-            <version>1.5.6.3</version>
+            <version>1.5.6.7</version>
             <scope>system</scope>
-            <systemPath>${basedir}\lib\CMILib1.5.6.3.jar</systemPath>
+            <systemPath>${basedir}\lib\CMILib1.5.6.7.jar</systemPath>
         </dependency>
 
         <!-- Title Manager -->
@@ -204,7 +204,7 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.13.1</version>
+            <version>2.13.2</version>
         </dependency>
 
         <!-- Mysql -->
@@ -224,7 +224,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.18.0</version>
+            <version>3.19.0</version>
         </dependency>
 
         <!-- Maven (used for Sem Ver comparison -->
