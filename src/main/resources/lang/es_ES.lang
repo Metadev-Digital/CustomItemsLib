@@ -1,4 +1,4 @@
-archived-lang-version=1.0
+archived-lang-version=1.1
 core.command.base.description=Versión de MetaCustomItemsLib
 core.command.base.economymanager=No se pudo detectar un gestor económico compatible. MetaCustomItemsLib lo requiere para funcionar.
 core.command.base.economymanager2=Asegúrate de tener instalada una versión compatible de Vault o Reserve, así como un gestor como Bag Of Gold o EssentialsX.
@@ -69,6 +69,7 @@ mobs.CaveSpider.name=§7Araña de cueva
 mobs.Chicken.name=§7Pollo
 mobs.Cleric.name=§7Clérigo
 mobs.Cod.name=§7Bacalao
+mobs.CopperGolem.name=§7Gólem de cobre
 mobs.Cow.name=§7Vaca
 mobs.Creaking.name=§7Crujiente
 mobs.Creeper.name=§7Enredadera

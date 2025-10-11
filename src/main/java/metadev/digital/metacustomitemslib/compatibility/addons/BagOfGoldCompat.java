@@ -19,7 +19,7 @@ public class BagOfGoldCompat implements ICustomItemsLibCompat, IFeatureHolder {
 	// ****** Standard ******
 	private Plugin compatPlugin;
 	private static boolean enabled = false, supported = false, loaded = false;
-	private static String sMin, sMax, pMin = "4.5.7", pMax;
+	private static String sMin, sMax, pMin = "4.5.12", pMax;
 	private static FeatureList features;
 
 	// ****** Plugin Specific ******

@@ -18,6 +18,10 @@ public enum MobType {
 	// Minecraft 1.21
 	// ******************************************************************
 
+    CopperGolem("CopperGolem", "802739f9-b57d-44f8-8cfe-f16a5a43700e", "Copper Golem", "ewogICJ0aW1lc3RhbXAiIDogMTc1OTc5NjA2MjE3NiwKICAicHJvZmlsZUlkIiA6ICI4ODYyYjU4ZWI4YjE0MTg5OGY3MWE0YjI2MDA3ZWVkNSIsCiAgInByb2ZpbGVOYW1lIiA6ICJHYWJyaWV3RiIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS9jMjA2OGJlYjdkZDQ5YWEyYmRiN2FiZjczYzdjOWYyMWE0YjhmN2RjMmE4YjQ0MTdmNmIzMjg1NjM1NDQ3NDEyIgogICAgfQogIH0KfQ==",
+            "F1MYsvYxl4JUq3jA2zXHVVXVujdrQw6SQQk77hGrMI83PMNLt87u+3u4PlM0rfUhInda+Hoos6BfYm7L6Db01DFqiNMQiAMa6lqsTOq01IRgenWchYfgvraiKYrF/3pryqJw4dJA2HsvruoNq/i8XsnAcLRgdbkZZ7KESynHrL/kL7ZVtdyY7zfSRWB2KCmXaO9ZzbAkWa+JUmB5I/zkdGJMiBD1x6VcQ05yJ8b2yVSQkKK7FXLvtky8GNgFYlrBBs+RTuwYi7f8P21PZ/8obBujCJCloZkUHT08iozbeukr1RASkioOgGS8GzhE/08/0nmCUNQqlWjXxOVYy20Eaan92F0W6tsYZ3/vnr4QhOM+TT1gSASkKDZ2N0Pp0YpDDONCs7RsFVhOXYmqtSXwZuhjzJ5oOaOKYy2mriLoD5nMJVBbqD2geFxHwnWuYni99slMIVhvPo3dVoy2FmCHHkEyU2Pdrr1Mul7YykSH3F5CM96GgNiKFvF4LtTkrcWl7NmLYYIT/P7qyqF8j0v3iYgLTbUVagRCX7tCUrpy/zupv2HeybV2IXoYzbcSjkJBi3ovlGAjJDhK0WfPlN2WkPPE3PlORRRcAi8urKsimc6HcQJI4XZUANyX3vVVWuq9wHrC8rM5kT2FSV38sIpl6g3zrtSRpfGsm3G8uboVUPs=",
+            "https://textures.minecraft.net/texture/c2068beb7dd49aa2bdb7abf73c7c9f21a4b8f7dc2a8b4417f6b3285635447412"),
+
 	HappyGhast("HappyGhast","2e0aae61-31a9-4c2f-8eda-77f7674d09f2", "Happy Ghast", "ewogICJ0aW1lc3RhbXAiIDogMTc1MzAzMTcyMDQyNCwKICAicHJvZmlsZUlkIiA6ICJhZTg3MzEyNjBmMzY0ZWE2YjU3YTRkYjI5Mjk1YTA1OCIsCiAgInByb2ZpbGVOYW1lIiA6ICJGdW50aW1lX0ZveHlfMTkiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjc1OTRhODliOTgwM2MyZjI1M2FjMjI1MmI2NzhlNWI4MDgzZjliNGJjNmRkYTkwMGMwOThmNjU2MzI0YTQ3NSIsCiAgICAgICJtZXRhZGF0YSIgOiB7CiAgICAgICAgIm1vZGVsIiA6ICJzbGltIgogICAgICB9CiAgICB9CiAgfQp9",
 			"YgYJFwi8FuFEV6YboZb6nNk+3UaUISB8Hd6oJENdBnZepDzt7YBhDZOoJZGLFiUxHXAuX62LBQcx1dxvYDSyPS3cmDK24dNkwU8Nb7aqJpwaWedejm274G5PPnq4jCLnUIfgc9Sp0W8ETegLPCVm7J9hN14EBVyfCXVl4YLPYB7BnjjITls3bnIC5feqoQiceDMM/doUwTdLuYR0FMfwtORssyxpXMZwT/8eaZVw/TJW6T/0l2m3fAvMmDNM2Fa177Zg8TFq/wKZcvUZzitCjXgpPufZbLhFUh00kWHVjGBM54ahUHCwjitTm5dv8lsfqBZ6L8dRlE9Iu+Z+YdxUXJWNlNZ2zM0ehrmW562U8jyvciENZXY52KRK0yZyFS1JMAu/dF/BmuJ7FfWzdJKHHtQK/U+qfSB6+3+GVdLHxPT6fUKfMK7VO0UIhL4B4lCRECJF6l4rfKdhY1ltJm2eBTy4qRn7cNU5HE4mZnTyldNdEQCdlQEX+vE+6bm19ik5G17SxNOfEMcYHEnSwigkFWbIopFDnSr85lteW0aZ5KEIMdiHpiCOTiuSIO1q4ttBfq65+x2rgpEYEjtRirbjJp9rr3AuZaHrEjA+44nuzEkJOvvg29hIO0lPNm7uqa1DER4v7pLAc5vWd/pdqs7+okpX+/PeCIXlU5ObBgd0YHQ=",
 			"https://textures.minecraft.net/texture/f7594a89b9803c2f253ac2252b678e5b8083f9b4bc6dda900c098f656324a475"),
@@ -694,7 +698,9 @@ public enum MobType {
 	public boolean matches(Entity entity) {
 		// TODO: Evaluate if we even need to bother supporting old versions of minecraft on new versions of plugin
 		if(Server.isMC121OrNewer()) {
-			if (this == HappyGhast)
+            if ( this == CopperGolem )
+                return entity instanceof org.bukkit.entity.CopperGolem;
+			else if (this == HappyGhast)
 				return entity instanceof  org.bukkit.entity.HappyGhast;
 			else if (this == Creaking)
 				return entity instanceof org.bukkit.entity.Creaking;

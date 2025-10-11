@@ -1,4 +1,4 @@
-archived-lang-version=1.0
+archived-lang-version=1.1
 core.command.base.description=MetaCustomItemsLib-versie
 core.command.base.economymanager=Kan geen compatibele economy manager vinden. MetaCustomItemsLib vereist er een om te functioneren.
 core.command.base.economymanager2=Zorg ervoor dat je een compatibele versie van Vault of Reserve hebt geïnstalleerd, evenals een manager zoals Bag Of Gold of EssentialsX.
@@ -69,6 +69,7 @@ mobs.CaveSpider.name=§7Grottenspin
 mobs.Chicken.name=§7Kip
 mobs.Cleric.name=§7Geestelijke
 mobs.Cod.name=§7Kabeljauw
+mobs.CopperGolem.name=§7Koperen golem
 mobs.Cow.name=§7Koe
 mobs.Creaking.name=§7Krakend
 mobs.Creeper.name=§7Klimplant
