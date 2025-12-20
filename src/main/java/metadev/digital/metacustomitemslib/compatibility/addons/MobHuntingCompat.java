@@ -20,7 +20,7 @@ public class MobHuntingCompat implements ICustomItemsLibCompat, IFeatureHolder {
 	// ****** Standard ******
 	private Plugin compatPlugin;
 	private static boolean enabled = false, supported = false, loaded = false;
-	private static String sMin, sMax, pMin = "10.1.0", pMax;
+	private static String sMin, sMax, pMin = "10.1.5", pMax;
 	private static FeatureList features;
 
 	// ****** Plugin Specific ******
