@@ -27,6 +27,7 @@ import metadev.digital.metacustomitemslib.update.UpdateManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -191,7 +192,7 @@ public class Core extends JavaPlugin {
         }
 
 		//Enable bStats
-		if (!Server.isGlowstoneServer()) {
+		if (!Server.isGlowstoneServer() && mConfig.bStatsEnabled && isbStatsEnabled()) {
 			mMetricsManager = new MetricsManager(this);
 			mMetricsManager.startBStatsMetrics();
 		}
@@ -220,6 +221,13 @@ public class Core extends JavaPlugin {
 			e.printStackTrace();
 		}
 	}
+
+    private boolean isbStatsEnabled() {
+        File bStatsFolder = new File(plugin.getDataFolder().getParentFile(), "bStats");
+        File configFile = new File(bStatsFolder, "config.yml");
+        YamlConfiguration config = YamlConfiguration.loadConfiguration(configFile);
+        return config.getBoolean("enabled", true);
+    }
 
 	public static Core getInstance() {
 		return plugin;
