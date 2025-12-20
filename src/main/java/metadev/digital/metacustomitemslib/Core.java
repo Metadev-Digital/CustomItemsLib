@@ -8,6 +8,7 @@ import metadev.digital.metacustomitemslib.commands.VersionCommand;
 import metadev.digital.metacustomitemslib.compatibility.enums.SupportedPluginEntities;
 import metadev.digital.metacustomitemslib.compatibility.CompatibilityManager;
 import metadev.digital.metacustomitemslib.compatibility.addons.*;
+import metadev.digital.metacustomitemslib.config.BackupManager;
 import metadev.digital.metacustomitemslib.config.ConfigManager;
 import metadev.digital.metacustomitemslib.config.Migrator;
 import metadev.digital.metacustomitemslib.config.MigratorException;
@@ -39,6 +40,7 @@ public class Core extends JavaPlugin {
 	private File mFile = new File(getDataFolder(), "config.yml");
 
 	private static ConfigManager mConfig;
+    private static BackupManager mBackup;
 	private static Messages mMessages;
 	private static EconomyManager mEconomyManager;
 	private static RewardBlockManager mRewardBlockManager;
@@ -95,6 +97,10 @@ public class Core extends JavaPlugin {
 
         mConfig = new ConfigManager(mFile);
         if (mConfig.loadConfig()) {
+            if (mConfig.backup) {
+                mBackup = new BackupManager(this);
+                mBackup.backupConfig(mFile);
+            }
             mConfig.saveConfig();
         } else
             throw new RuntimeException("[MetaCustomItemsLib] Could not load config.yml");
