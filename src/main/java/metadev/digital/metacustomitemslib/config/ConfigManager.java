@@ -374,9 +374,9 @@ public class ConfigManager extends AutoConfig {
     // #####################################################################################
     // bStats Metrics Settings
     // #####################################################################################
-    @ConfigField(name = "bstats_metrics_enabled", category = "metrics", comment = "Toggle whether or not bStats tracking metrics are being gathered. These" +
-            " analytics are very beneifical for including support for new and existing plugin integrations. You are completely within your right to opt out of this data gathering." +
-            "However, I do humbly request that it is either left on or when it is turned off if you could provide any plugin support suggestions / future integration requests / bug reports, etc. as soon" +
-            "and as frequently as humanly possible via the Spigot forums or GitHub issues.")
+    @ConfigField(name = "bstats_metrics_enabled", category = "metrics", comment = "Toggle whether or not bStats tracking metrics are being gathered." +
+            "\nThese analytics are very beneficial for including support for new and existing plugin integrations. You are completely within your right to" +
+            "\nopt out of this data gathering. However, I do humbly request that it is either left on or when it is turned off if you could provide any plugin" +
+            "\nsupport suggestions / future integration requests / bug reports, etc. as soon and as frequently as humanly possible via the Spigot forums or GitHub issues.")
     public boolean bStatsEnabled = true;
 }
