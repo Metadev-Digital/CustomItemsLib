@@ -11,6 +11,7 @@ import metadev.digital.metacustomitemslib.compatibility.addons.*;
 import metadev.digital.metacustomitemslib.config.ConfigManager;
 import metadev.digital.metacustomitemslib.config.Migrator;
 import metadev.digital.metacustomitemslib.config.MigratorException;
+import metadev.digital.metacustomitemslib.messages.MessageHelper;
 import metadev.digital.metacustomitemslib.messages.Messages;
 import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import metadev.digital.metacustomitemslib.rewards.CoreRewardManager;
@@ -72,40 +73,40 @@ public class Core extends JavaPlugin {
 
 	@Override
 	public void onLoad() {
-	}
+        plugin = this;
+        mMessages = new Messages(plugin);
+
+        if (Bukkit.getPluginManager().getPlugin("CustomItemsLib") != null) {
+            throw new RuntimeException("[MetaCustomItemsLib] Detected two versions of CustomItemsLib running. Please remove the CustomItemsLib jar if you wish to use MetaCustomItemsLib.");
+        }
+
+        if (!mFile.exists()) {
+            // Copy config and database from old place
+            File mFileOldConfigDir = new File(getDataFolder().getParent(), "CustomItemsLib");
+            try {
+                Migrator.moveLegacyConfiguration(mFileOldConfigDir, getDataFolder());
+            }
+            catch (MigratorException e) {
+                mFile.mkdir();
+            }
+        }
+
+        int config_version = ConfigManager.getConfigVersion(mFile);
+
+        mConfig = new ConfigManager(mFile);
+        if (mConfig.loadConfig()) {
+            mConfig.saveConfig();
+        } else
+            throw new RuntimeException("[MetaCustomItemsLib] Could not load config.yml");
+
+        mMessages.setLanguage(mConfig.language + ".lang");
+
+        MessageHelper.debug("Loading config.yml file, version %s", config_version);
+    }
 
 	@Override
 	public void onEnable() {
-
 		disabling = false;
-		plugin = this;
-
-		if (Bukkit.getPluginManager().getPlugin("CustomItemsLib") != null) {
-			throw new RuntimeException("[MetaCustomItemsLib] Detected two versions of CustomItemsLib running. Please remove the CustomItemsLib jar if you wish to use MetaCustomItemsLib.");
-		}
-
-		if (!mFile.exists()) {
-			// Copy config and database from old place
-			File mFileOldConfigDir = new File(getDataFolder().getParent(), "CustomItemsLib");
-			try {
-				Migrator.moveLegacyConfiguration(mFileOldConfigDir, getDataFolder());
-			}
-			catch (MigratorException e) {
-				mFile.mkdir();
-			}
-		}
-
-		int config_version = ConfigManager.getConfigVersion(mFile);
-
-		mConfig = new ConfigManager(mFile);
-		if (mConfig.loadConfig()) {
-			mConfig.saveConfig();
-		} else
-			throw new RuntimeException("[MetaCustomItemsLib] Could not load config.yml");
-
-		mMessages = new Messages(plugin);
-		mMessages.setLanguage(mConfig.language + ".lang");
-		mMessages.debug("Loading config.yml file, version %s", config_version);
 
 		List<String> itemtypes = Arrays.asList("SKULL", "ITEM", "KILLER", "KILLED", "GRINGOTTS_STYLE");
 		if (!itemtypes.contains(mConfig.rewardItemtype)) {
