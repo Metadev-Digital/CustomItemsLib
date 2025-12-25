@@ -19,6 +19,9 @@ public class ConfigManager extends AutoConfig {
 				+ "\n\n\n########################################################################"
 				+ "\ngeneral Settings" + "\n########################################################################");
 
+        setCategoryComment("metrics", "########################################################################"
+                + "\nbStats Metrics settings" + "\n########################################################################");
+
 		setCategoryComment("economy", "########################################################################"
 				+ "\nShared Settings" + "\n########################################################################");
 
@@ -146,6 +149,15 @@ public class ConfigManager extends AutoConfig {
 
 	@ConfigField(name = "debug", category = "general", comment = "Enable/disable debug information")
 	public boolean debug = false;
+
+    @ConfigField(name = "backup", category = "general", comment = "Backup config on each server start / reload")
+    public boolean backup = true;
+
+    @ConfigField(name = "backup_count", category = "general", comment = "Number of backups to store before condensing them into an archive. Number is clamped to 1-1000." +
+            " You cannot disable backups from here, set backup to false as a 0 here will be ignored and treated as a 1 if backups are still enabled. Once a threshold is met, these are zipped into an archive" +
+            " and the count begins again. There will only be one archive and it will be replaced upon reaching the threshold again. i.e. Limit of 30, once hitting 30 it will condense it to an archive and start 1-30'" +
+            " again. After hitting 30 a second time that archive will be deleted, and a new one will be generated containing the most recent group of configs.")
+    public int backup_count = 30;
 
 	@ConfigField(name = "newplayer_learning_mode", category = "general", comment = "When a new playerjoins the server he will by default start"
 			+ "\nin 'LEARNING MODE' and get extra information about when he get rewards and not,"
@@ -358,4 +370,13 @@ public class ConfigManager extends AutoConfig {
 	// #####################################################################################
 	@ConfigField(name = "update-check", category = "updates", comment = "Check if there is a new version of the plugin available on launch.")
 	public boolean updateCheck = true;
+
+    // #####################################################################################
+    // bStats Metrics Settings
+    // #####################################################################################
+    @ConfigField(name = "bstats_metrics_enabled", category = "metrics", comment = "Toggle whether or not bStats tracking metrics are being gathered." +
+            "\nThese analytics are very beneficial for including support for new and existing plugin integrations. You are completely within your right to" +
+            "\nopt out of this data gathering. However, I do humbly request that it is either left on or when it is turned off if you could provide any plugin" +
+            "\nsupport suggestions / future integration requests / bug reports, etc. as soon and as frequently as humanly possible via the Spigot forums or GitHub issues.")
+    public boolean bStatsEnabled = true;
 }

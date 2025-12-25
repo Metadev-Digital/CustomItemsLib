@@ -18,6 +18,22 @@ public enum MobType {
 	// Minecraft 1.21
 	// ******************************************************************
 
+    CamelHusk("CamelHusk", "53af715b-38b5-426d-b19e-d1612240d57f", "Camel Husk", "ewogICJ0aW1lc3RhbXAiIDogMTc2NjI3NzI5Mjk2NCwKICAicHJvZmlsZUlkIiA6ICI3ZGY4NmY1MWFjZmI0MjQzYTkzNDQ1OTAyZDEzYTc0MSIsCiAgInByb2ZpbGVOYW1lIiA6ICJNclJpcHRpZGUiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGI5ZDU4MTkxMWEwM2IyY2FmMzA5YzRhZjQxYjcxMzg0YWRhMWE3NzkwNjNhMzIxYTFlZTBkNDY4MmI0M2JkMSIKICAgIH0KICB9Cn0=",
+            "YzqoccJhfFlnfDacBshmGcGXR+SYSRsOK1mXE15Nfcc6e35rpl8dwk2B1o3LsCT8yiKbj6x+o3efSDv1vtzbkahIybYGzOMIqwRXKDtfHCPa3a+rfWezqg1JdKMfdrIKNTxgXrLFoCF2sd+Qm3XjpFoi4kNupqNAgB0jX+RTs8Pr3SB5JUv9yZEfuV10nvLxuNMpX1sLWxLN1mfObiQ/TBheqvbMuI2bd3LN4BqJstmHduoRWbP4NqnS8iZd97BxajdcYrwK/BRy/Oq1VmdRKCtQEioSPFr/a//Nc3+wNHuSCQyZoaVvzz8bstVOLn5DghCCK+XtxozrpiRT0zEwxQgQZlVWwrioMGmeZZDlpFEhLIFi5x00kVP94YKWRE5zDGhe7BoT7hc7UGuHP9WXyvsrG0a6eXVj2/aFGDU0Z8KehMM8klCYFTVZ3uWCI963ta2TPSb1tW/GLVW8oNMXVEjNaSihk8JvarP034/ECwzyg2ga9pC+cvtcos+n1Z2ybVs5Sv8M9iEAfcE27MZg8DdTkjKYvMlcCVhWSpbzHQEbOKsOckK8Ws5eDc/XeNJp+92/YIjirOTwsAJWPL1IuDylGojyccPO203SdeZ0Y9Cwx62IbCneSy3BSZdZaKo/y1bCbR8jktSIH8AQmQgx7TVhXoV8Ij7e54cisUUbOrg=",
+            "https://textures.minecraft.net/texture/db9d581911a03b2caf309c4af41b71384ada1a779063a321a1ee0d4682b43bd1"),
+
+    Nautilus("Nautilus", "ddcbd06b-b18c-4d56-8b6b-74a00f4e683d", "Nautilus", "ewogICJ0aW1lc3RhbXAiIDogMTc2NDY2MjE4MzE3NCwKICAicHJvZmlsZUlkIiA6ICJkMWY0NjYwMGJkMjM0ZmU1YjFhMWJhNDNlMGM4NzQwNSIsCiAgInByb2ZpbGVOYW1lIiA6ICJTZWJUaGVIZXJtaXQiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjgxYjE1MzUzMTFiZDRmMzg5MmIxYTZlM2E1MGViMjljZDc4YzQzYjY1YmM2ZDZhZGNmZWI4YjlmMDgwNTJjNSIKICAgIH0KICB9Cn0=",
+            "cWw19tx4cO1klbIEkdNu9XAD1Mq8kaTahhxDHjbbshptcxKx814ElS8jgZ7k7/44cztIYCqISJA21u9AMhrw64tM66KYDR+Iy6KiVP22bKBlJoXwYJh6EpZ4VNsodS3++AjEROicgag86vGUH/tNc4Wu2tskoo598293goCIVdID/nc6A0t54nvAAHrc1xDiYpZR2a7o7xT6lvmSAEGmdWGLIiOChlDunQyG/D6kF702183wOf/WWnjCkzKq6WojTXS1+nZ2TpxvTgVDS4a8pdD/tH4TXcxug19bufA0qAInFZHkUmsQndqmThlZtQrt8O23/rvj8n8cJiImkR4TOwiI3I3LaaVsCaCL/K7FAsHtiZbmH1AWZn44g9lsVQORIOE0L61NTDsgveTf76miG08gepqEfqKwfJkwIop0HrnlBXeD3oKnl75HUB8ZoIru/zpswH5Zn60+Wa0v6bLpHxubqDbVtJet0vib6xHQQLpg9AYhnzFEf/OfvRITNNHEo1fVwnbnuUcEH+SQJEBQDh5z30xSZX/sQ1LRSLETJp0H8+Y6WjFBDt1uyc9YUEijnfifizLtcUqRFgnsPYjLjJOfOnpz6GeXfzjOmwo6i5JEI6EP1GmdmY0Dcc2ljZC0+7TPvxBnEp9OathXGMQMIT5gRoXZ+SrMaeAT2Pku/SQ=",
+            "https://textures.minecraft.net/texture/b81b1535311bd4f3892b1a6e3a50eb29cd78c43b65bc6d6adcfeb8b9f08052c5"),
+
+    ZombieNautilus("ZombieNautilus", "92826e64-dd82-410a-9f5e-00659d0e0377", "Zombie Nautilus", "ewogICJ0aW1lc3RhbXAiIDogMTc2NjI3NzgzOTAwMCwKICAicHJvZmlsZUlkIiA6ICIzOTg5OGFiODFmMjU0NmQxOGIyY2ExMTE1MDRkZGU1MCIsCiAgInByb2ZpbGVOYW1lIiA6ICI4YjJjYTExMTUwNGRkZTUwIiwKICAic2lnbmF0dXJlUmVxdWlyZWQiIDogdHJ1ZSwKICAidGV4dHVyZXMiIDogewogICAgIlNLSU4iIDogewogICAgICAidXJsIiA6ICJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzQ2YjgxOThhMTBlYWJiNWM1ZmVmNThhMDI3ODEwMGU0MGViZjliYTk3ZjZjNmNjYTdjZGQ1YjUzMzdiNDZkM2QiLAogICAgICAibWV0YWRhdGEiIDogewogICAgICAgICJtb2RlbCIgOiAic2xpbSIKICAgICAgfQogICAgfQogIH0KfQ==",
+            "kBDoc3aMeWYbsFklyTZS2eU9yz88kmpWubEMa4QYkX/iXjvMq1zjW8HR/nOx3WznGdrrmY8B+FiCsh0jtWxFKeWiT/hPbN21Qn81jTwsa71tW6PXKDkD2+A8zPgUaCIpomOEBfsSf92gHlFaVhoZMRRsJ/yegczFQkMfhlh7EO2JX2DhFOOYXQkkjoFbBqqTLr/+oqCrrc+PqWgE6lbakBsErngayzPWgbN1co/KTaauwSe5z3jWPzxNhpOZ5BLVSSmsgRMeXdtz2llieQJ1DV5f0vlQzgmLSkcwdOF9PnLpgTZBm4maD6H4sRLpiu84ZlJlItDOPUU9NN/OcDD0okz4XeuBhXEwHvv6mZR2HC/1EI73PRnKcUmL5Czosealb3QckkorNgBosHRe+/9l7+l+81VVJfka9OwcbmlMX9eGIvhvk53zz8p0eydE2ceuqRrUOwSjS3Ire9rqt14b3nl2u55hzx+xa4eO8mKlYrTLi3ufiuO3qC30zbMXsjluYzGIWoKYIO3041D/A18EIdOAP9RB8jSOwZY+2LU730HshreAQ83rTseWcsoElBkLybWO7v3XGJVCy4KZ9OTT7Ibfv+Sla4kvrIZQRIBB0pQ+Tb48yONF63nV5ML4boo6f32BWSJdkgcEt7Tpiu3t2y5wIplBYAvkMsDPgF0aap0=",
+            "https://textures.minecraft.net/texture/46b8198a10eabb5c5fef58a0278100e40ebf9ba97f6c6cca7cdd5b5337b46d3d"),
+
+    Parched("Parched", "bf4adfe2-05ac-4272-bb02-766269db73dd", "Parched", "ewogICJ0aW1lc3RhbXAiIDogMTc2MjcwMzM1MTQ3OCwKICAicHJvZmlsZUlkIiA6ICJjMjVlMWMxZTE1YTQ0N2IwOTQ2Zjg2YzYzYzhjYjZkOCIsCiAgInByb2ZpbGVOYW1lIiA6ICJiaWdpYm9zMzIxIiwKICAic2lnbmF0dXJlUmVxdWlyZWQiIDogdHJ1ZSwKICAidGV4dHVyZXMiIDogewogICAgIlNLSU4iIDogewogICAgICAidXJsIiA6ICJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzkzNDNiOWZlMTA3ZTVkZDk5NWI2ZDBmZTllMmE5YmVkODBjODAzZmE2YzJhNmYzNTFkNDY4YWExMmQyYTk3ODUiCiAgICB9CiAgfQp9",
+            "rs3CyNg+3nVob30yEHpOrQ6J1wCMRnH+GULbVA6aeV0hVLcVEV+sxuo30VM+Y2JXbhSrHfVQHiBl488s9tUyKdCG6a24RCzn3kmR+0OqqBl1YdTG6b7hliv1dUSzdS6huDetyPw7PAQoKrrN4L1jd6ZdOnaJrp5ZiF90Mgp5SzLzSiT1ypNOufJ7Je6VIF8zesPe/xHILTDc6HAP5eagzligJSOBYFWJa94TdsqLYdX0ReGj5UdqTyOwd3llDyYspQT3PDpHSZQD4h6cQGkYvuvBO+NoRiE1hlrgJwo8VTwfhJK2ku/EOkgcnMUExQ6eIqetbnRCNTSAqX4Fg27+h7qHYfQoDoIWOiWClkLpICg2aJopEQeDnn5T9+Yp4NdKZMEQpGHeWZScbWnldYpx3j01WNihjE5vL1Vx6FVIYNVcehxGWtKHDgbAfoaRw6wlngOzwL+rs5sVcdVXEk/qLDJvzPEEL5HIgiqmAooR9L6qoc6QPoTT5bqjwjomAyO45oQLlk6xksubUbr71CfeARnDdsMzFEc6hHnnmF7Hwi/ko9LLBO+3kKv6jFfolajl1hhMz9L+3kgEVMQWCjfH1oQPBwIf4o4HJwmHfAui0/wtlK1cfNXYCZKetbA9sAvJ6hDVAqboPjvkXy9mBaOHz4I0VBxFN2NVObrz1rzPWsc=",
+            "https://textures.minecraft.net/texture/9343b9fe107e5dd995b6d0fe9e2a9bed80c803fa6c2a6f351d468aa12d2a9785"),
+
     CopperGolem("CopperGolem", "802739f9-b57d-44f8-8cfe-f16a5a43700e", "Copper Golem", "ewogICJ0aW1lc3RhbXAiIDogMTc1OTc5NjA2MjE3NiwKICAicHJvZmlsZUlkIiA6ICI4ODYyYjU4ZWI4YjE0MTg5OGY3MWE0YjI2MDA3ZWVkNSIsCiAgInByb2ZpbGVOYW1lIiA6ICJHYWJyaWV3RiIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS9jMjA2OGJlYjdkZDQ5YWEyYmRiN2FiZjczYzdjOWYyMWE0YjhmN2RjMmE4YjQ0MTdmNmIzMjg1NjM1NDQ3NDEyIgogICAgfQogIH0KfQ==",
             "F1MYsvYxl4JUq3jA2zXHVVXVujdrQw6SQQk77hGrMI83PMNLt87u+3u4PlM0rfUhInda+Hoos6BfYm7L6Db01DFqiNMQiAMa6lqsTOq01IRgenWchYfgvraiKYrF/3pryqJw4dJA2HsvruoNq/i8XsnAcLRgdbkZZ7KESynHrL/kL7ZVtdyY7zfSRWB2KCmXaO9ZzbAkWa+JUmB5I/zkdGJMiBD1x6VcQ05yJ8b2yVSQkKK7FXLvtky8GNgFYlrBBs+RTuwYi7f8P21PZ/8obBujCJCloZkUHT08iozbeukr1RASkioOgGS8GzhE/08/0nmCUNQqlWjXxOVYy20Eaan92F0W6tsYZ3/vnr4QhOM+TT1gSASkKDZ2N0Pp0YpDDONCs7RsFVhOXYmqtSXwZuhjzJ5oOaOKYy2mriLoD5nMJVBbqD2geFxHwnWuYni99slMIVhvPo3dVoy2FmCHHkEyU2Pdrr1Mul7YykSH3F5CM96GgNiKFvF4LtTkrcWl7NmLYYIT/P7qyqF8j0v3iYgLTbUVagRCX7tCUrpy/zupv2HeybV2IXoYzbcSjkJBi3ovlGAjJDhK0WfPlN2WkPPE3PlORRRcAi8urKsimc6HcQJI4XZUANyX3vVVWuq9wHrC8rM5kT2FSV38sIpl6g3zrtSRpfGsm3G8uboVUPs=",
             "https://textures.minecraft.net/texture/c2068beb7dd49aa2bdb7abf73c7c9f21a4b8f7dc2a8b4417f6b3285635447412"),
@@ -698,7 +714,16 @@ public enum MobType {
 	public boolean matches(Entity entity) {
 		// TODO: Evaluate if we even need to bother supporting old versions of minecraft on new versions of plugin
 		if(Server.isMC121OrNewer()) {
-            if ( this == CopperGolem )
+
+            if ( this == CamelHusk )
+                return entity instanceof org.bukkit.entity.CamelHusk;
+            else if ( this == Nautilus )
+                return entity instanceof org.bukkit.entity.Nautilus;
+            else if ( this == ZombieNautilus )
+                return entity instanceof org.bukkit.entity.ZombieNautilus;
+            else if ( this == Parched )
+                return entity instanceof org.bukkit.entity.Parched;
+            else if ( this == CopperGolem )
                 return entity instanceof org.bukkit.entity.CopperGolem;
 			else if (this == HappyGhast)
 				return entity instanceof  org.bukkit.entity.HappyGhast;
@@ -843,7 +868,6 @@ public enum MobType {
 			else if (this == Illusioner)
 				return entity instanceof org.bukkit.entity.Illusioner;
 		}
-
 		if (Server.isMC111OrNewer()) {
 			if (this == Vex)
 				return entity instanceof org.bukkit.entity.Vex;
