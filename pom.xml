@@ -122,7 +122,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.21.10-R0.1-SNAPSHOT</version>
+            <version>1.21.11-R0.1-SNAPSHOT</version>
         </dependency>
 
         <!-- Bstats -->
@@ -178,16 +178,16 @@
         <dependency>
             <groupId>com.Zrips</groupId>
             <artifactId>CMI</artifactId>
-            <version>9.8.1.5</version>
+            <version>9.8.4.2</version>
             <scope>system</scope>
-            <systemPath>${basedir}\lib\CMI-9.8.1.5.jar</systemPath>
+            <systemPath>${basedir}\lib\CMI-9.8.4.2.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>net.Zrips</groupId>
             <artifactId>CMILib</artifactId>
-            <version>1.5.6.7</version>
+            <version>1.5.8.2</version>
             <scope>system</scope>
-            <systemPath>${basedir}\lib\CMILib1.5.6.7.jar</systemPath>
+            <systemPath>${basedir}\lib\CMILib1.5.8.2.jar</systemPath>
         </dependency>
 
         <!-- Title Manager -->
