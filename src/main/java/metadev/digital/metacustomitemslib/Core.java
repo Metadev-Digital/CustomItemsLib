@@ -12,7 +12,6 @@ import metadev.digital.metacustomitemslib.config.BackupManager;
 import metadev.digital.metacustomitemslib.config.ConfigManager;
 import metadev.digital.metacustomitemslib.config.Migrator;
 import metadev.digital.metacustomitemslib.config.MigratorException;
-import metadev.digital.metacustomitemslib.messages.MessageHelper;
 import metadev.digital.metacustomitemslib.messages.Messages;
 import metadev.digital.metacustomitemslib.messages.constants.Prefixes;
 import metadev.digital.metacustomitemslib.rewards.CoreRewardManager;
@@ -94,8 +93,6 @@ public class Core extends JavaPlugin {
             }
         }
 
-        int config_version = ConfigManager.getConfigVersion(mFile);
-
         mConfig = new ConfigManager(mFile);
         if (mConfig.loadConfig()) {
             if (mConfig.backup) {
@@ -106,9 +103,6 @@ public class Core extends JavaPlugin {
         } else
             throw new RuntimeException("[MetaCustomItemsLib] Could not load config.yml");
 
-        mMessages.setLanguage(mConfig.language + ".lang");
-
-        MessageHelper.debug("Loading config.yml file, version %s", config_version);
     }
 
 	@Override

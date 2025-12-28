@@ -1,5 +1,6 @@
 package metadev.digital.metacustomitemslib.config;
 
+import metadev.digital.metacustomitemslib.Core;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
@@ -56,6 +57,7 @@ public abstract class AutoConfig {
 	}
 
 	protected void onPostLoad() throws InvalidConfigurationException {
+        Core.getMessages().setLanguage(Core.getConfigManager().language + ".lang");
 	};
 
 	protected void onPreSave() {

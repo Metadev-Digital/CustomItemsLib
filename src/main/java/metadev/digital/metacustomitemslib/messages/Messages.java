@@ -266,10 +266,15 @@ public class Messages {
 	}
 
 	private static String getStringInternal(String key) {
+        if (mTranslationTable == null ) {
+            MessageHelper.debug("Attempted to get internal string but there is no valid translation table or it hasn't been set up yet.");
+            return "TRANSLATION_ERROR! TRANSLATION_TABLE_NPE FOR KEY: " + key;
+        }
+
 		String value = mTranslationTable.get(key);
 
 		if (value == null) {
-			Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX + "mTranslationTable has not key: " + key.toString());
+			Bukkit.getConsoleSender().sendMessage(Prefixes.PREFIX + "mTranslationTable has not key: " + key);
 			throw new MissingResourceException("", "", key);
 		}
 
