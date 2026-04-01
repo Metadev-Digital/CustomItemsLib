@@ -22,7 +22,7 @@ softdepend:
   - CMILib
   - ActionBar
   - TitleManager
-api-version: 26.1.1
+api-version: 26.1
 commands:
   customitemslib:
     description: Allows you to use commands in MetaCustomItemsLib
